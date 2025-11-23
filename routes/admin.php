@@ -5,7 +5,12 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     // Trang chủ
     '/'=>(new ProductController())->Home(),
     'logout' =>(new LoginController())->logout(),
-
+    'danhmuctour' =>(new ProductController())->danhmuctuor(),
+    'delete' =>(new ProductController())->delete(),
+    'form' =>(new ProductController())->form(),
+    'add' =>(new ProductController())->add(),
+    'edit' =>(new ProductController())->edit(),
+    'update' =>(new ProductController())->update(),
 };
 
 }else{
