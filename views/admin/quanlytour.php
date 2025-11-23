@@ -14,6 +14,7 @@ require_once 'silderbar.php';
       <th>NgayBatDau</th>
       <th>NgayKetThuc</th>
       <th>HDVDuocPhanCong</th>
+      <th>Trạng Thái</th>
       <th>Hành Động</th>
     </tr>
   </thead>
@@ -25,9 +26,10 @@ require_once 'silderbar.php';
       <td><?= htmlspecialchars($row['TenTour']) ?></td>
       <td><?= htmlspecialchars($row['NgayBatDau']) ?></td>
       <td><?= htmlspecialchars($row['NgayKetThuc']) ?></td>
-      <td><?= htmlspecialchars($row['TenHDV'] ?? 'Chưa phân công') ?></td>
+      <td><?= htmlspecialchars($row['TenHDV']) ?></td>
+      <td><?= htmlspecialchars($row['TrangThai']) ?></td>
       <td>
-        <!-- <a href="<?= BASE_URL . '?mode=admin&act=edit&id='. $row['MaQuanLy']?>">Sửa</a> -->
+        <!-- <a href="<?= BASE_URL . '?mode=admin&act=edit-quan-ly-tuor&id='. $row['MaQuanLy']?>">Sửa</a> -->
       </td>
     </tr>
     <?php endforeach; ?>
