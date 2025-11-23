@@ -1,29 +1,34 @@
+<link rel="stylesheet" href="./views/css/addDanhMuc.css">
 
-<h1>Thêm Danh mục Tour</h1>
-<form action="<?= BASE_URL . '?mode=admin&act=add'?>" method="POST">
-  <div class="form-group">
-    <label >TenDanhMuc: </label>
-    <input type="text" class="form-control" id="TenDanhMuc" name="TenDanhMuc">
+<div class="main-container">
+  <div class="form-container">
+    <h1>Thêm Danh mục Tour</h1>
+    <form action="<?= BASE_URL . '?mode=admin&act=add'?>" method="POST">
+      <div class="form-group">
+        <label >TenDanhMuc: </label>
+        <input type="text" class="form-control" id="TenDanhMuc" name="TenDanhMuc">
+      </div>
+      
+      <div class="form-group">
+        <label >LoaiTour:</label>
+        <select name="LoaiTour" id="LoaiTour">
+            <option value="nội địa">nội địa</option>
+            <option value="quốc tế">quốc tế</option>
+            <option value="theo yêu cầu">theo yêu cầu</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label >Mo Ta:</label>
+        <input type="text" class="form-control" id="MoTa" name="MoTa">
+      </div>
+      <div class="form-group">
+        <label >TrangThai:</label>
+        <select name="TrangThai" id="TrangThai">
+            <option value="1">hoạt động</option>
+            <option value="2">ngưng hoạt động</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
   </div>
-  
-  <div class="form-group">
-    <label >LoaiTour:</label>
-    <select name="LoaiTour" id="LoaiTour">
-        <option value="nội địa">nội địa</option>
-        <option value="quốc tế">quốc tế</option>
-        <option value="theo yêu cầu">theo yêu cầu</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label >Mo Ta:</label>
-    <input type="text" class="form-control" id="MoTa" name="MoTa">
-  </div>
-  <div class="form-group">
-    <label >TrangThai:</label>
-    <select name="TrangThai" id="TrangThai">
-        <option value="1">hoạt động</option>
-        <option value="2">ngưng hoạt động</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+</div>

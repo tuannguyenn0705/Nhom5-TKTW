@@ -44,7 +44,7 @@
     }
 
     .login-box input {
-        width: 100%; /* FIX CHÍNH — không bao giờ tràn */
+        width: 100%;
         padding: 12px;
         border: 1px solid #ccc;
         border-radius: 8px;

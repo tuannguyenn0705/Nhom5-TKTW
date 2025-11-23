@@ -27,7 +27,6 @@
             overflow-x: hidden;
         }
 
-        /* --- SIDEBAR --- */
         .sidebar {
             width: var(--sidebar-width);
             background: linear-gradient(180deg, var(--sidebar-bg) 0%, #1e293b 100%);
@@ -56,17 +55,14 @@
             color: var(--primary);
         }
 
-        /* Cập nhật style cho thẻ A */
         a.menu-item {
             padding: 12px 16px;
             color: var(--text-light);
             text-decoration: none;
-            /* Quan trọng: bỏ gạch chân của thẻ a */
             border-radius: 10px;
             margin-bottom: 4px;
             cursor: pointer;
             display: flex;
-            /* Giữ bố cục flex */
             align-items: center;
             gap: 14px;
             font-size: 14px;
@@ -75,7 +71,6 @@
             position: relative;
             overflow: hidden;
             width: 100%;
-            /* Đảm bảo thẻ a chiếm hết chiều rộng */
         }
 
         a.menu-item:hover {
@@ -103,7 +98,6 @@
             margin: 20px 10px;
         }
 
-        /* --- MAIN CONTENT --- */
         .main-content {
             margin-left: var(--sidebar-width);
             padding: 32px 40px;
@@ -175,7 +169,6 @@
             }
         }
 
-        /* Placeholder Box */
         .empty-state-box {
             text-align: center;
             padding: 60px;
@@ -184,15 +177,6 @@
             border: 2px dashed #cbd5e1;
             color: var(--secondary);
         }
-
-
-
-
-
-
-
-
-
 
 
         body {
@@ -208,10 +192,9 @@
             margin-bottom: 20px;
         }
 
-        /* Phần Header/Action (Tìm kiếm và Thêm mới) */
         .action-container {
             display: flex;
-            justify-content: space-between; /* Đẩy nút Thêm sang phải */
+            justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
         }
@@ -223,7 +206,6 @@
             width: 300px;
         }
         
-        /* Nút Thêm Danh Mục */
         .add-button {
             padding: 10px 15px;
             background-color: #007bff;
@@ -231,7 +213,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            text-decoration: none; /* Bỏ gạch chân nếu dùng thẻ <a> */
+            text-decoration: none;
             display: inline-block;
             transition: background-color 0.3s;
         }
@@ -240,19 +222,17 @@
             background-color: #0056b3;
         }
 
-        /* Bảng */
         table {
             width: 100%;
-            border-collapse: collapse; /* Bỏ đường viền kép */
+            border-collapse: collapse;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: white;
             border-radius: 8px;
-            overflow: hidden; /* Giúp bo góc của bảng được thể hiện */
+            overflow: hidden;
         }
 
-        /* Header của bảng */
         thead tr {
-            background-color: #007bff; /* Màu xanh nổi bật */
+            background-color: #007bff;
             color: white;
             text-align: left;
         }
@@ -262,16 +242,14 @@
             border-bottom: 1px solid #ddd;
         }
 
-        /* Dòng dữ liệu */
         tbody tr:nth-child(even) {
-            background-color: #f8f8f8; /* Tạo hiệu ứng xen kẽ màu */
+            background-color: #f8f8f8;
         }
 
         tbody tr:hover {
-            background-color: #f1f1f1; /* Đổi màu khi di chuột qua */
+            background-color: #f1f1f1;
         }
 
-        /* Cột Hành Động */
         td a {
             text-decoration: none;
             color: #007bff;
@@ -282,3 +260,6 @@
             color: #0056b3;
             text-decoration: underline;
         }
+
+
+

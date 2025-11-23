@@ -5,7 +5,7 @@ class LoginController
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
             $user = new LoginModel();
-            $data = $user->Login(); // return: row user nếu đúng
+            $data = $user->Login();
 
             if($data){
                 $_SESSION['user'] = $data;

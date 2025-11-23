@@ -7,7 +7,7 @@ require_once 'silderbar.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Danh Mục Tour</title>
-    <link rel="stylesheet" href="./views/admin/style.css">
+    <link rel="stylesheet" href="./views/css/danhMucTour.css">
     
 </head>
 <body>
@@ -29,7 +29,6 @@ require_once 'silderbar.php';
         </thead>
         <tbody>
             <?php
-            // ... (Đoạn PHP của bạn)
             if (!empty($result) && is_array($result)) {
                 foreach($result as $key => $item){
                     ?>
@@ -39,7 +38,6 @@ require_once 'silderbar.php';
                         <td><?php echo $item['LoaiTour']; ?></td>
                         <td><?php echo $item['MoTa']; ?></td>
                         <td><?php 
-                            // Thêm logic hiển thị trạng thái
                             echo $item['TrangThai']; 
                         ?></td>
                         <td>
@@ -50,7 +48,6 @@ require_once 'silderbar.php';
                     <?php
                 } 
             } else {
-                // ...
             }
             ?>
             </tbody>
