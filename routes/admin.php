@@ -11,6 +11,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'add' =>(new ProductController())->add(),
     'edit' =>(new ProductController())->edit(),
     'update' =>(new ProductController())->update(),
+    'quanlytour' => (new QuanlytourController())->Quanlytour(),
 };
 
 }else{

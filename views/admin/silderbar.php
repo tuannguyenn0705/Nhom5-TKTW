@@ -21,9 +21,9 @@
         </a>
 
         <a href="<?= BASE_URL .'?mode=admin&act=danhmuctour' ?>" class="menu-item" onclick="switchTab('tours', this); return false;">
-            <i class="fas fa-map-marked-alt"></i> Danh mục tour
+            <i class="fas fa-map-marked-alt"></i> Danh mục tour 
         </a>
-<a href="#" class="menu-item" onclick="switchTab('booking-status', this); return false;">
+        <a href="<?= BASE_URL .'?mode=admin&act=quanlytour' ?>" class="menu-item" onclick="switchTab('booking-status', this); return false;">
             <i class="fas fa-tasks"></i> Quản lý tour
         </a>
         <a href="#" class="menu-item" onclick="switchTab('new-booking', this); return false;">

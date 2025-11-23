@@ -12,7 +12,7 @@ class LoginController
 
                 // Kiểm tra role
                 if ($data['Role'] == '1') {
-                    header('Location: ' . BASE_URL . '?mode=admin');  // Admin
+                    header('Location: ' . BASE_URL . '?mode=admin&act=danhmuctour');  // Admin
                     exit;
                 } else if ($data['Role'] == '0') {
                     header('Location: ' . BASE_URL . '?mode=hdv');  // Hướng dẫn viên
