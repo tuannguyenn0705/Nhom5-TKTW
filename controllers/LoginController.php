@@ -15,7 +15,7 @@ class LoginController
                     header('Location: ' . BASE_URL . '?mode=admin');  // Admin
                     exit;
                 } else if ($data['Role'] == '0') {
-                    header('Location: ' . BASE_URL . '?mode=guide');  // Hướng dẫn viên
+                    header('Location: ' . BASE_URL . '?mode=hdv');  // Hướng dẫn viên
                     exit;
                 }
             } else {
