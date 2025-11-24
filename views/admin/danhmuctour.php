@@ -15,8 +15,7 @@
         <body>
             <h1>Danh Sách Danh Mục Tour</h1>
             <div class="action-container">
-                <div class="action-container">
-                    <form action="" method="get">
+                    <form action="" method="get" class="search-form">
                         <?php
                         if (isset($_GET['mode'])) {
                             echo '<input type="hidden" name="mode" value="' . htmlspecialchars($_GET['mode']) . '">';
@@ -24,11 +23,11 @@
                         if (isset($_GET['act'])) {
                             echo '<input type="hidden" name="act" value="' . htmlspecialchars($_GET['act']) . '">';
                         }
-                        ?>
+                        ?>  
                         <input type="text" name="keyword" placeholder="Nhập tên danh mục..." value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
                         <button type="submit">Tìm kiếm</button>
                     </form>
-                    </form>
+                    
                     <?php
                     $keyword =  isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
                     if ($keyword != '') {
@@ -43,8 +42,6 @@
                         });
                     }
                     ?>
-                </div>
-
                 <a href="<?= BASE_URL . '?mode=admin&act=form' ?>" class="add-button">Thêm danh mục</a>
             </div>
             <table border="1">
