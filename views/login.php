@@ -1,100 +1,75 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Đăng nhập</title>
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #4F7DF3, #6BCDFE);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        padding: 20px;
-    }
-
-    .login-box {
-        width: 350px;
-        background: white;
-        padding: 25px 20px;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.15);
-    }
-
-    .login-box h2 {
-        text-align: center;
-        margin-bottom: 25px;
-        font-size: 24px;
-        color: #222;
-    }
-
-    .login-box label {
-        font-size: 14px;
-        font-weight: 600;
-        color: #444;
-        display: block;
-        margin-bottom: 6px;
-    }
-
-    .login-box input {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 15px;
-        transition: 0.3s;
-        margin-bottom: 18px;
-        background: #fafafa;
-    }
-
-    .login-box input:focus {
-        border-color: #007bff;
-        background: white;
-        box-shadow: 0 0 6px rgba(0,123,255,0.3);
-    }
-
-    .btn {
-        width: 100%;
-        padding: 12px;
-        background: #007bff;
-        border: none;
-        border-radius: 8px;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    .btn:hover {
-        background: #0056b3;
-    }
-</style>
-
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="views/cssLogin.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="wrapper">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
 
-<div class="login-box">
-    <h2>Đăng nhập</h2>
+        <div class="form-box login">
+            <h2 class="animation" style="--i:0; --j:21;">Login</h2>
+            <form action="#" method="post">
+                <div class="input-box animation" style="--i:1; --j:22;">
+                    <input type="text" required name="Email">
+                    <label>Email</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box animation" style="--i:2; --j:23;">
+                    <input type="password" required name="Password">
+                    <label>Password</label>
+                     <i class="bx bxs-lock-alt"></i>
+                </div>
+                <button type="submit" class="btn animation" style="--i:3; --j:24;">Login</button>
+                <div class="logreg-link animation" style="--i:4; --j:25;">
+                    <p>Don't have an account? <a href="#" class="register-link">Sign up</a></p>
+                </div>
+            </form>
+        </div>
 
-    <form action="" method="POST">
-        <label>Email</label>
-        <input type="email" name="Email" placeholder="Nhập email" required>
+        <div class="info-text login">
+            <h2 class="animation" style="--i:0; --j:20;">Welcome Back!</h2>
+            <p class="animation" style="--i:1; --j:21;">Welcome back to the command center. Ready to organize the next great adventure for your customers?</p>
+        </div>
 
-        <label>Password</label>
-        <input type="password" name="Password" placeholder="Nhập mật khẩu" required>
+        <div class="form-box register">
+            <h2 class="animation" style="--i:17; --j:0;">Sign Up</h2>
+            <form action="#">
+                <div class="input-box animation" style="--i:18;--j:1;">
+                    <input type="text" required>
+                    <label>Username</label>
+                    <i class="bx bxs-user"></i>
+                </div>
+                <div class="input-box animation" style="--i:19; --j:2;">
+                    <input type="text" required>
+                    <label>Email</label>
+                    <i class="bx bxs-envelope"></i>
+                </div>
+                <div class="input-box animation" style="--i:20; --j:3;">
+                    <input type="password" required>
+                    <label>Password</label>
+                     <i class="bx bxs-lock-alt"></i>
+                </div>
+                <button type="submit" class="btn animation" style="--i:21;--j:4;">Sign up</button>
+                <div class="logreg-link animation" style="--i:22;--j:5;">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
 
-        <button type="submit" class="btn">Đăng nhập</button>
-    </form>
-</div>
+        <div class="info-text register">
+            <h2 class="animation" style="--i:17; --j:0;">Welcome Back</h2>
+            <p class="animation" style="--i:18;--j:1;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut provident dolorem, error</p>
+        </div>
+    </div>
 
+    <script src="scriptLogin.js"></script>
 </body>
 </html>
+
+
