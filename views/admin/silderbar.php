@@ -15,7 +15,7 @@
 <body>
     
     <div class="sidebar">
-        <div class="logo"><i class="fas fa-plane-departure"></i> TravelAdmin</div>
+        <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld </div>
         <a href="#" class="menu-item" onclick="switchTab('finance', this); return false;">
             <i class="fas fa-chart-line"></i> Dashboard
         </a>
@@ -41,18 +41,18 @@
         <a href="#" class="menu-item" onclick="switchTab('work-schedule', this); return false;">
             <i class="fas fa-briefcase"></i> Lịch làm việc
         </a>
-        <a href="#" class="menu-item" onclick="switchTab('group-list', this); return false;">
+        <!-- <a href="#" class="menu-item" onclick="switchTab('group-list', this); return false;">
             <i class="fas fa-users"></i> Khách đoàn
-        </a>
-        <a href="#" class="menu-item" onclick="switchTab('guide-log', this); return false;">
+        </a> -->
+        <!-- <a href="#" class="menu-item" onclick="switchTab('guide-log', this); return false;">
             <i class="fas fa-pen-nib"></i> Nhật ký HDV
-        </a>
+        </a> -->
         <a href="#" class="menu-item" onclick="switchTab('checkin', this); return false;">
             <i class="fas fa-check-double"></i> Check-in
         </a>
-        <a href="#" class="menu-item" onclick="switchTab('requests', this); return false;">
+        <!-- <a href="#" class="menu-item" onclick="switchTab('requests', this); return false;">
             <i class="fas fa-bell"></i> Yêu cầu đặc biệt
-        </a>
+        </a> -->
         <hr>
         <a href="<?= BASE_URL ?>?mode=admin&act=logout" class="menu-item" style="color: #ef4444;">
             <i class="fas fa-sign-out-alt"></i> Đăng xuất

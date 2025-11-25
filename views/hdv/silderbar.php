@@ -134,15 +134,12 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-        <div class="logo"><i class="fas fa-plane-departure"></i> TravelAdmin</div>
+        <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
 
-        <a href="#" class="menu-item"><i class="fas fa-chart-line"></i> Dashboard</a>
-        <a href="#" class="menu-item"><i class="fas fa-map-marked-alt"></i> Danh mục tour</a>
-        <a href="#" class="menu-item"><i class="fas fa-user-tie"></i> Nhân sự & HDV</a>
+        <a href="#" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
+        <a href="#" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sach Khách</a>
         <a href="#" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
-        <a href="#" class="menu-item"><i class="fas fa-briefcase"></i> Lịch làm việc</a>
         <a href="#" class="menu-item"><i class="fas fa-check-double"></i> Check-in</a>
-
         <hr>
         <a href="<?= BASE_URL ?>?mode=hdv&act=logout" class="menu-item" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
     </div>

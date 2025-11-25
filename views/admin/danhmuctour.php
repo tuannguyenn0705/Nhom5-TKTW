@@ -48,7 +48,7 @@
                 <thead>
                     <tr>
                         <td>Danh mục tour</td>
-                        <td>Tên Danh Mục</td>
+                        <td>Tên Tour</td>
                         <td>Loại Tour</td>
                         <td>Mô Tả</td>
                         <td>Trạng Thái</td>

@@ -29,7 +29,7 @@ require_once 'silderbar.php';
     });
   }
   ?>
-  <a href="<?= BASE_URL . '?mode=admin&act=form' ?>" class="add-button">Thêm danh mục</a>
+  <a href="#" class="add-button">Thêm tour</a>
 </div>
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
