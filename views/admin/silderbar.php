@@ -38,7 +38,7 @@
         <a href="#" class="menu-item" onclick="switchTab('tour-log', this); return false;">
             <i class="fas fa-book"></i> Nhật ký tour
         </a>
-        <a href="#" class="menu-item" onclick="switchTab('work-schedule', this); return false;">
+        <a href="<?= BASE_URL .'?mode=admin&act=lichlamviechdv'?>" class="menu-item" onclick="switchTab('work-schedule', this); return false;">
             <i class="fas fa-briefcase"></i> Lịch làm việc
         </a>
         <!-- <a href="#" class="menu-item" onclick="switchTab('group-list', this); return false;">

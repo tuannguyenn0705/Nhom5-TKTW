@@ -10,6 +10,7 @@ require_once './controllers/QuanlytourController.php';
 require_once './controllers/ProductController.php';
 require_once './controllers/LoginController.php';
 require_once './controllers/HdvController.php';
+require_once './controllers/LichLamController.php';
 
 
 // Require toàn bộ file Models
@@ -17,6 +18,7 @@ require_once './models/QuanlytourModel.php';
 require_once './models/ProductModel.php';
 require_once './models/LoginModel.php';
 require_once './models/HdvModel.php';
+require_once './models/LichLamModel.php';
 // Route
 
 if (!isset($_SESSION['user'])) {

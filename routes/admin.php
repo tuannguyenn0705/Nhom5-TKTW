@@ -12,6 +12,11 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'edit' =>(new ProductController())->edit(),
     'update' =>(new ProductController())->update(),
     'quanlytour' => (new QuanlytourController())->Quanlytour(),
+
+
+
+    //lịch làm việc
+    'lichlamviechdv'=>(new LichLamController())->viewLichLam(),
 };
 
 }else{

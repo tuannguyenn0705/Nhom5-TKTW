@@ -1,5 +1,4 @@
 <?php
-// Dùng __DIR__ để trỏ ra ngoài thư mục cha rồi vào models, tránh lỗi đường dẫn
 require_once __DIR__ . '/../models/QuanlytourModel.php';
 
 class QuanlytourController {
