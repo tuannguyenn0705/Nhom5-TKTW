@@ -1,11 +1,11 @@
 <?php
-class ProductController
+class AdminController
 {
-    public $modelProduct;
+    public $modelAdmin;
 
     public function __construct()
     {
-        $this->modelProduct = new ProductModel();
+        $this->modelAdmin = new AdminModel();
     }
 
     public function Home()
@@ -14,14 +14,14 @@ class ProductController
     }
     public function danhmuctuor()
     {
-        $result = $this->modelProduct->getAll();
+        $result = $this->modelAdmin->getAll();
         require_once './views/admin/danhmuctour.php';
     }
 
     public function delete()
     {
         if (isset($_GET["id"])) {
-            $this->modelProduct->delete($_GET["id"]);
+            $this->modelAdmin->delete($_GET["id"]);
         }
 
         header("location:" . BASE_URL . '?mode=admin&act=danhmuctour');
@@ -35,14 +35,14 @@ class ProductController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data = $_POST;
 
-            $this->modelProduct->add($data);
+            $this->modelAdmin->add($data);
         }
         header("location:" . BASE_URL . '?mode=admin&act=danhmuctour');
     }
     public function edit()
     {
         if (isset($_GET["id"])) {
-            $result = $this->modelProduct->getDetail($_GET['id']);
+            $result = $this->modelAdmin->getDetail($_GET['id']);
             require_once './views/admin/edit.php';
         }
     }
@@ -63,7 +63,7 @@ class ProductController
                 exit;
             }
 
-            $this->modelProduct->update($data);
+            $this->modelAdmin->update($data);
             header("location:" . BASE_URL . '?mode=admin&act=danhmuctour');
             exit;
         } else {

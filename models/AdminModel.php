@@ -1,6 +1,6 @@
 <?php 
 
-class ProductModel 
+class AdminModel 
 {
     public $conn;
     public function __construct()

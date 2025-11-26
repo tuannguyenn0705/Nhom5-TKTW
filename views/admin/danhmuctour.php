@@ -69,8 +69,28 @@
                                     echo $item['TrangThai'];
                                     ?></td>
                                 <td>
-                                    <a href="<?= BASE_URL . '?mode=admin&act=edit&id=' . $item['MaDanhMuc'] ?>">Sửa</a> |
-                                    <a href="<?= BASE_URL . '?mode=admin&act=delete&id=' . $item['MaDanhMuc'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                                    <button class="btn btn-warning">
+                                        <a 
+                                            href="<?= BASE_URL . '?mode=admin&act=edit&id=' . $item['MaDanhMuc'] ?>"
+                                            
+                                        >
+                                            Sửa
+                                        </a>
+                                    </button>
+                                    
+                                    
+                                    
+                                    <button 
+                                        class="btn btn-danger"
+                                        onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')"
+                                    >
+                                        <a 
+                                            href="<?= BASE_URL . '?mode=admin&act=delete&id=' . $item['MaDanhMuc'] ?>"
+                                            
+                                        >
+                                            Xóa
+                                        </a>
+                                    </button>
                                 </td>
                             </tr>
                     <?php

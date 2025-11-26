@@ -3,14 +3,17 @@ $act = $_GET['act'] ?? '/';
 if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     match ($act) {
     // Trang chủ
-    '/'=>(new ProductController())->Home(),
+    '/'=>(new AdminController())->Home(),
     'logout' =>(new LoginController())->logout(),
-    'danhmuctour' =>(new ProductController())->danhmuctuor(),
-    'delete' =>(new ProductController())->delete(),
-    'form' =>(new ProductController())->form(),
-    'add' =>(new ProductController())->add(),
-    'edit' =>(new ProductController())->edit(),
-    'update' =>(new ProductController())->update(),
+    'danhmuctour' =>(new AdminController())->danhmuctuor(),
+    'delete' =>(new AdminController())->delete(),
+    'form' =>(new AdminController())->form(),
+    'add' =>(new AdminController())->add(),
+    'edit' =>(new AdminController())->edit(),
+    'update' =>(new AdminController())->update(),
+
+
+    // quản lý tour
     'quanlytour' => (new QuanlytourController())->Quanlytour(),
 
 
