@@ -11,6 +11,7 @@ require_once './controllers/AdminController.php';
 require_once './controllers/LoginController.php';
 require_once './controllers/HdvController.php';
 require_once './controllers/LichLamController.php';
+require_once './controllers/DsKhachController.php';
 
 
 // Require toàn bộ file Models
@@ -19,6 +20,7 @@ require_once './models/AdminModel.php';
 require_once './models/LoginModel.php';
 require_once './models/HdvModel.php';
 require_once './models/LichLamModel.php';
+require_once './models/DsKhachModel.php';
 // Route
 
 if (!isset($_SESSION['user'])) {

@@ -20,6 +20,10 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
 
     //lịch làm việc
     'lichlamviechdv'=>(new LichLamController())->viewLichLam(),
+
+
+    //  ds khách
+    'danhsachkhach' => (new DsKhachController())->DanhsachKhach(),
 };
 
 }else{

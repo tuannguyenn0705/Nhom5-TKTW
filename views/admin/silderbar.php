@@ -32,7 +32,7 @@
         <a href="#" class="menu-item" onclick="switchTab('staff', this); return false;">
             <i class="fas fa-user-tie"></i> Nhân sự & HDV
         </a>
-        <a href="#" class="menu-item" onclick="switchTab('guest-list', this); return false;">
+        <a href="<?= BASE_URL .'?mode=admin&act=danhsachkhach'?>" class="menu-item" onclick="switchTab('guest-list', this); return false;">
             <i class="fas fa-list-alt"></i> DS Khách
         </a>
         <a href="#" class="menu-item" onclick="switchTab('tour-log', this); return false;">
