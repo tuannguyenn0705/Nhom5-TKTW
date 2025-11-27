@@ -35,7 +35,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
      'formnhatkytour' => (new NhatKyTourController())->form(),
     'addnhatkytour' => (new NhatKyTourController())->add(),
     'editnhatkytour' => (new NhatKyTourController())->edit(),
-    'update' => (new NhatKyTourController())->update(),
+    'updatenhatkytour' => (new NhatKyTourController())->update(),
 
 
    

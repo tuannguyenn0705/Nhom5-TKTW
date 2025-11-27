@@ -3,7 +3,7 @@
 <div class="main-container">
   <div class="form-container">
     <h1>Sửa Nhật Ký Tour</h1>
-    <form action="<?= BASE_URL . '?mode=admin&act=update' ?>" method="POST">
+    <form action="<?= BASE_URL . '?mode=admin&act=updatenhatkytour' ?>" method="POST">
       
       <!-- Ẩn ID để biết bản ghi nào cần update -->
       <input type="hidden" name="MaNhatKy" value="<?= htmlspecialchars($nhatkytour['MaNhatKy'] ?? '') ?>">
