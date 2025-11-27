@@ -147,18 +147,27 @@
     <!-- MAIN HDV PAGE -->
     <div class="main-content">
         <div class="header">
-            <h2>Trang dành cho Hướng Dẫn Viên (HDV)</h2>
-        </div>
+            <h2>Tổng quan hệ thống</h2>
+            <div style="display: flex; gap: 12px; align-items: center;">
 
-        <div class="content-box">
-            <h3>Chức năng của HDV</h3>
+                <div style="text-align: right;">
+                    <span style="font-weight: 600; font-size: 14px; color: #334155;">
+                        <?php
+                        if (isset($_SESSION['user'])) {
+                            if (isset($_SESSION['user']['Role']) && $_SESSION['user']['Role'] == '1') {
+                                echo "Xin chào, Admin";
+                            } else {
+                                echo "Xin chào, HDV";
+                            }
+                        }
+                        ?>
+                    </span>
+                </div>
 
-            <ul class="module-list">
-                <li><i class="fas fa-calendar-check"></i> Xem lịch làm việc HDV (lịch tour của mình)</li>
-                <li><i class="fas fa-users"></i> Quản lí danh sách khách theo tour + yêu cầu cá nhân</li>
-                <li><i class="fas fa-book-open"></i> Ghi nhật ký tour, ghi nhận sự cố, phản hồi khách</li>
-                <li><i class="fas fa-check"></i> Check-in khách theo tour, hiển thị chi tiết danh sách khách</li>
-            </ul>
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
         </div>
     </div>
 
