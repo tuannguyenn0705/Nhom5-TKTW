@@ -15,33 +15,33 @@
         <body>
             <h1>Danh Sách Danh Mục Tour</h1>
             <div class="action-container">
-                    <form action="" method="get" class="search-form">
-                        <?php
-                        if (isset($_GET['mode'])) {
-                            echo '<input type="hidden" name="mode" value="' . htmlspecialchars($_GET['mode']) . '">';
-                        }
-                        if (isset($_GET['act'])) {
-                            echo '<input type="hidden" name="act" value="' . htmlspecialchars($_GET['act']) . '">';
-                        }
-                        ?>  
-                        <input type="text" name="keyword" placeholder="Nhập tên danh mục..." value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
-                        <button type="submit">Tìm kiếm</button>
-                    </form>
-                    
+                <form action="" method="get" class="search-form">
                     <?php
-                    $keyword =  isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
-                    if ($keyword != '') {
-                        $keyword_lower = strtolower($keyword);
-                        $keyword_upper = strtoupper($keyword);
-                        $result = array_filter($result, function ($item) use ($keyword_lower, $keyword_upper) {
-                            if (strtoupper($item['MaDanhMuc']) === $keyword_upper) {
-                                return true;
-                            }
-                            return strpos(strtolower($item['TenDanhMuc']), $keyword_lower) !== false ||
-                                strpos(strtolower($item['LoaiTour']), $keyword_lower) !== false;
-                        });
+                    if (isset($_GET['mode'])) {
+                        echo '<input type="hidden" name="mode" value="' . htmlspecialchars($_GET['mode']) . '">';
+                    }
+                    if (isset($_GET['act'])) {
+                        echo '<input type="hidden" name="act" value="' . htmlspecialchars($_GET['act']) . '">';
                     }
                     ?>
+                    <input type="text" name="keyword" placeholder="Nhập tên danh mục..." value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
+                    <button type="submit">Tìm kiếm</button>
+                </form>
+
+                <?php
+                $keyword =  isset($_GET['keyword']) ? trim($_GET['keyword']) : '';
+                if ($keyword != '') {
+                    $keyword_lower = strtolower($keyword);
+                    $keyword_upper = strtoupper($keyword);
+                    $result = array_filter($result, function ($item) use ($keyword_lower, $keyword_upper) {
+                        if (strtoupper($item['MaDanhMuc']) === $keyword_upper) {
+                            return true;
+                        }
+                        return strpos(strtolower($item['TenDanhMuc']), $keyword_lower) !== false ||
+                            strpos(strtolower($item['LoaiTour']), $keyword_lower) !== false;
+                    });
+                }
+                ?>
                 <a href="<?= BASE_URL . '?mode=admin&act=form' ?>" class="add-button">Thêm danh mục</a>
             </div>
             <table border="1">
@@ -69,9 +69,17 @@
                                     echo $item['TrangThai'];
                                     ?></td>
                                 <td>
-                                    <button><a href="<?= BASE_URL . '?mode=admin&act=edit&id=' . $item['MaDanhMuc'] ?>">Sửa</a> </button>
-                                    
-                                    <button><a href="<?= BASE_URL . '?mode=admin&act=delete&id=' . $item['MaDanhMuc'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">Xóa</a></button>
+                                    <div class="action-buttons">
+                                        <a href="<?= BASE_URL . '?mode=admin&act=edit&id=' . $item['MaDanhMuc'] ?>" class="btn-action btn-edit">
+                                            Sửa
+                                        </a>
+
+                                        <a href="<?= BASE_URL . '?mode=admin&act=delete&id=' . $item['MaDanhMuc'] ?>"
+                                            class="btn-action btn-delete"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?')">
+                                            Xóa
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                     <?php

@@ -320,3 +320,46 @@
         width: 100%; /* Full màn hình khi ở mobile */
     }
 }
+
+/* Container để căn chỉnh 2 nút nằm ngang đẹp hơn */
+.action-buttons {
+    display: flex;
+    gap: 8px; /* Khoảng cách giữa 2 nút */
+    justify-content: flex-start; /* Căn trái */
+}
+
+/* Style chung cho cả 2 nút */
+.btn-action {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: white !important; /* Màu chữ trắng, ghi đè màu xanh mặc định của thẻ a */
+    transition: all 0.2s ease;
+    display: inline-block;
+    border: none;
+    line-height: normal;
+}
+
+/* Nút Sửa - Màu vàng cam hoặc Xanh lá (tùy bạn chọn) */
+.btn-edit {
+    background-color: #f59e0b; /* Màu vàng cam */
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+}
+
+.btn-edit:hover {
+    background-color: #d97706;
+    transform: translateY(-1px);
+}
+
+/* Nút Xóa - Màu đỏ */
+.btn-delete {
+    background-color: #ef4444; /* Màu đỏ */
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+}

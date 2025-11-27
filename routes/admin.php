@@ -12,6 +12,14 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'edit' =>(new AdminController())->edit(),
     'update' =>(new AdminController())->update(),
 
+    // Nhân Sự
+    'nhansu' => (new NhanSuController())->nhansu(),
+    'deletenhansu' => (new NhanSuController())->delete(),
+    'formnhansu' => (new NhanSuController())->form(),
+    'addnhansu' => (new NhanSuController())->add(),
+    'editnhansu' => (new NhanSuController())->edit(),
+    'updatenhansu' => (new NhanSuController())->update(),
+
 
     // quản lý tour
     'quanlytour' => (new QuanlytourController())->Quanlytour(),

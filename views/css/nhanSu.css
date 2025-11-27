@@ -1,0 +1,365 @@
+:root {
+    --primary: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary: #64748b;
+    --bg-body: #f3f4f6;
+    --sidebar-bg: #0f172a;
+    --sidebar-width: 260px;
+    --white: #ffffff;
+    --text-main: #334155;
+    --text-light: #94a3b8;
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    
+    margin: 0;
+    padding: 0 !important;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: linear-gradient(180deg, var(--sidebar-bg) 0%, #1e293b 100%);
+    color: var(--white);
+    position: fixed;
+    height: 100vh;
+    padding: 24px 16px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    padding-left: 10px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.5px;
+}
+
+.logo i {
+    color: var(--primary);
+}
+
+a.menu-item {
+    padding: 12px 16px;
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+a.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    transform: translateX(4px);
+}
+
+a.menu-item.active {
+    background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.menu-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #334155;
+    margin: 20px 10px;
+}
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 32px 40px;
+    width: calc(100% - var(--sidebar-width));
+    transition: var(--transition);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background-color: var(--primary-dark);
+    color: white;
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary);
+}
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    background: #e2e8f0;
+    color: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.empty-state-box {
+    text-align: center;
+    padding: 60px;
+    background: white;
+    border-radius: 12px;
+    border: 2px dashed #cbd5e1;
+    color: var(--secondary);
+}
+
+h1 {
+    color: #333;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.action-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.action-container input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+}
+
+.add-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead tr {
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+td a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+td a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.search-form {
+display: flex;
+align-items: center;
+gap: 12px; /* Khoảng cách giữa input và nút */
+background: #f8fafc; /* Màu nền nhẹ riêng cho khu vực form */
+padding: 8px;
+border-radius: 8px;
+border: 1px solid #e2e8f0;
+}
+
+/* 2. Ô nhập liệu bên trong form này */
+.search-form input[type="text"] {
+width: 280px; /* Độ rộng cố định */
+padding: 8px 14px;
+border: 1px solid #cbd5e1;
+border-radius: 6px;
+outline: none;
+font-size: 14px;
+color: var(--text-main);
+transition: all 0.2s ease;
+}
+
+/* Hiệu ứng focus input */
+.search-form input[type="text"]:focus {
+border-color: var(--primary);
+box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+background-color: var(--white);
+}
+
+/* 3. Nút bấm bên trong form này */
+.search-form button {
+padding: 8px 16px;
+background-color: var(--primary);
+color: var(--white);
+border: none;
+border-radius: 6px;
+font-size: 14px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s ease;
+display: flex;
+align-items: center;
+gap: 6px; /* Khoảng cách giữa icon và chữ nếu có */
+}
+
+/* Hiệu ứng hover nút */
+.search-form button:hover {
+background-color: var(--primary-dark);
+transform: translateY(-1px);
+}
+
+/* Responsive: Trên màn hình nhỏ thì form xuống dòng */
+@media (max-width: 768px) {
+.search-form {
+width: 100%;
+flex-wrap: wrap;
+}
+
+.search-form input[type="text"] {
+width: 100%; /* Full màn hình khi ở mobile */
+}
+}
+
+/* Container để căn chỉnh 2 nút nằm ngang đẹp hơn */
+.action-buttons {
+    display: flex;
+    gap: 8px; /* Khoảng cách giữa 2 nút */
+    justify-content: flex-start; /* Căn trái */
+}
+
+/* Style chung cho cả 2 nút */
+.btn-action {
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: white !important; /* Màu chữ trắng, ghi đè màu xanh mặc định của thẻ a */
+    transition: all 0.2s ease;
+    display: inline-block;
+    border: none;
+    line-height: normal;
+}
+
+/* Nút Sửa - Màu vàng cam hoặc Xanh lá (tùy bạn chọn) */
+.btn-edit {
+    background-color: #f59e0b; /* Màu vàng cam */
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+}
+
+.btn-edit:hover {
+    background-color: #d97706;
+    transform: translateY(-1px);
+}
+
+/* Nút Xóa - Màu đỏ */
+.btn-delete {
+    background-color: #ef4444; /* Màu đỏ */
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+.btn-delete:hover {
+    background-color: #dc2626;
+    transform: translateY(-1px);
+}
