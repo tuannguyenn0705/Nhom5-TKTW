@@ -5,16 +5,72 @@ class QuanlytourModel
 
     public function __construct()
     {
-        $this->conn = connectDB(); // hàm connectDB() phải được định nghĩa sẵn
+        $this->conn = connectDB();
     }
-   
+
     public function getAll()
     {
         $sql = "SELECT q.*, n.HoTen AS TenHDV 
-            FROM quanlytour q 
-            LEFT JOIN nhansu n ON q.HDVDuocPhanCong = n.MaNhanSu";
+                FROM QuanLyTour q 
+                LEFT JOIN NhanSu n ON q.HDVDuocPhanCong = n.MaNhanSu";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); // trả về mảng kết hợp
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function delete($id)
+    {
+        $sql = "DELETE FROM QuanLyTour WHERE MaQuanLy = :MaQuanLy"; 
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([":MaQuanLy" => $id]); 
+        return $stmt->rowCount();
+    }
+
+    public function add($data)
+    {
+        $sql = "INSERT INTO QuanLyTour (MaChiTietTour, TenTour, NgayBatDau, NgayKetThuc, HDVDuocPhanCong, TrangThai) 
+                VALUES (:MaChiTietTour, :TenTour, :NgayBatDau, :NgayKetThuc, :HDVDuocPhanCong, :TrangThai)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':MaChiTietTour'   => $data['MaChiTietTour'],
+            ':TenTour'         => $data['TenTour'],
+            ':NgayBatDau'      => $data['NgayBatDau'],
+            ':NgayKetThuc'     => $data['NgayKetThuc'],
+            ':HDVDuocPhanCong' => $data['HDVDuocPhanCong'],
+            ':TrangThai'       => $data['TrangThai']
+        ]);
+        return $stmt->rowCount();
+    }
+
+    public function getDetail($id)
+    {
+        $sql = "SELECT * FROM QuanLyTour WHERE MaQuanLy = :MaQuanLy";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([":MaQuanLy" => $id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function update($data)
+    {
+        $sql = "UPDATE QuanLyTour SET 
+                    MaChiTietTour = :MaChiTietTour, 
+                    TenTour = :TenTour, 
+                    NgayBatDau = :NgayBatDau, 
+                    NgayKetThuc = :NgayKetThuc,
+                    HDVDuocPhanCong = :HDVDuocPhanCong,
+                    TrangThai = :TrangThai
+                WHERE MaQuanLy = :MaQuanLy";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':MaChiTietTour'   => $data['MaChiTietTour'],
+            ':TenTour'         => $data['TenTour'],
+            ':NgayBatDau'      => $data['NgayBatDau'],
+            ':NgayKetThuc'     => $data['NgayKetThuc'],
+            ':HDVDuocPhanCong' => $data['HDVDuocPhanCong'],
+            ':TrangThai'       => $data['TrangThai'],
+            ':MaQuanLy'        => $data['MaQuanLy']
+        ]);
+        return $stmt->rowCount();
     }
 }
+?>

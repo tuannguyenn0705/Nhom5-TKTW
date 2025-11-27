@@ -35,7 +35,7 @@
         <a href="<?= BASE_URL . '?mode=admin&act=danhsachkhach' ?>" class="menu-item" onclick="switchTab('guest-list', this); return false;">
             <i class="fas fa-list-alt"></i> DS Khách
         </a>
-        <a href="#" class="menu-item" onclick="switchTab('tour-log', this); return false;">
+        <a href="<?= BASE_URL . '?mode=admin&act=nhatkytour' ?>" class="menu-item" onclick="switchTab('tour-log', this); return false;">
             <i class="fas fa-book"></i> Nhật ký tour
         </a>
         <a href="<?= BASE_URL . '?mode=admin&act=lichlamviechdv' ?>" class="menu-item" onclick="switchTab('work-schedule', this); return false;">

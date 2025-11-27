@@ -22,8 +22,32 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
 
 
     // quản lý tour
-    'quanlytour' => (new QuanlytourController())->Quanlytour(),
+    'quanlytour' => (new QuanlytourController())->quanlytour(),
+    'xoaquanlytour' => (new QuanlytourController())->delete(),
+    'formquanlytour' => (new QuanlytourController())->form(),
+    'addquanlytour' => (new QuanlytourController())->add(),
+    'editquanlytour' => (new QuanlytourController())->edit(),
+    'updatequanlytour' => (new QuanlytourController())->update(),
 
+    // nhật ký tour
+     'nhatkytour' => (new NhatKyTourController())->nhatkytour(),
+     'xoanhatkytour' => (new NhatKyTourController())->delete(),
+     'formnhatkytour' => (new NhatKyTourController())->form(),
+    'addnhatkytour' => (new NhatKyTourController())->add(),
+    'editnhatkytour' => (new NhatKyTourController())->edit(),
+    'update' => (new NhatKyTourController())->update(),
+
+
+   
+
+
+    
+
+    
+
+
+
+    
 
 
     //lịch làm việc

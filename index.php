@@ -13,6 +13,8 @@ require_once './controllers/HdvController.php';
 require_once './controllers/LichLamController.php';
 require_once './controllers/DsKhachController.php';
 require_once './controllers/NhanSuController.php';
+require_once './controllers/NhatKyTourController.php';
+
 
 
 // Require toàn bộ file Models
@@ -23,6 +25,7 @@ require_once './models/HdvModel.php';
 require_once './models/LichLamModel.php';
 require_once './models/DsKhachModel.php';
 require_once './models/NhanSuModel.php';
+require_once './models/NhatKyTourModel.php';
 // Route
 
 if (!isset($_SESSION['user'])) {
