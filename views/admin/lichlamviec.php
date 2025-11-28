@@ -10,14 +10,13 @@ require_once 'silderbar.php';
   </form>
 
 
-  <a href="#" class="add-button">Thêm lịch làm</a>
+  <a href="<?= BASE_URL ?>?mode=admin&act=addlichlamviec" class="add-button">Thêm lịch làm việc</a>
 </div>
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
       <th>Mã Lịch HDV </th>
-      <th>Mã Nhân Sự</th>
-      <th>Mã Quản Lý</th>
+      <th>Tên HDV</th>
       <th>Tên Tour</th>
       <th>Vai Trò</th>
       <th>Hành Động</th>
@@ -29,10 +28,14 @@ require_once 'silderbar.php';
         <td><?= $value['MaLichHDV'] ?></td>
         <td><?= $value['MaNhanSu'] ?></td>
         <td><?= $value['MaQuanLy'] ?></td>
-        <td><?= $value['TenTour'] ?></td>
         <td><?= $value['VaiTro'] ?></td>
         <td>
-            <a href=""></a>
+            <div class="action-buttons">
+                <a href="" class="btn-action btn-edit"> Sửa</a>
+                <a href="<?= BASE_URL ?>?mode=admin&act=deletelichlam&id=<?= $value['MaLichHDV']?>"class="btn-action btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa lịch này không?')">
+                    Xóa
+                </a>
+            </div>
         </td>
       </tr>
     <?php } ?>

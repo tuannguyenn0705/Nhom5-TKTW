@@ -38,21 +38,10 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'updatenhatkytour' => (new NhatKyTourController())->update(),
 
 
-   
-
-
-    
-
-    
-
-
-
-    
-
-
     //lịch làm việc
     'lichlamviechdv'=>(new LichLamController())->viewLichLam(),
-
+    'addlichlamviec'=>(new LichLamController())->addLichLam(),
+    'deletelichlam'=>(new LichLamController())->deleteLichLam(),
 
     //  ds khách
     'danhsachkhach' => (new DsKhachController())->DanhsachKhach(),
