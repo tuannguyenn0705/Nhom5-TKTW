@@ -1,0 +1,41 @@
+/* Container chứa các liên kết/tab */
+.menu {
+    display: flex; /* Sắp xếp các liên kết theo hàng ngang */
+    gap: 1px; /* Khoảng cách nhỏ giữa các tab */
+    margin-top: 20px;
+    margin-bottom: 0; /* Đặt tab sát với bảng dữ liệu bên dưới */
+    border-bottom: 2px solid #ccc; /* Đường kẻ nền phía dưới */
+}
+
+/* Định dạng cơ bản cho mỗi liên kết (tab) */
+.menu a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    padding: 10px 18px; /* Đệm bên trong lớn hơn */
+    background-color: #f4f4f4; /* Nền xám nhạt */
+    border: 1px solid #ddd;
+    border-bottom: none; /* Bỏ border dưới để giao diện liền mạch với đường kẻ nền */
+    border-radius: 5px 5px 0 0; /* Bo tròn góc trên */
+    transition: background-color 0.2s, color 0.2s;
+    margin-bottom: -2px; /* Kéo tab xuống để che đi đường kẻ nền */
+    position: relative;
+    z-index: 1; /* Đảm bảo tab nằm trên đường kẻ nền */
+}
+
+/* Hiệu ứng khi di chuột qua tab không hoạt động */
+.menu a:not(.active):hover {
+    color: #0056b3;
+    background-color: #e9e9e9;
+    cursor: pointer;
+}
+
+/* Định dạng cho tab đang được chọn (Active Tab) */
+.menu a.active {
+    color: #007bff; /* Màu chủ đạo/xanh dương */
+    background-color: #ffffff; /* Nền trắng */
+    border-color: #ccc;
+    border-bottom: 2px solid #ffffff; /* Đường kẻ dưới trùng màu nền để tạo hiệu ứng nổi */
+    font-weight: bold;
+    z-index: 2; /* Đảm bảo tab active nổi bật hơn */
+}

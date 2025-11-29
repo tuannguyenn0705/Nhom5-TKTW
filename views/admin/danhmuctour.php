@@ -52,6 +52,9 @@
                         <td>Loại Tour</td>
                         <td>Mô Tả</td>
                         <td>Trạng Thái</td>
+                        <td>Giá Tuor</td><!-- them giá tour -->
+                        <td>HDV phân công</td> <!-- them HDV phân công -->
+
                         <td>Hành Động</td>
                     </tr>
                 </thead>

@@ -11,7 +11,7 @@ class DsKhachController
     public function DanhsachKhach() {
       
         $dskhach = $this->modelDsKhach->getAllDsKhach();
-        require_once './views/admin/danhsachkhach.php';
+        require_once './views/admin/DanhSachKhach/danhsachkhach.php';
     }
 }
 

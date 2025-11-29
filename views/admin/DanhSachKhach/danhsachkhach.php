@@ -1,7 +1,16 @@
 <?php
 require_once 'silderbar.php';
 ?>
-<h1>Danh Sách Khách Tham Gia Tour</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="views/css/DanhSachKhach.css">
+</head>
+<body>
+  <h1>Danh Sách Khách Tham Gia Tour</h1>
 <div class="action-container">
   <form action="" method="get" class="search-form">
     <?php
@@ -32,6 +41,13 @@ require_once 'silderbar.php';
   ?>
   <a href="#" class="add-button">Thêm danh mục</a>
 </div>
+  <div class="menu">
+    <a href="?mode=admin&act=danhsachkhach&view=thongtin" class="active">thông tin</a>
+  
+    <a href="?mode=admin&act=danhsachkhach&view=checkin">checkin</a>
+
+    <a href="?mode=admin&act=danhsachkhach&view=yeucaudacbiet">yêu cầu đặc biệt</a>
+  </div>
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
@@ -56,3 +72,5 @@ require_once 'silderbar.php';
     <?php } ?>
   </tbody>
 </table>
+</body>
+</html>
