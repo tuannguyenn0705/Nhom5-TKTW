@@ -6,7 +6,7 @@
     <form action="<?= BASE_URL . '?mode=admin&act=addnhatkytour' ?>" method="POST">
 
     <div class="form-group">
-    <label for="MaQuanLy">Mã Quản Lý (số, bắt buộc):</label>
+    <label for="MaQuanLy">Chọn Tour</label>
     <select class="form-control" name="MaQuanLy" id="MaQuanLy" required onchange="tuDongDienHDV()">
         <option value="" data-guide-id="" data-guide-name="">-- Chọn Tour --</option>
         

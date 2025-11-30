@@ -78,5 +78,19 @@ require_once './views/admin/editnhatkytour.php';
                 
         }
 }
+public function detail()
+{
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        $nhatkytour = $this->modelNhatKyTour->getDetail($id);
+
+        if ($nhatkytour) {
+            require_once './views/admin/detailnhatkytour.php';
+        } else {
+            echo "<script>alert('Không tìm thấy nhật ký tour!');</script>";
+            header("location:" . BASE_URL . '?mode=admin&act=nhatkytour');
+        }
+    }
+}
 }
 ?>

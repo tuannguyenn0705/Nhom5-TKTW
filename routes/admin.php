@@ -36,6 +36,8 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'addnhatkytour' => (new NhatKyTourController())->add(),
     'editnhatkytour' => (new NhatKyTourController())->edit(),
     'updatenhatkytour' => (new NhatKyTourController())->update(),
+        'detail' => (new NhatKyTourController())->detail(),
+
 
 
     //lịch làm việc
