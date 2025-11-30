@@ -2,10 +2,16 @@
 
 class LichLamController 
 {
-    public function viewLichLam() {
+    public function viewLichLamAdmin() {
         $lichLam = new LichLamModel();
         $data = $lichLam -> getAllLichLam();
         require_once './views/admin/lichlamviec.php';
+    }
+
+    public function viewLichLamHDV() {
+        $lichLam = new LichLamModel();
+        $data = $lichLam -> getAllLichLam();
+        require_once './views/hdv/LichLamViecHDV.php';
     }
 
     public function addLichLam(){

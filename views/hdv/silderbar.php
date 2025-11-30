@@ -17,7 +17,7 @@
     <div class="sidebar">
         <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
 
-        <a href="#" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
+        <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
         <a href="#" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sach Khách</a>
         <a href="#" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
         <a href="#" class="menu-item"><i class="fas fa-check-double"></i> Check-in</a>
@@ -51,6 +51,7 @@
             </div>
         </div>
     </div>
+    
 
 </body>
 </html>

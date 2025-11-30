@@ -5,6 +5,9 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
     // Trang chủ
     '/'=>(new HdvController())->HomeHdv(),
     'logout' =>(new LoginController())->logout(),
+
+    //lich lam viec 
+    'lichlamviec' =>(new LichLamController())->viewLichLamHDV(),
 };
 
 }else{

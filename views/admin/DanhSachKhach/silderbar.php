@@ -39,7 +39,7 @@
             <i class="fas fa-book"></i> Nhật ký tour
         </a>
         <a href="<?= BASE_URL . '?mode=admin&act=lichlamviechdv' ?>" class="menu-item" onclick="switchTab('work-schedule', this); return false;">
-            <i class="fas fa-briefcase"></i> Lịch làm việc
+            <i class="fas fa-briefcase"></i> Phân bố
         </a>
         <!-- <a href="#" class="menu-item" onclick="switchTab('group-list', this); return false;">
             <i class="fas fa-users"></i> Khách đoàn

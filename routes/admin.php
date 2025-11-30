@@ -39,7 +39,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
 
 
     //lịch làm việc
-    'lichlamviechdv'=>(new LichLamController())->viewLichLam(),
+    'lichlamviechdv'=>(new LichLamController())->viewLichLamAdmin(),
     'addlichlamviec'=>(new LichLamController())->addLichLam(),
     'deletelichlam'=>(new LichLamController())->deleteLichLam(),
 

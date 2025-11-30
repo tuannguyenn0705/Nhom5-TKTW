@@ -1,7 +1,7 @@
 <?php
 require_once 'silderbar.php';
 ?>
-<h1>Lịch làm việc</h1>
+<h1>Phân Bố</h1>
 <div class="action-container">
   <form action="" method="get" class="search-form">
     
@@ -10,7 +10,7 @@ require_once 'silderbar.php';
   </form>
 
 
-  <a href="<?= BASE_URL ?>?mode=admin&act=addlichlamviec" class="add-button">Thêm lịch làm việc</a>
+  <a href="<?= BASE_URL ?>?mode=admin&act=addlichlamviec" class="add-button">Thêm Phân Bố</a>
 </div>
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
