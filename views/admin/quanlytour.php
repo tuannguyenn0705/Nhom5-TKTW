@@ -52,7 +52,7 @@ require_once 'silderbar.php';
 <td><?= htmlspecialchars($row['TenTour'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['NgayBatDau'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['NgayKetThuc'] ?? '') ?></td>
-<td><?= htmlspecialchars($row['HDVDuocPhanCong'] ?? '') ?></td>
+<td><?= htmlspecialchars($row['TenHDV'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['TrangThai'] ?? '') ?></td>
         <td>
           <a href="<?= BASE_URL . '?mode=admin&act=xoaquanlytour&id=' . $row['MaQuanLy'] ?>"

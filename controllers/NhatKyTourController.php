@@ -37,6 +37,11 @@ class NhatKyTourController
     }
     public function form()
     {
+        $tourModel = new QuanlytourModel();
+        $dsTour = $tourModel->getAll();
+
+        $nhanSuModel = new NhanSuModel();
+        $dsNhanSu = $nhanSuModel->getAll();
         require_once './views/admin/addnhatkytour.php';
     }
    public function add()
@@ -46,7 +51,7 @@ class NhatKyTourController
 
             $this->modelNhatKyTour->add($data);
         }
-        header("location:" . BASE_URL . '?mode=admin&act=addnhatkytour');
+        header("location:" . BASE_URL . '?mode=admin&act=nhatkytour');
     }
     public function edit()
     {

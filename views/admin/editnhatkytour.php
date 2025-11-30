@@ -9,18 +9,6 @@
       <input type="hidden" name="MaNhatKy" value="<?= htmlspecialchars($nhatkytour['MaNhatKy'] ?? '') ?>">
 
       <div class="form-group">
-        <label for="MaQuanLy">Mã Quản Lý (số, bắt buộc):</label>
-        <input type="number" class="form-control" id="MaQuanLy" name="MaQuanLy" min="1" required
-               value="<?= htmlspecialchars($nhatkytour['MaQuanLy'] ?? '') ?>">
-      </div>
-
-      <div class="form-group">
-        <label for="MaNhanSu">Mã Nhân Sự (số, bắt buộc):</label>
-        <input type="number" class="form-control" id="MaNhanSu" name="MaNhanSu" min="1" required
-               value="<?= htmlspecialchars($nhatkytour['MaNhanSu'] ?? '') ?>">
-      </div>
-
-      <div class="form-group">
         <label for="Ngay">Ngày (bắt buộc):</label>
         <input type="date" class="form-control" id="Ngay" name="Ngay" required
                value="<?= htmlspecialchars($nhatkytour['Ngay'] ?? '') ?>">

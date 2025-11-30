@@ -22,10 +22,10 @@ require_once 'silderbar.php';
     $keyword_lower = strtolower($keyword);
     $keyword_upper = strtoupper($keyword);
     $data = array_filter($data, function ($row) use ($keyword_lower, $keyword_upper) {
-      return strpos(strtolower($row['SuKien']), $keyword_lower) !== false ||
-             strpos(strtolower($row['SuCo']), $keyword_lower) !== false ||
-             strpos(strtolower($row['PhanHoiKhach']), $keyword_lower) !== false ||
-             strtoupper($row['MaQuanLy']) === $keyword_upper;
+      return strpos(strtolower($row['SuKien'] ?? ''), $keyword_lower) !== false ||
+             strpos(strtolower($row['SuCo'] ?? ''), $keyword_lower) !== false ||
+             strpos(strtolower($row['PhanHoiKhach'] ?? ''), $keyword_lower) !== false ||
+             strtoupper($row['MaNhatKy' ?? '']) === $keyword_upper;
     });
   }
   ?>
@@ -35,8 +35,8 @@ require_once 'silderbar.php';
   <thead>
     <tr>
       <th>MaNhatKy</th>
-      <th>MaQuanLy</th>
-      <th>MaNhanSu</th>
+      <th>Tên Tour</th>
+      <th>HDV Phụ Trách</th>
       <th>Ngày</th>
       <th>Sự Kiện</th>
       <th>Sự Cố</th>
@@ -48,8 +48,8 @@ require_once 'silderbar.php';
     <?php foreach ($data as $row): ?>
       <tr>
         <td><?= htmlspecialchars($row['MaNhatKy'] ?? '') ?></td>
-        <td><?= htmlspecialchars($row['MaQuanLy'] ?? '') ?></td>
-        <td><?= htmlspecialchars($row['MaNhanSu'] ?? '') ?></td>
+        <td><?= htmlspecialchars($row['TenTour'] ?? 'Tour không tồn tại') ?></td>
+        <td><?= htmlspecialchars($row['TenHDV'] ?? 'Chưa phân công') ?></td>
         <td><?= htmlspecialchars($row['Ngay'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['SuKien'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['SuCo'] ?? '') ?></td>

@@ -10,9 +10,12 @@ class NhatKyTourModel
 
     public function getAll()
 {
-    $sql = "SELECT nk.*, n.HoTen AS TenHDV 
+    $sql = "SELECT nk.*, 
+                   n.HoTen AS TenHDV, 
+                   q.TenTour
             FROM NhatKyTour nk
-            LEFT JOIN NhanSu n ON nk.MaNhanSu = n.MaNhanSu";
+            LEFT JOIN NhanSu n ON nk.MaNhanSu = n.MaNhanSu
+            LEFT JOIN QuanLyTour q ON nk.MaQuanLy = q.MaQuanLy";
     $stmt = $this->conn->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,8 +56,6 @@ class NhatKyTourModel
     public function update($data)
     {
        $sql = "UPDATE NhatKyTour SET 
-            MaQuanLy = :MaQuanLy, 
-            MaNhanSu = :MaNhanSu, 
             Ngay = :Ngay, 
             SuKien = :SuKien,
             SuCo = :SuCo,
@@ -62,8 +63,6 @@ class NhatKyTourModel
         WHERE MaNhatKy = :MaNhatKy";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
-    ':MaQuanLy'     => $data['MaQuanLy'],
-    ':MaNhanSu'     => $data['MaNhanSu'],
     ':Ngay'         => $data['Ngay'],
     ':SuKien'       => $data['SuKien'],
     ':SuCo'         => $data['SuCo'],
