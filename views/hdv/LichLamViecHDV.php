@@ -39,7 +39,8 @@
                         
                         <tr>
                             <td>Mã Lịch HDV</td>
-                            <th>Mã Tour</th>
+                            <th>Mã tour</th>
+                            <th>Mã nhân sự</th>
                             <th>Tour</th>
                             <th>Ngày khởi hành</th>
                             <th>Ngày kết thúc</th>
@@ -53,11 +54,12 @@
                         <tr>
                             <td><?= $value['MaLichHDV'] ?></td>
                             <td><?= $value['MaQuanLy'] ?></td>
+                            <td><?=  $value['MaNhanSu'] ?></td>
                             <td><?= $value['TenTour']  ?></td>
                             <td><?= $value['NgayBatDau'] ?></td>
                             <td><?= $value['NgayKetThuc'] ?></td>
                             <td><span class="status dang-thuc-hien"><?=  $value['TrangThai'] ?></span></td>
-                            <td><button class="btn xem-btn"><i class="fas fa-eye"></i><a href="">Xem</a></button></td>
+                            <td><button class="btn xem-btn"><i class="fas fa-eye"></i><a href="<?= BASE_URL ?>?mode">Xem</a></button></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
