@@ -39,12 +39,12 @@
                         
                         <tr>
                             <td>Mã Lịch HDV</td>
-                            <th>Mã tour</th>
+                            <th>Mã Quản Lý</th>
                             <th>Mã nhân sự</th>
                             <th>Tour</th>
-                            <th>Ngày khởi hành</th>
+                            <!-- <th>Ngày khởi hành</th>
                             <th>Ngày kết thúc</th>
-                            <th>Trạng thái</th>
+                            <th>Trạng thái</th> -->
                             <th>Hành động</th>
                         </tr>
                         
@@ -53,12 +53,12 @@
                         <?php foreach($data as $value): ?>
                         <tr>
                             <td><?= $value['MaLichHDV'] ?></td>
-                            <td><?= $value['MaQuanLy'] ?></td>
-                            <td><?=  $value['MaNhanSu'] ?></td>
+                            <td><?= $value['TenTour'] ?></td>
+                            <td><?=  $value['HoTen'] ?></td>
                             <td><?= $value['TenTour']  ?></td>
-                            <td><?= $value['NgayBatDau'] ?></td>
-                            <td><?= $value['NgayKetThuc'] ?></td>
-                            <td><span class="status dang-thuc-hien"><?=  $value['TrangThai'] ?></span></td>
+                            <!-- <td><?= $value['NgayBatDau'] ?></td> -->
+                            <!-- <td><?= $value['NgayKetThuc'] ?></td> -->
+                            <!-- <td><span class="status dang-thuc-hien"><?=  $value['TrangThai'] ?></span></td> -->
                             <td><button class="btn xem-btn"><i class="fas fa-eye"></i><a href="<?= BASE_URL ?>?mode">Xem</a></button></td>
                         </tr>
                         <?php endforeach; ?>

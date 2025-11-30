@@ -7,7 +7,10 @@ class LichLamModel{
     }
 
     public function getAllLichLam(){
-        $sql = "SELECT * FROM `lichlamviechdv`";
+        $sql = "SELECT l.*, n.HoTen, q.TenTour
+            FROM lichlamviechdv l
+            LEFT JOIN nhansu n ON l.MaNhanSu = n.MaNhanSu
+            LEFT JOIN quanlytour q ON l.MaQuanLy = q.MaQuanLy";
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
