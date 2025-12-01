@@ -47,14 +47,10 @@
             <table border="1">
                 <thead>
                     <tr>
+                        <td>id</td>
                         <td>Danh mục tour</td>
-                        <td>Tên Tour</td>
-                        <td>Loại Tour</td>
                         <td>Mô Tả</td>
                         <td>Trạng Thái</td>
-                        <td>Giá Tuor</td><!-- them giá tour -->
-                        <td>HDV phân công</td> <!-- them HDV phân công -->
-
                         <td>Hành Động</td>
                     </tr>
                 </thead>
@@ -66,7 +62,6 @@
                             <tr>
                                 <td><?php echo $item['MaDanhMuc']; ?></td>
                                 <td><?php echo $item['TenDanhMuc']; ?></td>
-                                <td><?php echo $item['LoaiTour']; ?></td>
                                 <td><?php echo $item['MoTa']; ?></td>
                                 <td><?php
                                     echo $item['TrangThai'];

@@ -35,7 +35,7 @@ require_once 'silderbar.php';
   <thead>
     <tr>
       <th>MaQuanLy</th>
-      <th>MaChiTietTour</th>
+      <!-- <th>MaChiTietTour</th> -->
       <th>TenTour</th>
       <th>NgayBatDau</th>
       <th>NgayKetThuc</th>
@@ -48,7 +48,7 @@ require_once 'silderbar.php';
     <?php foreach ($data as $row): ?>
       <tr>
         <td><?= htmlspecialchars($row['MaQuanLy'] ?? '') ?></td>
-<td><?= htmlspecialchars($row['MaChiTietTour'] ?? '') ?></td>
+<!-- <td><?= htmlspecialchars($row['MaChiTietTour'] ?? '') ?></td> -->
 <td><?= htmlspecialchars($row['TenTour'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['NgayBatDau'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['NgayKetThuc'] ?? '') ?></td>
@@ -73,3 +73,4 @@ require_once 'silderbar.php';
 <!-- test -->
 
 <!-- test 2 -->
+
