@@ -24,12 +24,11 @@ class AdminModel
         return $result;
     }
     function add($data){
-        $sql = "INSERT INTO danhmuctour  (TenDanhMuc, LoaiTour, MoTa,TrangThai) 
-        VALUES (:TenDanhMuc, :LoaiTour, :MoTa, :TrangThai) ";
+        $sql = "INSERT INTO danhmuctour  (TenDanhMuc, MoTa,TrangThai) 
+        VALUES (:TenDanhMuc, :MoTa, :TrangThai) ";
         $stmt = $this->conn->prepare($sql);
        $stmt->execute([
-        ':TenDanhMuc' => $data['TenDanhMuc'],
-        ':LoaiTour'   => $data['LoaiTour'],
+        ':TenDanhMuc' => $data['TenDanhMuc'],       
         ':MoTa'       => $data['MoTa'],
         ':TrangThai'  => $data['TrangThai']
     ]);
@@ -49,7 +48,6 @@ public function update($data)
 {
     $sql = "UPDATE danhmuctour SET 
                 TenDanhMuc = :TenDanhMuc, 
-                LoaiTour = :LoaiTour, 
                 MoTa = :MoTa, 
                 TrangThai = :TrangThai 
             WHERE MaDanhMuc = :MaDanhMuc";
@@ -57,7 +55,6 @@ public function update($data)
     $stmt = $this->conn->prepare($sql);
     $stmt->execute([
         ':TenDanhMuc' => $data['TenDanhMuc'],
-        ':LoaiTour'   => $data['LoaiTour'],
         ':MoTa'       => $data['MoTa'],
         ':TrangThai'  => $data['TrangThai'],
         ':MaDanhMuc'  => $data['MaDanhMuc']

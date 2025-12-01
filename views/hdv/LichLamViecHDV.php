@@ -42,9 +42,9 @@
                             <th>Mã Quản Lý</th>
                             <th>Mã nhân sự</th>
                             <th>Tour</th>
-                            <!-- <th>Ngày khởi hành</th>
+                            <th>Ngày khởi hành</th>
                             <th>Ngày kết thúc</th>
-                            <th>Trạng thái</th> -->
+                            <th>Trạng thái</th>
                             <th>Hành động</th>
                         </tr>
                         
@@ -56,9 +56,9 @@
                             <td><?= $value['TenTour'] ?></td>
                             <td><?=  $value['HoTen'] ?></td>
                             <td><?= $value['TenTour']  ?></td>
-                            <!-- <td><?= $value['NgayBatDau'] ?></td> -->
-                            <!-- <td><?= $value['NgayKetThuc'] ?></td> -->
-                            <!-- <td><span class="status dang-thuc-hien"><?=  $value['TrangThai'] ?></span></td> -->
+                            <td><?= $value['NgayBatDau'] ?></td>
+                            <td><?= $value['NgayKetThuc'] ?></td>
+                            <td><span class="status dang-thuc-hien"><?=  $value['TrangThai'] ?></span></td>
                             <td><button class="btn xem-btn"><i class="fas fa-eye"></i><a href="<?= BASE_URL ?>?mode">Xem</a></button></td>
                         </tr>
                         <?php endforeach; ?>
@@ -71,7 +71,7 @@
 
 <style>
 .table-fullscreen {
-    width: 70vw;
+    width: 75vw;
     border-collapse: separate;
     border-spacing: 0;
     border-radius: 12px;
