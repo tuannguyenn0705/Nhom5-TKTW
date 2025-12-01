@@ -32,5 +32,5 @@
         <td><?= $nhatkytour['PhanHoiKhach'] ?></td>
     </tr>
 </table>
-
+<h1></h1>
 <a href="<?= BASE_URL ?>?mode=admin&act=nhatkytour">Quay lại danh sách</a>
