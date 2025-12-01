@@ -8,15 +8,6 @@
         <label >TenDanhMuc: </label>
         <input type="text" class="form-control" id="TenDanhMuc" name="TenDanhMuc">
       </div>
-      
-      <div class="form-group">
-        <label >LoaiTour:</label>
-        <select name="LoaiTour" id="LoaiTour">
-            <option value="nội địa">nội địa</option>
-            <option value="quốc tế">quốc tế</option>
-            <option value="theo yêu cầu">theo yêu cầu</option>
-        </select>
-      </div>
       <div class="form-group">
         <label >Mo Ta:</label>
         <input type="text" class="form-control" id="MoTa" name="MoTa">
