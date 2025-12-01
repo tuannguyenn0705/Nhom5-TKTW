@@ -8,15 +8,6 @@
         <label >TenDanhMuc: </label>
         <input type="text" class="form-control" id="TenDanhMuc" name="TenDanhMuc" value ="<?= $result ['TenDanhMuc'] ?>">
       </div>
-      
-      <div class="form-group">
-        <label >LoaiTour:</label>
-        <select name="LoaiTour" id="LoaiTour">
-            <option value="nội địa" <?= ($result['LoaiTour'] == 'nội địa') ? 'selected' : '' ?>>nội địa</option>
-            <option value="quốc tế" <?= ($result['LoaiTour'] == 'quốc tế') ? 'selected' : '' ?>>quốc tế</option>
-            <option value="theo yêu cầu" <?= ($result['LoaiTour'] == 'theo yêu cầu') ? 'selected' : '' ?>>theo yêu cầu</option>
-        </select>
-    </div>
       <div class="form-group">
         <label >Mo Ta:</label>
         <input type="text" class="form-control" id="MoTa" name="MoTa" value ="<?= $result ['MoTa'] ?>">
