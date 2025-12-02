@@ -39,15 +39,15 @@ require_once 'silderbar.php';
     });
   }
   ?>
-  <a href="#" class="add-button">Thêm danh mục</a>
+  <!-- <a href="#" class="add-button">Thêm danh mục</a> -->
 </div>
-  <div class="menu">
+  <!-- <div class="menu">
     <a href="?mode=admin&act=danhsachkhach&view=thongtin" class="active">thông tin</a>
   
     <a href="?mode=admin&act=danhsachkhach&view=checkin">checkin</a>
 
     <a href="?mode=admin&act=danhsachkhach&view=yeucaudacbiet">yêu cầu đặc biệt</a>
-  </div>
+  </div> -->
 <table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
