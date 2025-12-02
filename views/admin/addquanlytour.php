@@ -26,8 +26,8 @@
       </div>
 
       <div class="form-group">
-        <label for="HDVDuocPhanCong">Hướng Dẫn Viên Được Phân Công (số, có thể để trống):</label>
-        <input type="number" class="form-control" id="HDVDuocPhanCong" name="HDVDuocPhanCong" min="1" placeholder="Nếu có, nhập ID hướng dẫn viên">
+        <label for="Gia">Giá:</label>
+        <input type="number" class="form-control" id="Gia" name="Gia" min="1">
       </div>
 
       <div class="form-group">

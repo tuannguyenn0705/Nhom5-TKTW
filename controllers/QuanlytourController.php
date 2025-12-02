@@ -65,11 +65,11 @@ class QuanlytourController
                 'TenTour'   => $_POST['TenTour'] ?? '',
                 'NgayBatDau'       => $_POST['NgayBatDau'] ?? '',
                 'NgayKetThuc'  => $_POST['NgayKetThuc'] ?? '',
-                'HDVDuocPhanCong'  => $_POST['HDVDuocPhanCong'] ?? '',
+                'Gia'  => $_POST['Gia'] ?? '',
                  'TrangThai'  => $_POST['TrangThai'] ?? ''
 
             ];
-                $this->modelQuanlytour->update($data); // gọi model
+                $this->modelQuanlytour->update($data);
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
                 
         }

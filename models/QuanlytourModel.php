@@ -10,9 +10,7 @@ class QuanlytourModel
 
     public function getAll()
     {
-        $sql = "SELECT q.*, n.HoTen AS TenHDV 
-                FROM QuanLyTour q 
-                LEFT JOIN NhanSu n ON q.HDVDuocPhanCong = n.MaNhanSu";
+        $sql = "SELECT * FROM QuanLyTour";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,15 +26,15 @@ class QuanlytourModel
 
     public function add($data)
     {
-        $sql = "INSERT INTO QuanLyTour (MaChiTietTour, TenTour, NgayBatDau, NgayKetThuc, HDVDuocPhanCong, TrangThai) 
-                VALUES (:MaChiTietTour, :TenTour, :NgayBatDau, :NgayKetThuc, :HDVDuocPhanCong, :TrangThai)";
+        $sql = "INSERT INTO QuanLyTour (MaChiTietTour, TenTour, NgayBatDau, NgayKetThuc, Gia, TrangThai) 
+                VALUES (:MaChiTietTour, :TenTour, :NgayBatDau, :NgayKetThuc, :Gia, :TrangThai)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             ':MaChiTietTour'   => $data['MaChiTietTour'],
             ':TenTour'         => $data['TenTour'],
             ':NgayBatDau'      => $data['NgayBatDau'],
             ':NgayKetThuc'     => $data['NgayKetThuc'],
-            ':HDVDuocPhanCong' => $data['HDVDuocPhanCong'],
+            ':Gia' => $data['Gia'],
             ':TrangThai'       => $data['TrangThai']
         ]);
         return $stmt->rowCount();
@@ -57,7 +55,7 @@ class QuanlytourModel
                     TenTour = :TenTour, 
                     NgayBatDau = :NgayBatDau, 
                     NgayKetThuc = :NgayKetThuc,
-                    HDVDuocPhanCong = :HDVDuocPhanCong,
+                    Gia = :Gia,
                     TrangThai = :TrangThai
                 WHERE MaQuanLy = :MaQuanLy";
         $stmt = $this->conn->prepare($sql);
@@ -66,7 +64,7 @@ class QuanlytourModel
             ':TenTour'         => $data['TenTour'],
             ':NgayBatDau'      => $data['NgayBatDau'],
             ':NgayKetThuc'     => $data['NgayKetThuc'],
-            ':HDVDuocPhanCong' => $data['HDVDuocPhanCong'],
+            ':Gia'             => $data['Gia'],
             ':TrangThai'       => $data['TrangThai'],
             ':MaQuanLy'        => $data['MaQuanLy']
         ]);

@@ -33,9 +33,9 @@
       </div>
 
       <div class="form-group">
-        <label for="HDVDuocPhanCong">Hướng Dẫn Viên:</label>
-        <input type="number" class="form-control" id="HDVDuocPhanCong" name="HDVDuocPhanCong" min="1" 
-               value="<?php echo $result['HDVDuocPhanCong']; ?>">
+        <label for="Gia">Hướng Dẫn Viên:</label>
+        <input type="number" class="form-control" id="Gia" name="Gia" min="1" 
+               value="<?php echo $result['Gia']; ?>">
       </div>
 
       <div class="form-group">

@@ -37,9 +37,9 @@ require_once 'silderbar.php';
       <th>MaQuanLy</th>
       <!-- <th>MaChiTietTour</th> -->
       <th>TenTour</th>
-      <th>NgayBatDau</th>
-      <th>NgayKetThuc</th>
-      <th>HDVDuocPhanCong</th>
+      <th>Ngày Bắt Đầu</th>
+      <th>Ngày Kết Thúc</th>
+      <th>Giá</th>
       <th>Trạng Thái</th>
       <th>Hành Động</th>
     </tr>
@@ -52,7 +52,17 @@ require_once 'silderbar.php';
 <td><?= htmlspecialchars($row['TenTour'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['NgayBatDau'] ?? '') ?></td>
 <td><?= htmlspecialchars($row['NgayKetThuc'] ?? '') ?></td>
-<td><?= htmlspecialchars($row['TenHDV'] ?? '') ?></td>
+<td>
+  <?php 
+    $gia = $row['Gia'] ?? 0;
+    if(is_numeric($gia)){
+      echo number_format($gia, 0, '.', ',');
+    }else{
+      echo htmlspecialchars($gia);
+    }
+  ?>
+  VNĐ
+</td>
 <td><?= htmlspecialchars($row['TrangThai'] ?? '') ?></td>
         <td>
           <a href="<?= BASE_URL . '?mode=admin&act=xoaquanlytour&id=' . $row['MaQuanLy'] ?>"
@@ -70,7 +80,4 @@ require_once 'silderbar.php';
   </tbody>
 </table>
 
-<!-- test -->
-
-<!-- test 2 -->
 
