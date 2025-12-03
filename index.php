@@ -14,6 +14,8 @@ require_once './controllers/LichLamController.php';
 require_once './controllers/DsKhachController.php';
 require_once './controllers/NhanSuController.php';
 require_once './controllers/NhatKyTourController.php';
+require_once './controllers/BookingController.php';
+
 
 
 
@@ -26,6 +28,7 @@ require_once './models/LichLamModel.php';
 require_once './models/DsKhachModel.php';
 require_once './models/NhanSuModel.php';
 require_once './models/NhatKyTourModel.php';
+require_once './models/BookingModel.php';
 // Route
 
 if (!isset($_SESSION['user'])) {

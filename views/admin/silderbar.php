@@ -26,7 +26,7 @@
         <a href="<?= BASE_URL . '?mode=admin&act=quanlytour' ?>" class="menu-item" onclick="switchTab('booking-status', this); return false;">
             <i class="fas fa-tasks"></i> Quản lý tour
         </a>
-        <a href="#" class="menu-item" onclick="switchTab('new-booking', this); return false;">
+        <a href="<?= BASE_URL . '?mode=admin&act=booking' ?>" class="menu-item" onclick="switchTab('new-booking', this); return false;">
             <i class="fas fa-plus-circle"></i> Tạo booking mới
         </a>
         <a href="<?= BASE_URL . '?mode=admin&act=nhansu' ?>" class="menu-item" onclick="switchTab('staff', this); return false;">

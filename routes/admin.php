@@ -47,6 +47,9 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
 
     //  ds khách
     'danhsachkhach' => (new DsKhachController())->DanhsachKhach(),
+
+    // booking
+    'booking' => (new BookingController())->booking(),
 };
 
 }else{
