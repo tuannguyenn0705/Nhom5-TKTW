@@ -50,6 +50,9 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
 
     // booking
     'booking' => (new BookingController())->booking(),
+    //dashboard
+        'dashboard' => (new DashboardController())->Dashboard(),
+
 };
 
 }else{

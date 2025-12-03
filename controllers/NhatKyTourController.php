@@ -18,6 +18,10 @@ class NhatKyTourController
         $data = $this->modelNhatKyTour->getAll();
         require_once './views/admin/nhatkytour.php';
     }
+    public function viewNhatKyHDV() {
+        $data = $this->modelNhatKyTour->getAll();
+        require_once './views/hdv/NhatKyTourHDV.php';
+    }
   public function delete()
     {
         if (isset($_GET["id"])) {

@@ -16,7 +16,7 @@
 
     <div class="sidebar">
         <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld </div>
-        <a href="#" class="menu-item" onclick="switchTab('finance', this); return false;">
+        <a href="<?= BASE_URL . '?mode=admin&act=dashboard' ?>" class="menu-item" onclick="switchTab('finance', this); return false;">
             <i class="fas fa-chart-line"></i> Dashboard
         </a>
 
