@@ -12,6 +12,8 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
 
     //danh sach khach theo tour
     'DSachKhachHDVByTour' =>(new DsKhachController())->DSachKhachHDVByTour(),
+    //danh sách khách(tất cả)
+    'danhsachkhach' => (new DsKhachController())->AlldanhsachKhachHDV(),
 
      //nhat ky tour
      'nhatkyTour' => (new NhatKyTourController())->viewNhatKyHDV(),

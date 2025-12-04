@@ -64,7 +64,7 @@ require_once 'silderbar.php';
              class="btn-action btn-edit">
              Sửa
           </a>
-          <a href="<?= BASE_URL ?>?mode=admin&act=detail&id=<?= $row['MaNhatKy'] ?>">Xem chi tiết</a>
+           <a  href="<?= BASE_URL ?>?mode=admin&act=detail&id=<?= $row['MaNhatKy'] ?>">Xem chi tiết</a>
         </td>
       </tr>
     <?php endforeach; ?>

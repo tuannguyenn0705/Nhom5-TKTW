@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang HDV - Quản lý Nhật Ký Tour</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
     <style>
         :root {
-            --primary-color: #3b82f6; /* Xanh dương chủ đạo */
+            --primary-color: #3b82f6;
             --primary-dark: #2563eb;
-            --danger-color: #ef4444;  /* Đỏ cho nút xóa */
-            --warning-color: #f59e0b; /* Cam cho nút sửa */
-            --bg-color: #f3f4f6;      /* Màu nền tổng thể */
+            --danger-color: #ef4444;  
+            --warning-color: #f59e0b; 
+            --bg-color: #f3f4f6;     
             --text-color: #1f2937;
             --sidebar-width: 260px;
         }
@@ -33,10 +31,9 @@
             min-height: 100vh;
         }
 
-        /* --- SIDEBAR --- */
         .sidebar {
             width: var(--sidebar-width);
-            background-color: #1e293b; /* Màu tối cho sidebar */
+            background-color: #1e293b;
             color: white;
             flex-shrink: 0;
             display: flex;
@@ -87,10 +84,9 @@
             margin: 20px 0;
         }
 
-        /* --- MAIN CONTENT --- */
         .main-content {
             flex-grow: 1;
-            margin-left: var(--sidebar-width); /* Chừa chỗ cho sidebar */
+            margin-left: var(--sidebar-width); 
             padding: 30px;
             width: calc(100% - var(--sidebar-width));
         }
@@ -105,13 +101,12 @@
             color: #111827;
         }
 
-        /* --- TABLE STYLE --- */
         .table-container {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            overflow: hidden; /* Bo góc cho table */
-            overflow-x: auto; /* Scroll ngang nếu bảng quá rộng */
+            overflow: hidden; 
+            overflow-x: auto; 
         }
 
         .table-fullscreen {
@@ -147,7 +142,6 @@
             background-color: #f8fafc;
         }
 
-        /* --- ACTION BUTTONS --- */
         .action-cell {
             display: flex;
             gap: 8px;
@@ -188,14 +182,13 @@
             background-color: #475569;
         }
 
-        /* Responsive cho màn hình nhỏ */
         @media (max-width: 768px) {
             .sidebar {
                 width: 70px;
                 padding: 10px;
             }
             .sidebar .logo, .sidebar .menu-item span {
-                display: none; /* Ẩn chữ, chỉ hiện icon */
+                display: none;
             }
             .sidebar .menu-item {
                 justify-content: center;
@@ -219,7 +212,7 @@
         <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item">
             <i class="fas fa-briefcase"></i> <span>Lịch làm việc</span>
         </a>
-        <a href="#" class="menu-item">
+        <a href="<?= BASE_URL ?>?mode=hdv&act=danhsachkhach" class="menu-item">
             <i class="fas fa-user-tie"></i> <span>Danh Sách Khách</span>
         </a>
         <a href="<?= BASE_URL . '?mode=admin&act=nhatkyTour' ?>" class="menu-item" style="background-color: #334155; color: white;">

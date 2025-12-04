@@ -14,6 +14,11 @@ class DsKhachController
         require_once './views/admin/danhsachkhach.php';
     }
 
+    public function AlldanhsachKhachHDV() {
+        $dskhach = $this->modelDsKhach->getAllDsKhach();
+        require_once './views/hdv/dsachkhachAll.php';
+    }
+
     public function DanhsachKhachHDV() {
       
         $dskhach = $this->modelDsKhach->getAllDsKhach();

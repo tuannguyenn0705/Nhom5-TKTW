@@ -55,6 +55,7 @@ require_once 'silderbar.php';
       <!-- <th>Mã Đặt Tour</th> -->
       <th>Đi Tour</th>
       <th>Họ Tên</th>
+      <th>SDT</th>
       <th>Yêu cầu Đặc Biệt</th>
     </tr>
   </thead>
@@ -65,6 +66,7 @@ require_once 'silderbar.php';
         <!-- <td><?= $value['MaDatTour'] ?></td> -->
         <td><?= $value['TenTour'] ?? 'Tour không tồn tại' ?></td>
         <td><?= $value['HoTen'] ?></td>
+        <td><?= $value['sdt'] ?></td>
         <td>
           <?= $value['YeuCauDacBiet'] ?>
           <br>

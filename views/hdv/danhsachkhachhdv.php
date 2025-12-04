@@ -11,11 +11,6 @@
     <link rel="stylesheet" href="./views/hdv/silderbar.css">
 
     <style>
-      
-        
-        
-
-
         .content-box {
             background: #fff;
             padding: 24px;
@@ -48,7 +43,6 @@
             padding-bottom: 6px;
         }
 
-        /* Bảng danh sách khách */
         .guest-table {
             width: 1100px;
             border-collapse: collapse;
@@ -73,7 +67,6 @@
             background-color: #f3f4f6;
         }
 
-        /* Badge trạng thái */
         .badge {
             padding: 6px 14px;
             border-radius: 20px;
@@ -89,7 +82,6 @@
             background: #ef4444;
         }
 
-        /* Nút quay lại */
         .btn-back {
             margin-top: 20px;
             padding: 8px 18px;
@@ -104,19 +96,14 @@
         .btn-back:hover {
             background: #4b5563;
         }
-
     </style>
-
 </head>
-
 <body>
-
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
 
         <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
-        <a href="#" class="menu-item"><i class="fas fa-user-tie"></i> Danh sách khách</a>
+        <a href="<?= BASE_URL ?>?mode=hdv&act=danhsachkhach" class="menu-item"><i class="fas fa-user-tie"></i> Danh sách khách</a>
         <a href="<?= BASE_URL . '?mode=admin&act=nhatkyTour' ?>" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
         <a href="#" class="menu-item"><i class="fas fa-check-double"></i> Check-in</a>
         <hr>
@@ -128,7 +115,6 @@
             <div class="content-box">
                 <h2><i class="fas fa-users" style="color:#3b82f6;"></i> Danh sách khách</h2>
                 <div class="nav-tabs">
-                    <!-- <a href="#" >Thông tin</a> -->
                     <a href="#">Lịch trình</a>
                     <a href="#" class="active">Danh sách khách</a>
                     <a href="#">Check-in</a>
@@ -151,9 +137,9 @@
 
                             <td>
                               <?php if($khach['TrangThai']=='đã điểm danh'): ?>
-                                <span class="badge da-checkin">Đã check-in</span>
+                                <span class="badge da-checkin">Đã điểm danh</span>
                               <?php else: ?>
-                                <span class="badge chua-den">Chưa đến</span>
+                                <span class="badge chua-den">Chưa điểm danh</span>
                               <?php endif; ?>
                             </td>
                         </tr>

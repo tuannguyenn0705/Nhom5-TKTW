@@ -26,7 +26,6 @@
             overflow-x: hidden;
         }
 
-        /* SIDEBAR */
         .sidebar {
             width: var(--sidebar-width);
             background: linear-gradient(180deg, var(--sidebar-bg) 0%, #1e293b 100%);

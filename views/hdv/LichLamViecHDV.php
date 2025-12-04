@@ -4,28 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang HDV</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="./views/hdv/silderbar.css">
 </head>
-
 <body>
-
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
 
         <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
-        <a href="#" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sach Khách</a>
+        <a href="<?= BASE_URL ?>?mode=hdv&act=danhsachkhach" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sach Khách</a>
         <a href="<?= BASE_URL . '?mode=admin&act=nhatkyTour' ?>" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
         <a href="#" class="menu-item"><i class="fas fa-check-double"></i> Check-in</a>
         <hr>
         <a href="<?= BASE_URL ?>?mode=hdv&act=logout" class="menu-item" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
     </div>
-
-    <!-- MAIN HDV PAGE -->
 <div class="main-content">
     <div class="header">
         <div class="content-box">
@@ -78,7 +71,7 @@
     overflow: hidden;
     box-shadow: 0 6px 12px rgba(0,0,0,0.1);
     background-color: #fff;
-    font-size: 1rem; /* chữ vừa đủ */
+    font-size: 1rem; 
 }
 
 .table-fullscreen thead {
@@ -86,13 +79,13 @@
     color: #fff;
     font-weight: 700;
     text-align: center;
-    font-size: 1.1rem; /* chữ vừa */
+    font-size: 1.1rem; 
 }
 
 .table-fullscreen tbody td {
     vertical-align: middle;
     text-align: center;
-    padding: 14px 12px; /* padding vừa */
+    padding: 14px 12px;
 }
 
 .table-fullscreen tbody tr:hover {
@@ -100,7 +93,6 @@
     transition: background 0.3s;
 }
 
-/* Status badges */
 .status {
     display: inline-block;
     padding: 6px 18px;
@@ -122,12 +114,12 @@
     background-color: #10b981;
 }
 
-/* Nút Xem vừa phải */
+
 .xem-btn {
     background-color: #3b82f6;
     color: #fff;
     border: none;
-    padding: 8px 18px; /* vừa phải */
+    padding: 8px 18px;
     border-radius: 8px;
     font-weight: 600;
     font-size: 1rem;

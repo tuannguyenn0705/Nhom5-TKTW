@@ -12,20 +12,16 @@
 </head>
 
 <body>
-
-    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
 
         <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
-        <a href="#" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sach Khách</a>
+        <a href="<?= BASE_URL ?>?mode=hdv&act=danhsachkhach" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sach Khách</a>
         <a href="<?= BASE_URL ?>?mode=hdv&act=nhatkyTour" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
         <a href="#" class="menu-item"><i class="fas fa-check-double"></i> Check-in</a>
         <hr>
         <a href="<?= BASE_URL ?>?mode=hdv&act=logout" class="menu-item" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
     </div>
-
-    <!-- MAIN HDV PAGE -->
     <div class="main-content">
         <div class="header">
             <h2>Tổng quan hệ thống</h2>
