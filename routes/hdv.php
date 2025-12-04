@@ -8,6 +8,11 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
 
     //lich lam viec 
     'lichlamviec' =>(new LichLamController())->viewLichLamHDV(),
+    'danhsachkhachhdv'=>(new DsKhachController())->DanhsachKhachHDV(),
+
+    //danh sach khach theo tour
+    'DSachKhachHDVByTour' =>(new DsKhachController())->DSachKhachHDVByTour(),
+
      //nhat ky tour
      'nhatkyTour' => (new NhatKyTourController())->viewNhatKyHDV(),
 };

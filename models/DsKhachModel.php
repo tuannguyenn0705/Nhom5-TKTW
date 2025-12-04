@@ -21,6 +21,17 @@ class DsKhachModel{
             ':id' => $id
         ]);
     }
+
+    public function getDsKhachByMaQL($MaQuanLy){
+        $sql = "SELECT k.*, q.TenTour, c.TrangThai AS TrangThai
+            FROM khachthamgiatour k
+            JOIN quanlytour q ON k.MaQuanLy = q.MaQuanLy
+            LEFT JOIN checkin c ON c.MaKhach = k.MaKhach
+            WHERE k.MaQuanLy = :maql";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute(['maql' => $MaQuanLy]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 

@@ -59,7 +59,7 @@
                             <td><?= $value['NgayBatDau'] ?></td>
                             <td><?= $value['NgayKetThuc'] ?></td>
                             <td><span class="status dang-thuc-hien"><?=  $value['TrangThai'] ?></span></td>
-                            <td><button class="btn xem-btn"><i class="fas fa-eye"></i><a href="<?= BASE_URL ?>?mode">Xem</a></button></td>
+                            <td><button class="btn xem-btn"><i class="fas fa-eye"></i><a href="<?= BASE_URL ?>?mode=hdv&act=DSachKhachHDVByTour&MaQuanLy=<?= $value['MaQuanLy'] ?>">Xem</a></button></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
