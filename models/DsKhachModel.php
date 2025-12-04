@@ -12,6 +12,15 @@ class DsKhachModel{
         $stmt = $this->conn->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function updateRequest($id, $content){
+        $sql = "UPDATE khachthamgiatour SET YeuCauDacBiet = :content WHERE MaKhach = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':content' => $content,
+            ':id' => $id
+        ]);
+    }
     
 }
 

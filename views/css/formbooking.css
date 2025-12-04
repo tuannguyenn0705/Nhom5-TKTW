@@ -1,0 +1,175 @@
+/* views/css/booking_form.css */
+:root {
+    --primary-color: #0d6efd; /* Màu xanh dương chủ đạo */
+    --primary-hover: #0b5ed7;
+    --danger-color: #dc3545;  /* Màu đỏ cho nút xóa/hủy */
+    --bg-light: #f8f9fa;
+    --border-color: #dee2e6;
+    --text-dark: #343a40;
+    --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f6f9;
+}
+
+.booking-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.booking-container h2 {
+    color: var(--text-dark);
+    margin-bottom: 30px;
+    font-weight: 700;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Style cho Input và Select */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    box-sizing: border-box; /* Quan trọng để không bị vỡ layout */
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Radio buttons area */
+.radio-group {
+    display: flex;
+    gap: 20px;
+    padding: 10px;
+    background: #e9ecef;
+    border-radius: 6px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-item input {
+    margin-right: 8px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Khu vực khách đoàn dynamic */
+#guest-list-container {
+    background-color: #f8fcfd;
+    border: 1px dashed #0d6efd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 25px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#guest-list-container h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.guest-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.guest-item label {
+    white-space: nowrap;
+    min-width: 130px;
+    margin-bottom: 0; /* Override margin cũ */
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    width: 100%;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.btn-add {
+    background-color: #198754; /* Màu xanh lá */
+    color: white;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+}
+
+.btn-add:hover {
+    background-color: #157347;
+}
+
+.btn-delete {
+    background-color: #fff;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    padding: 8px 15px;
+}
+
+.btn-delete:hover {
+    background-color: var(--danger-color);
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

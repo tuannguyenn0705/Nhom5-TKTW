@@ -47,9 +47,13 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
 
     //  ds khách
     'danhsachkhach' => (new DsKhachController())->DanhsachKhach(),
+    'update_request' => (new DsKhachController())->update_request(),
 
     // booking
     'booking' => (new BookingController())->booking(),
+    'create_booking' => (new BookingController())->create_booking(),
+    'store_booking' => (new BookingController())->store_booking(),
+    'change_status' => (new BookingController())->changeStatus(),
     //dashboard
         'dashboard' => (new DashboardController())->Dashboard(),
 
