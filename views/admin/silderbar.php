@@ -39,7 +39,7 @@
             <i class="fas fa-book"></i> Nhật ký tour
         </a>
         <a href="<?= BASE_URL . '?mode=admin&act=lichlamviechdv' ?>" class="menu-item" onclick="switchTab('work-schedule', this); return false;">
-            <i class="fas fa-briefcase"></i> Phân Bố 
+            <i class="fas fa-briefcase"></i> Phân Bố
         </a>
         <!-- <a href="#" class="menu-item" onclick="switchTab('group-list', this); return false;">
             <i class="fas fa-users"></i> Khách đoàn
@@ -47,9 +47,6 @@
         <!-- <a href="#" class="menu-item" onclick="switchTab('guide-log', this); return false;">
             <i class="fas fa-pen-nib"></i> Nhật ký HDV
         </a> -->
-        <a href="#" class="menu-item" onclick="switchTab('checkin', this); return false;">
-            <i class="fas fa-check-double"></i> Check-in
-        </a>
         <!-- <a href="#" class="menu-item" onclick="switchTab('requests', this); return false;">
             <i class="fas fa-bell"></i> Yêu cầu đặc biệt
         </a> -->
