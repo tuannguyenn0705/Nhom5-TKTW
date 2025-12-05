@@ -215,7 +215,7 @@
         <a href="<?= BASE_URL ?>?mode=hdv&act=danhsachkhach" class="menu-item">
             <i class="fas fa-user-tie"></i> <span>Danh Sách Khách</span>
         </a>
-        <a href="<?= BASE_URL ?>?mode=admin&act=nhatkyTour" class="menu-item" style="background-color: #334155; color: white;">
+        <a href="<?= BASE_URL ?>?mode=hdv&act=nhatkyTour" class="menu-item" style="background-color: #334155; color: white;">
             <i class="fas fa-book"></i> <span>Nhật ký tour</span>
         </a>
         <a href="#" class="menu-item">

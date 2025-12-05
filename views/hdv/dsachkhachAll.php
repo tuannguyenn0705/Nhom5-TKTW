@@ -14,7 +14,7 @@
 
         <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
         <a href="<?= BASE_URL ?>?mode=hdv&act=danhsachkhach" class="menu-item"><i class="fas fa-user-tie"></i> Danh Sách Khách</a>
-        <a href="<?= BASE_URL . '?mode=admin&act=nhatkyTour' ?>" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
+        <a href="<?= BASE_URL ?>?mode=hdv&act=nhatkyTour" class="menu-item"><i class="fas fa-book"></i> Nhật ký tour</a>
         <a href="#" class="menu-item"><i class="fas fa-check-double"></i> Check-in</a>
         <hr>
         <a href="<?= BASE_URL ?>?mode=hdv&act=logout" class="menu-item" style="color: #ef4444;">
