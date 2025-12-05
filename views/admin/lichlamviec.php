@@ -26,8 +26,8 @@ require_once 'silderbar.php';
     <?php foreach($data as $value){ ?>
       <tr>
         <td><?= $value['MaLichHDV'] ?></td>
-        <td><?= $value['MaNhanSu'] ?></td>
-        <td><?= $value['MaQuanLy'] ?></td>
+        <td><?= $value['HoTen'] ?></td>
+        <td><?= $value['TenTour'] ?></td>
         <td><?= $value['VaiTro'] ?></td>
         <td>
             <div class="action-buttons">
