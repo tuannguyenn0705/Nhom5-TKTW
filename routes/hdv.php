@@ -16,7 +16,12 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
     'danhsachkhach' => (new DsKhachController())->AlldanhsachKhachHDV(),
 
      //nhat ky tour
-     'nhatkyTour' => (new NhatKyTourController())->viewNhatKyHDV(),
+     'nhatkytour' => (new NhatKyTourHDVController())->nhatkytour(),
+     'xoanhatkytour' => (new NhatKyTourHDVController())->delete(),
+     'formnhatkytour' => (new NhatKyTourHDVController())->form(),
+    'addnhatkytour' => (new NhatKyTourHDVController())->add(),
+    'editnhatkytour' => (new NhatKyTourHDVController())->edit(),
+    'updatenhatkytour' => (new NhatKyTourHDVController())->update(),
 
      // check-in
      'checkin_form' => (new CheckinController())->formCheckin(),

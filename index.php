@@ -17,6 +17,7 @@ require_once './controllers/NhatKyTourController.php';
 require_once './controllers/BookingController.php';
 require_once './controllers/DashboardContoller.php';
 require_once './controllers/CheckinController.php';
+require_once './controllers/NhatKyTourHDVController.php';
 
 
 
@@ -33,6 +34,7 @@ require_once './models/NhatKyTourModel.php';
 require_once './models/BookingModel.php';
 require_once './models/DashboardModel.php';
 require_once './models/CheckinModel.php';
+require_once './models/NhatKyTourHDV.php';
 
 // Route
 
