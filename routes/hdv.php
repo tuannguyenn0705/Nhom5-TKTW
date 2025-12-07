@@ -17,6 +17,10 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
 
      //nhat ky tour
      'nhatkyTour' => (new NhatKyTourController())->viewNhatKyHDV(),
+
+     // check-in
+     'checkin_form' => (new CheckinController())->formCheckin(),
+     'checkin_store' => (new CheckinController())->storeCheckin(),
 };
 
 }else{

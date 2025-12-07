@@ -6,7 +6,7 @@ require_once 'silderbar.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Danh Sách Khách</title>
   <link rel="stylesheet" href="views/css/DanhSachKhach.css">
 </head>
 <body>

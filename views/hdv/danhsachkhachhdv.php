@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,7 @@
             background: #fff;
             padding: 24px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         h2 {
@@ -98,6 +99,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="sidebar">
         <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
@@ -116,8 +118,10 @@
                 <h2><i class="fas fa-users" style="color:#3b82f6;"></i> Danh sách khách</h2>
                 <div class="nav-tabs">
                     <a href="#">Lịch trình</a>
-                    <a href="#" class="active">Danh sách khách</a>
-                    <a href="#">Check-in</a>
+
+                    <a href="?mode=hdv&act=DSachKhachHDVByTour&MaQuanLy=<?= $MaQuanLy ?>" class="active">Danh sách khách</a>
+
+                    <a href="?mode=hdv&act=checkin_form&MaQuanLy=<?= $MaQuanLy ?>">Check-in</a>
                 </div>
                 <table class="guest-table">
                     <thead>
@@ -128,22 +132,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                      <?php $stt = 1;
-                        foreach($dskhach as $khach):
-                      ?>
-                        <tr>
-                            <td><?= $stt++ ?></td>
-                            <td><?= $khach['HoTen'] ?></td>
+                        <?php $stt = 1;
+                        foreach ($dskhach as $khach):
+                        ?>
+                            <tr>
+                                <td><?= $stt++ ?></td>
+                                <td><?= $khach['HoTen'] ?></td>
 
-                            <td>
-                              <?php if($khach['TrangThai']=='đã điểm danh'): ?>
-                                <span class="badge da-checkin">Đã điểm danh</span>
-                              <?php else: ?>
-                                <span class="badge chua-den">Chưa điểm danh</span>
-                              <?php endif; ?>
-                            </td>
-                        </tr>
-                      <?php endforeach; ?>
+                                <td>
+                                    <?php if ($khach['TrangThai'] == 'Có mặt'): ?>
+                                        <span class="badge da-checkin">Có mặt</span>
+                                    <?php elseif ($khach['TrangThai'] == 'Vắng'): ?>
+                                        <span class="badge chua-den" style="background:gray;">Vắng</span>
+                                    <?php else: ?>
+                                        <span class="badge chua-den">Chưa điểm danh</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -151,4 +157,5 @@
     </div>
 
 </body>
+
 </html>

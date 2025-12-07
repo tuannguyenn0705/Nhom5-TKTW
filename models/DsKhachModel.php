@@ -23,10 +23,10 @@ class DsKhachModel{
     }
 
     public function getDsKhachByMaQL($MaQuanLy){
-        $sql = "SELECT k.*, q.TenTour, c.TrangThai AS TrangThai
+        $sql = "SELECT k.*, q.TenTour, c.TrangThai
             FROM khachthamgiatour k
             JOIN quanlytour q ON k.MaQuanLy = q.MaQuanLy
-            LEFT JOIN checkin c ON c.MaKhach = k.MaKhach
+            LEFT JOIN checkin c ON c.MaKhach = k.MaKhach AND c.MaQuanLy = k.MaQuanLy
             WHERE k.MaQuanLy = :maql";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute(['maql' => $MaQuanLy]);

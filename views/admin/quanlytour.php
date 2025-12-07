@@ -31,17 +31,17 @@ require_once 'silderbar.php';
   ?>
   <a href="<?= BASE_URL . '?mode=admin&act=formquanlytour' ?>" class="add-button">Thêm tour</a>
 </div>
-<table border="1" >
+<table border="1">
   <thead>
     <tr>
       <th>MaQuanLy</th>
-      <!-- <th>MaChiTietTour</th> -->
       <th>TenTour</th>
-      <th>Danh Mục Tuor</th>
+      <!-- <th>Danh Mục Tuor</th> -->
       <th>Ngày Bắt Đầu</th>
       <th>Ngày Kết Thúc</th>
       <th>Giá</th>
       <th>Trạng Thái</th>
+      <th>Số Lượng Khách</th>
       <th>Hành Động</th>
     </tr>
   </thead>
@@ -49,37 +49,39 @@ require_once 'silderbar.php';
     <?php foreach ($data as $row): ?>
       <tr>
         <td><?= htmlspecialchars($row['MaQuanLy'] ?? '') ?></td>
-<!-- <td><?= htmlspecialchars($row['MaChiTietTour'] ?? '') ?></td> -->
-<td><?= htmlspecialchars($row['TenTour'] ?? '') ?></td> 
-<td><?= htmlspecialchars($row['TenDanhMuc'] ?? '') ?></td>
-<td><?= htmlspecialchars($row['NgayBatDau'] ?? '') ?></td>
-<td><?= htmlspecialchars($row['NgayKetThuc'] ?? '') ?></td>
-<td>
-  <?php 
-    $gia = $row['Gia'] ?? 0;
-    if(is_numeric($gia)){
-      echo number_format($gia, 0, '.', ',');
-    }else{
-      echo htmlspecialchars($gia);
-    }
-  ?>
-  VNĐ
-</td>
-<td><?= htmlspecialchars($row['TrangThai'] ?? '') ?></td>
+        <td><?= htmlspecialchars($row['TenTour'] ?? '') ?></td>
+        <!-- <td><?= htmlspecialchars($row['TenDanhMuc'] ?? '') ?></td> -->
+        <td><?= htmlspecialchars($row['NgayBatDau'] ?? '') ?></td>
+        <td><?= htmlspecialchars($row['NgayKetThuc'] ?? '') ?></td>
+        <td>
+          <?php
+          $gia = $row['Gia'] ?? 0;
+          if (is_numeric($gia)) {
+            echo number_format($gia, 0, '.', ',');
+          } else {
+            echo htmlspecialchars($gia);
+          }
+          ?>
+          VNĐ
+        </td>
+        <td><?= htmlspecialchars($row['TrangThai'] ?? '') ?></td>
+        <td>
+          <span style="font-weight: bold; color: <?= ($row['SoLuongDaDat'] >= $row['SoLuongToiDa']) ? 'red' : 'green' ?>">
+            <?= $row['SoLuongDaDat'] ?> / <?= $row['SoLuongToiDa'] ?>
+          </span>
+        </td>
         <td>
           <a href="<?= BASE_URL . '?mode=admin&act=xoaquanlytour&id=' . $row['MaQuanLy'] ?>"
-   class="btn-action btn-delete"
-   onclick="return confirm('Bạn có chắc chắn muốn xóa tour này không?')">
-   Xóa
-</a>
- <a href="<?= BASE_URL . '?mode=admin&act=editquanlytour&id=' . urlencode($row['MaQuanLy']) ?>" 
-   class="btn-action btn-edit">
-   Sửa
-</a>
+            class="btn-action btn-delete"
+            onclick="return confirm('Bạn có chắc chắn muốn xóa tour này không?')">
+            Xóa
+          </a>
+          <a href="<?= BASE_URL . '?mode=admin&act=editquanlytour&id=' . urlencode($row['MaQuanLy']) ?>"
+            class="btn-action btn-edit">
+            Sửa
+          </a>
         </td>
       </tr>
     <?php endforeach; ?>
   </tbody>
 </table>
-
-

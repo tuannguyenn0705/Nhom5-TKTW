@@ -9,17 +9,17 @@
             <div class="radio-group">
                 <label class="radio-item">
                     <input type="radio" id="khach_le" name="loai_khach" value="le" checked onclick="toggleGuestList()"> 
-                    Khách lẻ (1 người)
+                    Khách lẻ
                 </label>
                 <label class="radio-item">
                     <input type="radio" id="khach_doan" name="loai_khach" value="doan" onclick="toggleGuestList()"> 
-                    Khách đoàn (từ 2 người trở lên)
+                    Khách đoàn
                 </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Tên Khách Đặt (Trưởng đoàn):</label>
+            <label>Tên Khách Đặt:</label>
             <input type="text" name="TenKhachHang" required class="form-control" placeholder="Nhập họ và tên...">
         </div>
         
@@ -40,7 +40,7 @@
 
                 <?php if(!empty($tours)): ?>
                 <?php foreach ($tours as $tour): ?>
-                    <option value="<?= $tour['MaChiTietTour'] ?>">
+                    <option value="<?= $tour['MaQuanLy'] ?>">
                         <?= $tour['TenTour'] ?> (<?= number_format($tour['Gia'], 0, ',', '.') ?> VNĐ)
                     </option>
                 <?php endforeach; ?>
@@ -84,7 +84,7 @@
         var index = container.children.length + 1;
         
         var div = document.createElement('div');
-        div.className = 'guest-item'; // Class này đã được CSS style flexbox
+        div.className = 'guest-item';
         
         div.innerHTML = `
             <label>Thành viên ${index}:</label>
@@ -96,6 +96,5 @@
 
     function removeGuest(btn) {
         btn.parentElement.remove();
-        // (Tùy chọn) Có thể reset lại label số thứ tự nếu muốn, nhưng không bắt buộc
     }
 </script>

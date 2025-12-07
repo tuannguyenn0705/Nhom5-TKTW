@@ -50,6 +50,26 @@ class BookingModel{
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+    public function checkAvailability($maTour, $soLuongKhachMoi){
+        $sqlTour = "SELECT SoLuongToiDa FROM quanlytour WHERE MaQuanLy = $maTour";
+        $stmtTour = $this->conn->prepare($sqlTour);
+        $stmtTour->execute();
+        $tour = $stmtTour->fetch();
+
+        if(!$tour) return false;
+        $max = $tour['SoLuongToiDa'];
+
+        $sqlCount = "SELECT SUM(SoLuongKhach) as DaDat FROM dattour 
+                     WHERE MaChiTietTour = $maTour AND TrangThai != 'đã hủy'";
+        $stmtCount = $this->conn->prepare($sqlCount);
+        $stmtCount->execute();
+        $result = $stmtCount->fetch();
+        $current = $result['DaDat'] ?? 0;
+
+        if(($current + $soLuongKhachMoi) > $max) return false;
+        return true;
+    }
     
 }
 

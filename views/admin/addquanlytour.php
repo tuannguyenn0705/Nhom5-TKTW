@@ -3,12 +3,7 @@
 <div class="main-container">
   <div class="form-container">
     <h1>Thêm Tour mới</h1>
-    <form action="<?= BASE_URL . '?mode=admin&act=addquanlytour'?>" method="POST">
-      
-      <div class="form-group">
-        <label for="MaChiTietTour">Mã Chi Tiết Tour (số, bắt buộc):</label>
-        <input type="number" class="form-control" id="MaChiTietTour" name="MaChiTietTour" min="1" required>
-      </div>
+    <form action="<?= BASE_URL . '?mode=admin&act=addquanlytour' ?>" method="POST">
 
       <div class="form-group">
         <label for="TenTour">Tên Tour (văn bản, tối đa 255 ký tự):</label>
@@ -37,6 +32,11 @@
           <option value="đang diễn ra"> Đang diễn ra</option>
           <option value="hoàn thành"> Hoàn thành</option>
         </select>
+      </div>
+
+      <div class="form-group">
+        <label for="SoLuongToiDa">Số Lượng Khách Tối Đa:</label>
+        <input type="number" class="form-control" id="SoLuongToiDa" name="SoLuongToiDa" min="1" value="20" required>
       </div>
 
       <button type="submit" class="btn btn-default">Thêm Tour</button>

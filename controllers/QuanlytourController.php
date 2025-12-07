@@ -61,7 +61,6 @@ class QuanlytourController
         if (isset($_POST['btn-update'])) {
             $data = [
                 'MaQuanLy'  => $_POST['MaQuanLy'] ?? null,
-                'MaChiTietTour' => $_POST['MaChiTietTour'] ?? '',
                 'TenTour'   => $_POST['TenTour'] ?? '',
                 'NgayBatDau'       => $_POST['NgayBatDau'] ?? '',
                 'NgayKetThuc'  => $_POST['NgayKetThuc'] ?? '',

@@ -34,6 +34,18 @@ class BookingController
             $khachDoan = isset($_POST['KhachDoan']) ? $_POST['KhachDoan'] : [];
             $soLuongKhach = 1 + count($khachDoan);
 
+            $maTour = $_POST['MaChiTietTour'];
+
+            $isAvailable = $this->modelBooking->checkAvailability($maTour, $soLuongKhach);
+
+            if(!$isAvailable){
+                echo "<script>
+                        alert('Thất bại! Tour này đã đầy hoặc không đủ số lượng ghế trống cho đoàn của bạn.');
+                        window.history.back();
+                      </script>";
+                    exit;
+            }
+
             $jsonKhachDoan = json_encode($khachDoan, JSON_UNESCAPED_UNICODE);
 
             $data = [
@@ -78,4 +90,3 @@ class BookingController
         require_once './views/admin/addbooking.php';
     }
 }
-
