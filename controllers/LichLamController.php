@@ -35,5 +35,23 @@ class LichLamController
         header("location: ".BASE_URL.'?mode=admin&act=lichlamviechdv');
         exit;
     }
+
+    public function editLichLam(){
+        $lichLam = new LichLamModel();
+        $data = $lichLam->getOneLichLam($_GET['id']);
+        $nhanSu = new NhanSuModel();
+        $dataNhanSu = $nhanSu->getAll();
+
+        $quanLy = new QuanlytourModel();
+        $dataQuanLy = $quanLy->getAll();
+        require_once './views/admin/editlichlamviec.php';
+    }
+
+    public function updateLichLam() {
+        $lichLam = new LichLamModel();
+        $data = $lichLam->update($_GET['id']);
+        header('location:'.BASE_URL.'?mode=admin&act=lichlamviechdv');
+        exit;
+    }
 }
 

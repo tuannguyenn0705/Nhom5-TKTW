@@ -34,6 +34,14 @@
             <option value="phụ">phụ</option>
         </select>
       </div>
+      <div class="form-group" >
+        <label for="">Ngày bắt đầu</label>
+        <input type="date" name="NgayBatDau" id="NgayBatDau" class="form-control date-input" required>
+      </div>
+      <div class="form-group">
+        <label for="">Ngày kết thúc</label>
+        <input type="date" name="NgayKetThuc" id="NgayKetThuc" class="form-control date-input" required>
+      </div>
 
       <button type="submit" class="btn btn-default">Lưu</button>
       <button class="btn btn-default"><a style="text-decoration: none;" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Quay Lại</a></button>

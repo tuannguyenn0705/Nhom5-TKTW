@@ -44,6 +44,8 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'lichlamviechdv'=>(new LichLamController())->viewLichLamAdmin(),
     'addlichlamviec'=>(new LichLamController())->addLichLam(),
     'deletelichlam'=>(new LichLamController())->deleteLichLam(),
+    'editlichlam' => (new LichLamController())->editLichLam(),
+    'updatelichlam'=>(new LichLamController())->updateLichLam(),
 
     //  ds khách
     'danhsachkhach' => (new DsKhachController())->DanhsachKhach(),

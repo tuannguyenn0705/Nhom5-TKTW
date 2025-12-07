@@ -19,6 +19,8 @@ require_once 'silderbar.php';
       <th>Tên HDV</th>
       <th>Tên Tour</th>
       <th>Vai Trò</th>
+      <td>Ngày Bắt Đầu</td>
+      <td>Ngày Kết Thúc</td>
       <th>Hành Động</th>
     </tr>
   </thead>
@@ -29,9 +31,11 @@ require_once 'silderbar.php';
         <td><?= $value['HoTen'] ?></td>
         <td><?= $value['TenTour'] ?></td>
         <td><?= $value['VaiTro'] ?></td>
+        <td><?= $value['NgayBatDau'] ?></td>
+        <td><?= $value['NgayKetThuc'] ?></td>
         <td>
             <div class="action-buttons">
-                <a href="" class="btn-action btn-edit"> Sửa</a>
+                <a href="<?= BASE_URL ?>?mode=admin&act=editlichlam&id=<?= $value['MaLichHDV'] ?>" class="btn-action btn-edit"> Sửa</a>
                 <a href="<?= BASE_URL ?>?mode=admin&act=deletelichlam&id=<?= $value['MaLichHDV']?>"class="btn-action btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa lịch này không?')">
                     Xóa
                 </a>

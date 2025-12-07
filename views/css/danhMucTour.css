@@ -261,16 +261,15 @@
         .search-form {
     display: flex;
     align-items: center;
-    gap: 12px; /* Khoảng cách giữa input và nút */
-    background: #f8fafc; /* Màu nền nhẹ riêng cho khu vực form */
+    gap: 12px; 
+    background: #f8fafc; 
     padding: 8px;
     border-radius: 8px;
     border: 1px solid #e2e8f0;
 }
 
-/* 2. Ô nhập liệu bên trong form này */
 .search-form input[type="text"] {
-    width: 280px; /* Độ rộng cố định */
+    width: 280px; 
     padding: 8px 14px;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
@@ -280,14 +279,14 @@
     transition: all 0.2s ease;
 }
 
-/* Hiệu ứng focus input */
+
 .search-form input[type="text"]:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     background-color: var(--white);
 }
 
-/* 3. Nút bấm bên trong form này */
+
 .search-form button {
     padding: 8px 16px;
     background-color: var(--primary);
@@ -300,16 +299,16 @@
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
-    gap: 6px; /* Khoảng cách giữa icon và chữ nếu có */
+    gap: 6px; 
 }
 
-/* Hiệu ứng hover nút */
+
 .search-form button:hover {
     background-color: var(--primary-dark);
     transform: translateY(-1px);
 }
 
-/* Responsive: Trên màn hình nhỏ thì form xuống dòng */
+
 @media (max-width: 768px) {
     .search-form {
         width: 100%;
@@ -317,34 +316,34 @@
     }
     
     .search-form input[type="text"] {
-        width: 100%; /* Full màn hình khi ở mobile */
+        width: 100%; 
     }
 }
 
-/* Container để căn chỉnh 2 nút nằm ngang đẹp hơn */
+
 .action-buttons {
     display: flex;
-    gap: 8px; /* Khoảng cách giữa 2 nút */
-    justify-content: flex-start; /* Căn trái */
+    gap: 8px; 
+    justify-content: flex-start; 
 }
 
-/* Style chung cho cả 2 nút */
+
 .btn-action {
     padding: 6px 12px;
     border-radius: 6px;
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
-    color: white !important; /* Màu chữ trắng, ghi đè màu xanh mặc định của thẻ a */
+    color: white !important; 
     transition: all 0.2s ease;
     display: inline-block;
     border: none;
     line-height: normal;
 }
 
-/* Nút Sửa - Màu vàng cam hoặc Xanh lá (tùy bạn chọn) */
+
 .btn-edit {
-    background-color: #f59e0b; /* Màu vàng cam */
+    background-color: #f59e0b; 
     box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
 }
 
@@ -353,9 +352,9 @@
     transform: translateY(-1px);
 }
 
-/* Nút Xóa - Màu đỏ */
+
 .btn-delete {
-    background-color: #ef4444; /* Màu đỏ */
+    background-color: #ef4444; 
     box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
 }
 

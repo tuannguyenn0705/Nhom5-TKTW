@@ -6,41 +6,41 @@
 }
 
 body {
-    background-color: #f4f6f9; /* Màu nền xám nhẹ dịu mắt */
+    background-color: #f4f6f9; 
     color: #333;
     line-height: 1.6;
 }
 
-/* 2. Căn giữa Form ra giữa màn hình */
+
 .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Chiều cao full màn hình */
+    min-height: 100vh; 
     padding: 20px;
 }
 
-/* 3. Khung chứa Form (Cái thẻ Card) */
+
 .form-container {
     background-color: #ffffff;
     width: 100%;
-    max-width: 500px; /* Giới hạn chiều rộng để form không bị bè */
+    max-width: 500px; 
     padding: 40px;
-    border-radius: 12px; /* Bo tròn góc mềm mại */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ tạo chiều sâu */
+    border-radius: 12px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
     transition: transform 0.3s ease;
 }
 
-/* Hiệu ứng khi di chuột vào form (tùy chọn) */
+
 .form-container:hover {
     transform: translateY(-5px);
 }
 
-/* 4. Tiêu đề H1 */
+
 .form-container h1 {
     text-align: center;
     margin-bottom: 30px;
-    color: #2c3e50; /* Màu xanh đen sang trọng */
+    color: #2c3e50; 
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
@@ -49,7 +49,7 @@ body {
     padding-bottom: 15px;
 }
 
-/* 5. Các nhóm Input (Form Group) */
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -63,7 +63,7 @@ body {
     font-size: 14px;
 }
 
-/* 6. Ô nhập liệu (Input & Select) */
+
 .form-control, 
 select {
     width: 100%;
@@ -77,17 +77,17 @@ select {
     outline: none;
 }
 
-/* Hiệu ứng khi click vào ô nhập */
+
 .form-control:focus, 
 select:focus {
-    border-color: #3498db; /* Đổi viền sang màu xanh dương */
+    border-color: #3498db; 
     background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1); /* Hiệu ứng toả sáng nhẹ */
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1); 
 }
 
-/* Tùy chỉnh riêng cho thẻ Select để đẹp hơn */
+
 select {
-    appearance: none; /* Xóa mũi tên mặc định của trình duyệt */
+    appearance: none; 
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 1rem center;
@@ -95,12 +95,12 @@ select {
     cursor: pointer;
 }
 
-/* 7. Nút bấm (Button) */
+
 .btn {
     display: inline-block;
     width: 100%;
     padding: 14px;
-    background: linear-gradient(135deg, #3498db, #2980b9); /* Màu gradient xanh hiện đại */
+    background: linear-gradient(135deg, #3498db, #2980b9); 
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -120,4 +120,35 @@ select {
 
 .btn:active {
     transform: translateY(0);
+}
+
+
+.date-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 20px;
+    padding-right: 45px;
+}
+
+
+.date-input:focus {
+    border-color: #3498db;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
+}
+
+.date-input::-webkit-inner-spin-button,
+.date-input::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
