@@ -36,7 +36,7 @@ require_once 'silderbar.php';
     <tr>
       <th>MaQuanLy</th>
       <th>TenTour</th>
-      <!-- <th>Danh Mục Tuor</th> -->
+      <th>Danh Mục Tuor</th>
       <th>Ngày Bắt Đầu</th>
       <th>Ngày Kết Thúc</th>
       <th>Giá</th>
@@ -50,7 +50,7 @@ require_once 'silderbar.php';
       <tr>
         <td><?= htmlspecialchars($row['MaQuanLy'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['TenTour'] ?? '') ?></td>
-        <!-- <td><?= htmlspecialchars($row['TenDanhMuc'] ?? '') ?></td> -->
+        <td><?= htmlspecialchars($row['TenDanhMuc'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['NgayBatDau'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['NgayKetThuc'] ?? '') ?></td>
         <td>

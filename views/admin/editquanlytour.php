@@ -15,6 +15,24 @@
       </div>
 
       <div class="form-group">
+        <label for="MaDanhMuc">Danh Mục:</label>
+        <select class="form-control" id="MaDanhMuc" name="MaDanhMuc" required>
+            <option value="">-- Chọn danh mục --</option>
+            
+            <?php if(isset($listDanhMuc) && is_array($listDanhMuc)): ?>
+                <?php foreach ($listDanhMuc as $dm): ?>
+                    <option value="<?= $dm['MaDanhMuc'] ?>">
+                        <?= $dm['TenDanhMuc'] ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <option value="">Không tải được danh mục</option>
+            <?php endif; ?>
+            
+        </select>
+      </div>
+      
+      <div class="form-group">
         <label for="NgayBatDau">Ngày Bắt Đầu:</label>
         <input type="date" class="form-control" id="NgayBatDau" name="NgayBatDau"
           value="<?php echo $result['NgayBatDau']; ?>" required>

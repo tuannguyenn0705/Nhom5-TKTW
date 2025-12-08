@@ -1,4 +1,6 @@
 <?php
+require_once './models/AdminModel.php';
+
 class QuanlytourController 
 {
     public $modelQuanlytour;
@@ -36,42 +38,55 @@ class QuanlytourController
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
     }
     public function form()
-    {
+    {   
+        $AdminModel = new AdminModel();
+        $listDanhMuc = $AdminModel->getAll();
         require_once './views/admin/addquanlytour.php';
     }
    public function add()
     {
+        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data = $_POST;
 
             $this->modelQuanlytour->add($data);
         }
+        
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
+
+        
     }
     public function edit()
-    {
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
-            $result = $this->modelQuanlytour->getDetail($id);
-            require_once './views/admin/editquanlytour.php';
-        }
+{
+    if (isset($_GET["id"])) {
+        $id = $_GET["id"];
+        
+        
+        $result = $this->modelQuanlytour->getDetail($id); 
+        $AdminModel = new AdminModel();
+        $listDanhMuc = $AdminModel->getAll();
+        require_once './views/admin/editquanlytour.php';
     }
-      public function update()
-    {
-        if (isset($_POST['btn-update'])) {
-            $data = [
-                'MaQuanLy'  => $_POST['MaQuanLy'] ?? null,
-                'TenTour'   => $_POST['TenTour'] ?? '',
-                'NgayBatDau'       => $_POST['NgayBatDau'] ?? '',
-                'NgayKetThuc'  => $_POST['NgayKetThuc'] ?? '',
-                'Gia'  => $_POST['Gia'] ?? '',
-                 'TrangThai'  => $_POST['TrangThai'] ?? ''
+}
+     public function update()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
 
-            ];
-                $this->modelQuanlytour->update($data);
+        $data = [
+            'MaQuanLy'     => $_POST['MaQuanLy'],
+            'TenTour'      => $_POST['TenTour'] ?? '',
+            'MaDanhMuc'    => $_POST['MaDanhMuc'] ?? 0, 
+            'NgayBatDau'   => $_POST['NgayBatDau'] ?? '',
+            'NgayKetThuc'  => $_POST['NgayKetThuc'] ?? '',
+            'Gia'          => $_POST['Gia'] ?? 0,
+            'TrangThai'    => $_POST['TrangThai'] ?? 'sắp khởi hành',
+            'SoLuongToiDa' => $_POST['SoLuongToiDa'] ?? 20 
+        ];
+        $this->modelQuanlytour->update($data);
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
-                
-        }
+        exit;
+    }
 }
 }
 ?>
