@@ -3,12 +3,6 @@ require_once 'silderbar.php';
 ?>
 <h1>Phân Bố</h1>
 <div class="action-container">
-  <form action="" method="get" class="search-form">
-    
-    <input type="text" name="keyword" placeholder="Nhập tên hướng dẫn viên...">
-    <button type="submit">Tìm kiếm</button>
-  </form>
-
 
   <a href="<?= BASE_URL ?>?mode=admin&act=addlichlamviec" class="add-button">Thêm Phân Bố</a>
 </div>

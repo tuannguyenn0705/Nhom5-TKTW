@@ -92,6 +92,10 @@
       form{grid-template-columns:1fr}
       .actions{justify-content:stretch}
     }
+    .a{
+      text-decoration: none;
+      color: black;
+    }
   </style>
 </head>
 <body>
@@ -149,7 +153,7 @@
       </div>
 
       <div class="actions">
-        <button type="button" class="btn-cancel" id="cancelBtn" >Hủy</button>
+        <button type="button" class="btn-cancel" id="cancelBtn"  ><a class="a" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Huỷ</a></button>
         <button type="submit" class="btn-save">Lưu thay đổi</button>
       </div>
     </form>

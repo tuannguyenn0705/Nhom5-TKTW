@@ -8,21 +8,21 @@
     <div class="form-group">
     <label for="MaQuanLy">Chọn Tour</label>
     <select class="form-control" name="MaQuanLy" id="MaQuanLy" required onchange="tuDongDienHDV()">
-        <option value="" data-guide-id="" data-guide-name="">-- Chọn Tour --</option>
-        
-        <?php if (!empty($dsTour)): ?>
-            <?php foreach ($dsTour as $tour): ?>
-                <option 
-                    value="<?= $tour['MaQuanLy'] ?>" 
-                    data-guide-id="<?= $tour['HDVDuocPhanCong'] ?>" 
-                    data-guide-name="<?= $tour['TenHDV'] ?? 'Chưa Phân Công' ?>"
-                >
-                    <?= $tour['TenTour'] ?>
-                </option>
-            <?php endforeach; ?>
-        <?php endif; ?>
-        
-    </select>
+  <option value="" data-guide-id="" data-guide-name="">-- Chọn Tour --</option>
+
+  <?php
+  if (!empty($dsTour) && is_array($dsTour)) {
+      foreach ($dsTour as $tour) {
+          $ma = htmlspecialchars($tour['MaQuanLy'] ?? '', ENT_QUOTES, 'UTF-8');
+          $guideId = htmlspecialchars($tour['HDVDuocPhanCong'] ?? '', ENT_QUOTES, 'UTF-8');
+          $guideName = htmlspecialchars($tour['TenHDV'] ?? 'Chưa Phân Công', ENT_QUOTES, 'UTF-8');
+          $tenTour = htmlspecialchars($tour['TenTour'] ?? 'Không rõ', ENT_QUOTES, 'UTF-8');
+
+          echo "<option value=\"{$ma}\" data-guide-id=\"{$guideId}\" data-guide-name=\"{$guideName}\">{$tenTour}</option>";
+      }
+  }
+  ?>
+</select>
 </div>
 
       <div class="form-group">

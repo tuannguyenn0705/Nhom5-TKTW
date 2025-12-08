@@ -44,7 +44,7 @@
       </div>
 
       <button type="submit" class="btn btn-default">Lưu</button>
-      <button class="btn btn-default"><a style="text-decoration: none;" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Quay Lại</a></button>
+      <button class="btn btn-default"><a style="text-decoration: none; color: white" class="a" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Quay Lại</a></button>
     </form>
   </div>
 </div>
