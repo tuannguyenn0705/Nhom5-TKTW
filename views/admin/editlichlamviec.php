@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Form Sửa Tour</title>
+  <title>Form Sửa Lịch Làm Việc</title>
   <style>
     :root{
       --bg: #f5f7fb;
@@ -70,6 +70,14 @@
       border-color:var(--accent);
     }
 
+    /* Class riêng cho input bị khóa */
+    .locked-input {
+        background-color: #e9ecef !important;
+        color: #6c757d;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
     .hint{font-size:12px;color:var(--muted);margin-top:6px}
 
     .row{
@@ -103,49 +111,50 @@
     <p class="lead">Sửa Lịch Làm Việc Của HDV</p>
  
     <form id="editForm" novalidate action="<?= BASE_URL ?>?mode=admin&act=updatelichlam&id=<?= $data['MaLichHDV'] ?>" method="post">
+      
       <div class="full">
-        <label for="fullname">Họ tên</label>
+        <label for="fullname">Họ tên HDV</label>
         <select name="MaNhanSu" required>
-    <option value="">Chọn HDV</option>
-    <?php foreach($dataNhanSu as $value){ ?>
-        <option value="<?= htmlspecialchars($value['MaNhanSu']) ?>"
-            <?= (isset($data['MaNhanSu']) && $data['MaNhanSu'] == $value['MaNhanSu']) ? 'selected' : '' ?>>
-            <?= htmlspecialchars($value['HoTen']) ?>
-        </option>
-    <?php } ?>
-</select>
+            <option value="">Chọn HDV</option>
+            <?php foreach($dataNhanSu as $value){ 
+                // Lọc bỏ Admin trong danh sách sửa
+                if(strtoupper($value['VaiTro']) === 'ADMIN') { continue; }
+            ?>
+                <option value="<?= htmlspecialchars($value['MaNhanSu']) ?>"
+                    <?= (isset($data['MaNhanSu']) && $data['MaNhanSu'] == $value['MaNhanSu']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($value['HoTen']) ?>
+                </option>
+            <?php } ?>
         </select>
       </div>
 
       <div class="full">
-        <label for="tourname">Tên tour</label>
-        <select name="MaQuanLy" required>
-    <option value="">Chọn Tour</option>
-    <?php foreach($dataQuanLy as $value){ ?>
-        <option value="<?= htmlspecialchars($value['MaQuanLy']) ?>"
-            <?= (isset($data['MaQuanLy']) && $data['MaQuanLy'] == $value['MaQuanLy']) ? 'selected' : '' ?>>
-            <?= htmlspecialchars($value['TenTour']) ?>
-        </option>
-    <?php } ?>
-    </select>
-      </div>
-
-      <div>
-        <label for="role">Vai trò</label>
-        <select id="VaiTro" name="VaiTro" required>
-           <option value="phụ"   <?= $data['VaiTro']=='phụ' ? 'selected' : '' ?>>Phụ</option>
-           <option value="chính" <?= $data['VaiTro']=='chính' ? 'selected' : '' ?>>Chính</option>
+        <label for="tourname">Tên tour (Cố định)</label>
+        
+        <select class="locked-input" disabled>
+            <?php foreach($dataQuanLy as $value){ ?>
+                <option value="<?= htmlspecialchars($value['MaQuanLy']) ?>"
+                    <?= (isset($data['MaQuanLy']) && $data['MaQuanLy'] == $value['MaQuanLy']) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($value['TenTour']) ?>
+                </option>
+            <?php } ?>
         </select>
+
+        <input type="hidden" name="MaQuanLy" value="<?= $data['MaQuanLy'] ?>">
       </div>
 
       <div>
         <label for="start">Ngày bắt đầu</label>
-        <input type="date" id="NgayBatDau" name="NgayBatDau" value="<?= $data['NgayBatDau'] ?>" required />
+        <input type="date" id="NgayBatDau" name="NgayBatDau" 
+               value="<?= $data['NgayBatDau'] ?>" 
+               class="locked-input" readonly required />
       </div>
 
       <div>
         <label for="end">Ngày kết thúc</label>
-        <input type="date" id="NgayKetThuc" name="NgayKetThuc" value="<?= $data['NgayKetThuc'] ?>" required />
+        <input type="date" id="NgayKetThuc" name="NgayKetThuc" 
+               value="<?= $data['NgayKetThuc'] ?>" 
+               class="locked-input" readonly required />
       </div>
 
       <div class="full">
@@ -153,12 +162,10 @@
       </div>
 
       <div class="actions">
-        <button type="button" class="btn-cancel" id="cancelBtn"  ><a class="a" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Huỷ</a></button>
+        <button type="button" class="btn-cancel" id="cancelBtn"><a class="a" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Huỷ</a></button>
         <button type="submit" class="btn-save">Lưu thay đổi</button>
       </div>
     </form>
   </div>
-
-
 </body>
 </html>
