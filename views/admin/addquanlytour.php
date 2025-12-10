@@ -1,63 +1,123 @@
-<link rel="stylesheet" href="./views/css/addDanhMuc.css">
+<?php require_once "./views/admin/silderbar.php" ?>
+<link rel="stylesheet" href="./views/css/addTour.css">
 
-<div class="main-container">
-  <div class="form-container">
-    <h1>Thêm Tour mới</h1>
-    <form action="<?= BASE_URL . '?mode=admin&act=addquanlytour' ?>" method="POST">
+<div class="add-tour-wrapper">
+<div class="card">
+    <h1>Thêm Tour Mới</h1>
 
-      <div class="form-group">
-        <label for="TenTour">Tên Tour (văn bản, tối đa 255 ký tự):</label>
-        <input type="text" class="form-control" id="TenTour" name="TenTour" maxlength="255" required>
-      </div>
+    <form action="<?= BASE_URL ?>?mode=admin&act=addquanlytour" method="POST">
 
-      <div class="form-group">
-        <label for="MaDanhMuc">Danh Mục:</label>
-        <select class="form-control" id="MaDanhMuc" name="MaDanhMuc" required>
-            <option value="">-- Chọn danh mục --</option>
-            
-            <?php if(isset($listDanhMuc) && is_array($listDanhMuc)): ?>
-                <?php foreach ($listDanhMuc as $dm): ?>
-                    <option value="<?= $dm['MaDanhMuc'] ?>">
-                        <?= $dm['TenDanhMuc'] ?>
-                    </option>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <option value="">Không tải được danh mục</option>
-            <?php endif; ?>
-            
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="NgayBatDau">Ngày Bắt Đầu (bắt buộc):</label>
-        <input type="date" class="form-control" id="NgayBatDau" name="NgayBatDau" required>
-      </div>
+        <div class="form-grid">
 
-      <div class="form-group">
-        <label for="NgayKetThuc">Ngày Kết Thúc (bắt buộc):</label>
-        <input type="date" class="form-control" id="NgayKetThuc" name="NgayKetThuc" required>
-      </div>
+            <div class="form-group">
+                <label>Tên Tour</label>
+                <input type="text" name="TenTour" required>
+            </div>
 
-      <div class="form-group">
-        <label for="Gia">Giá:</label>
-        <input type="number" class="form-control" id="Gia" name="Gia" min="1">
-      </div>
+            <div class="form-group">
+                <label>Danh Mục</label>
+                <select name="MaDanhMuc" required>
+                    <?php foreach ($listDanhMuc as $dm): ?>
+                    <option value="<?= $dm['MaDanhMuc'] ?>"><?= $dm['TenDanhMuc'] ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="TrangThai">Trạng Thái:</label>
-        <select class="form-control" id="TrangThai" name="TrangThai">
-          <option value="sắp khởi hành" selected> Sắp khởi hành</option>
-          <option value="đang diễn ra"> Đang diễn ra</option>
-          <option value="hoàn thành"> Hoàn thành</option>
-        </select>
-      </div>
+            <div class="form-group">
+                <label>Nhà Cung Cấp</label>
+                <select name="MaNCC" required>
+                    <?php foreach($listNCC as $ncc): ?>
+                        <option value="<?= $ncc['MaNCC'] ?>">
+                            <?= $ncc['TenNhaCungCap'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 
-      <div class="form-group">
-        <label for="SoLuongToiDa">Số Lượng Khách Tối Đa:</label>
-        <input type="number" class="form-control" id="SoLuongToiDa" name="SoLuongToiDa" min="1" value="20" required>
-      </div>
+            <div class="form-group">
+                <label>Ngày Bắt Đầu</label>
+                <input type="date" name="NgayBatDau" required>
+            </div>
 
-      <button type="submit" class="btn btn-default">Thêm Tour</button>
+            <div class="form-group">
+                <label>Ngày Kết Thúc</label>
+                <input type="date" name="NgayKetThuc" required>
+            </div>
+
+            <div class="form-group">
+                <label>Giá Tour</label>
+                <input type="number" name="Gia" required>
+            </div>
+
+            <div class="form-group">
+                <label>Trạng thái </label>
+                <input type="tetx" name="TrangThai" required>
+            </div>
+          
+            <div class="form-group">
+                <label>Số Lượng Tối Đa</label>
+                <input type="number" name="SoLuongToiDa" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tên Tài Xế</label>
+                <input type="text" name="TenTaiXe">
+            </div>
+
+            <div class="form-group">
+                <label>Biển Số Xe</label>
+                <input type="text" name="BienSoXe">
+            </div>
+
+            <div class="form-group">
+                <label>SĐT Tài Xế</label>
+                <input type="text" name="SdtTaiXe">
+            </div>
+
+        </div>
+
+        <h2 class="schedule-title">📅 Lịch Trình Tour</h2>
+
+        <div id="lichtrinh-area"></div>
+
+        <button type="button" class="btn-add" onclick="addLT()">+ Thêm Lịch Trình</button>
+
+        <button type="submit" class="btn-submit">Thêm Tour</button>
+        <br> <br>
+        <a href="<?= BASE_URL ?>?mode=admin&act=quanlytour" class="btn-back">⬅ Quay lại</a>
     </form>
-  </div>
 </div>
+</div>
+
+<script>
+function addLT() {
+    const id = Date.now(); // tạo id duy nhất cho mỗi lịch trình
+
+    const html = `
+        <div class="lt-item" id="lt-${id}">
+            <div class="lt-row">
+                <div>
+                    <label>Ngày Số</label>
+                    <input type="number" name="NgaySo[]" required>
+                </div>
+
+                <div>
+                    <label>Giờ</label>
+                    <input type="time" name="Gio[]" required>
+                </div>
+
+                <button type="button" class="btn-remove" onclick="removeLT(${id})">X</button>
+            </div>
+
+            <label>Mô Tả Sự Kiện</label>
+            <textarea name="MoTaSuKien[]" required></textarea>
+        </div>
+    `;
+
+    document.getElementById("lichtrinh-area").insertAdjacentHTML("beforeend", html);
+}
+
+function removeLT(id) {
+    document.getElementById("lt-" + id).remove();
+}
+</script>

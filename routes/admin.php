@@ -28,6 +28,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'addquanlytour' => (new QuanlytourController())->add(),
     'editquanlytour' => (new QuanlytourController())->edit(),
     'updatequanlytour' => (new QuanlytourController())->update(),
+    'detailquanlytour' => (new QuanlytourController())-> detail(),
 
     // nhật ký tour
      'nhatkytour' => (new NhatKyTourController())->nhatkytour(),
@@ -43,7 +44,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     //lịch làm việc
     'lichlamviechdv'=>(new LichLamController())->viewLichLamAdmin(),
     'addlichlamviec'=>(new LichLamController())->addLichLam(),
-    'deletelichlam'=>(new LichLamController())->deleteLichLam(),
+    // 'deletelichlam'=>(new LichLamController())->deleteLichLam(),
     'editlichlam' => (new LichLamController())->editLichLam(),
     'updatelichlam'=>(new LichLamController())->updateLichLam(),
 
@@ -58,6 +59,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'change_status' => (new BookingController())->changeStatus(),
     //dashboard
         'dashboard' => (new DashboardController())->Dashboard(),
+
 
 };
 

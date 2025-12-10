@@ -54,7 +54,8 @@ require_once 'silderbar.php';
         <td><?= htmlspecialchars($row['SuKien'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['SuCo'] ?? '') ?></td>
         <td><?= htmlspecialchars($row['PhanHoiKhach'] ?? '') ?></td>
-        <td>
+        <td >
+          <div class="action-buttons">
           <a href="<?= BASE_URL . '?mode=admin&act=xoanhatkytour&id=' . $row['MaNhatKy'] ?>"
              class="btn-action btn-delete"
              onclick="return confirm('Bạn có chắc chắn muốn xóa nhật ký này không?')">
@@ -64,8 +65,9 @@ require_once 'silderbar.php';
              class="btn-action btn-edit">
              Sửa
           </a>
-           <a  href="<?= BASE_URL ?>?mode=admin&act=detail&id=<?= $row['MaNhatKy'] ?>">Xem chi tiết</a>
+           <a  href="<?= BASE_URL ?>?mode=admin&act=detail&id=<?= $row['MaNhatKy'] ?>" class="btn-action btn-detail">Xem chi tiết</a>
         </td>
+        </div>
       </tr>
     <?php endforeach; ?>
   </tbody>

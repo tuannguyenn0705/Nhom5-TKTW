@@ -41,7 +41,11 @@ class QuanlytourController
     {   
         $AdminModel = new AdminModel();
         $listDanhMuc = $AdminModel->getAll();
+        require_once './models/NhaCungCapMoDel.php';
+        $NCCmodel = new NhaCungCapMoDel;
+        $listNCC = $NCCmodel->getALl();
         require_once './views/admin/addquanlytour.php';
+
     }
    public function add()
     {
@@ -61,8 +65,10 @@ class QuanlytourController
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
         
-        
-        $result = $this->modelQuanlytour->getDetail($id); 
+        require_once './models/NhaCungCapMoDel.php';
+        $result = $this->modelQuanlytour->getDetail($id);
+        $lichtrinh = $this->modelQuanlytour->getLichTrinhByTour($id);
+        $listNCC = (new NhaCungCapMoDel())->getAll(); 
         $AdminModel = new AdminModel();
         $listDanhMuc = $AdminModel->getAll();
         require_once './views/admin/editquanlytour.php';
@@ -73,20 +79,21 @@ class QuanlytourController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
 
-        $data = [
-            'MaQuanLy'     => $_POST['MaQuanLy'],
-            'TenTour'      => $_POST['TenTour'] ?? '',
-            'MaDanhMuc'    => $_POST['MaDanhMuc'] ?? 0, 
-            'NgayBatDau'   => $_POST['NgayBatDau'] ?? '',
-            'NgayKetThuc'  => $_POST['NgayKetThuc'] ?? '',
-            'Gia'          => $_POST['Gia'] ?? 0,
-            'TrangThai'    => $_POST['TrangThai'] ?? 'sắp khởi hành',
-            'SoLuongToiDa' => $_POST['SoLuongToiDa'] ?? 20 
-        ];
+        $data = $_POST;
         $this->modelQuanlytour->update($data);
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
         exit;
     }
 }
+
+    public function detail(){
+        if(isset($_GET["id"])){
+            $id = $_GET['id'];
+            $tour = $this->modelQuanlytour->getDetailTour($id);
+
+            $lichtrinh =$this->modelQuanlytour->getLichTrinhByTour($id);
+            require_once "./views/admin/chitiettour.php";
+        }
+    }
 }
 ?>

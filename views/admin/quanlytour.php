@@ -71,16 +71,23 @@ require_once 'silderbar.php';
           </span>
         </td>
         <td>
-          <a href="<?= BASE_URL . '?mode=admin&act=xoaquanlytour&id=' . $row['MaQuanLy'] ?>"
-            class="btn-action btn-delete"
-            onclick="return confirm('Bạn có chắc chắn muốn xóa tour này không?')">
-            Xóa
-          </a>
-          <a href="<?= BASE_URL . '?mode=admin&act=editquanlytour&id=' . urlencode($row['MaQuanLy']) ?>"
-            class="btn-action btn-edit">
-            Sửa
-          </a>
-        </td>
+            <div class="action-buttons">
+                <a href="<?= BASE_URL . '?mode=admin&act=xoaquanlytour&id=' . $row['MaQuanLy'] ?>"
+                   class="btn-action btn-delete"
+                   onclick="return confirm('Bạn có chắc chắn muốn xóa tour này không?')">
+                    Xóa
+                </a>
+                <a href="<?= BASE_URL . '?mode=admin&act=editquanlytour&id=' . urlencode($row['MaQuanLy']) ?>"
+                   class="btn-action btn-edit">
+                    Sửa
+                </a>
+
+                <a href="<?= BASE_URL . '?mode=admin&act=detailquanlytour&id=' . $row['MaQuanLy'] ?>"
+                   class="btn-action btn-detail">
+                    Xem Chi Tiết
+                </a>
+            </div>
+            </td>
       </tr>
     <?php endforeach; ?>
   </tbody>
