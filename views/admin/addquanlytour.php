@@ -50,8 +50,12 @@
             </div>
 
             <div class="form-group">
-                <label>Trạng thái </label>
-                <input type="tetx" name="TrangThai" required>
+                <label>Trạng thái</label>
+                <select name="TrangThai" required>
+                    <option value="Sắp diễn ra">Sắp diễn ra</option>
+                    <option value="Đang diễn ra">Đang diễn ra</option>
+                    <option value="Đã hoàn thành"> hoàn thành</option>
+                </select>
             </div>
           
             <div class="form-group">
