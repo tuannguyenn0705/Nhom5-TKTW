@@ -24,5 +24,6 @@ class CheckinModel
             $stmt->execute([':maTour' => $maTour, ':maKhach' => $maKhach, ':trangThai' => $trangThai]);
         }
     }
+    
 }
 ?>

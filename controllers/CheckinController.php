@@ -1,12 +1,16 @@
 <?php
+require_once './models/QuanlytourModel.php';
+
     class CheckinController{
         public $modelDsKhach;
         public $modelCheckin;
+       
 
         public function __construct()
         {
             $this->modelDsKhach = new DsKhachModel();
             $this->modelCheckin = new CheckinModel();
+            
         }
 
         public function formCheckin(){
@@ -33,6 +37,11 @@
                     window.location.href = '?mode=hdv&act=DSachKhachHDVByTour&MaQuanLy=$MaQuanLy';
                   </script>";
             }
+        }
+        public function Checkin(){
+            $QuanlytourModel = new QuanlytourModel();
+            $listQuanLyTour = $QuanlytourModel->getAll();
+            require_once './views/hdv/checkintour.php';
         }
     }
 ?>
