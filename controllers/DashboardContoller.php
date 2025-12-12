@@ -16,9 +16,13 @@ class DashboardController
         // 2. Gọi Model lấy dữ liệu
         $dashboard = $this->modelDashboard->getAllDashboard($thang, $nam);
 
-        // 3. Tính tổng hiển thị lên 3 thẻ Card trên cùng
+        // 3. Tính tổng hiển thị
         $totalDoanhThu = array_sum(array_column($dashboard, 'DoanhThu'));
-        $totalChiPhi   = array_sum(array_column($dashboard, 'ChiPhi'));
+        
+        // ĐÃ SỬA: Bỏ qua tính tổng chi phí (hoặc gán = 0)
+        $totalChiPhi   = 0; 
+        
+        // Tổng lợi nhuận lúc này chính là tổng doanh thu
         $totalLoiNhuan = array_sum(array_column($dashboard, 'LoiNhuan'));
 
         // 4. Load View

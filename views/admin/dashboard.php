@@ -75,8 +75,7 @@ require_once 'silderbar.php';
             <h3 class="fw-bold text-dark mb-1"><i class="fas fa-chart-pie me-2 text-primary"></i>Hiệu Quả Kinh Doanh</h3>
             <p class="text-muted mb-0">Thống kê doanh thu, chi phí và lợi nhuận theo từng Tour</p>
         </div>
-        
-        <div class="card p-2 border-0 shadow-sm">
+<div class="card p-2 border-0 shadow-sm">
             <form class="d-flex gap-2" method="GET" action="">
                 <?php if(isset($_GET['act'])): ?>
                     <input type="hidden" name="act" value="<?= htmlspecialchars($_GET['act']) ?>">
@@ -136,7 +135,7 @@ require_once 'silderbar.php';
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h6 class="text-white-50 text-uppercase mb-2">Tổng Lợi Nhuận</h6>
-                        <h2 class="mb-0 fw-bold display-6 text-dark"><?= number_format($totalLoiNhuan,0,',','.') ?> ₫</h2>
+<h2 class="mb-0 fw-bold display-6 text-dark"><?= number_format($totalLoiNhuan,0,',','.') ?> ₫</h2>
                     </div>
                     <div class="icon-box"><i class="fas fa-coins text-dark"></i></div>
                 </div>
@@ -191,8 +190,8 @@ require_once 'silderbar.php';
                         </td>
                         
                         <?php 
-                            $profitClass = ($row['LoiNhuan'] >= 0) ? 'text-success-dark' : 'text-danger-dark'; 
-                        ?>
+                            $profitClass = ($row['LoiNhuan'] >= 0) ? 'text-success-dark' : 'text-danger-dark';
+?>
                         <td class="text-end fw-bold-money <?= $profitClass ?>">
                             <?= number_format($row['LoiNhuan'],0,',','.') ?> ₫
                         </td>
