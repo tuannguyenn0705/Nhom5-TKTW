@@ -27,6 +27,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
      'checkin_form' => (new CheckinController())->formCheckin(),
      'checkin_store' => (new CheckinController())->storeCheckin(),
      'checkin' => (new CheckinController())->Checkin(),
+     'updateCheckinStatus' => (new CheckinController())->updateCheckinStatus(),
 };
 
 }else{

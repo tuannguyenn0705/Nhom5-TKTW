@@ -132,11 +132,11 @@
             <h2 class="check-in-title"><i class="fas fa-calendar-check" style="color: var(--primary);"></i>  Điểm Danh Tour</h2>
             <hr class="check-in-hr">
 
-            <form id="tour_selection_form" method="GET" action="?mode=hdv&act=checkin_form">
+            <form id="tour_selection_form" method="GET" action="?mode=hdv&act=checkin">
                 
                 <div class="tour-select-box">
                     <input type="hidden" name="mode" value="hdv">
-                    <input type="hidden" name="act" value="checkin_form">
+                    <input type="hidden" name="act" value="checkin">
 
                     <label for="MaQuanLy">Chọn Tour:</label>
                     <select id="MaQuanLy" name="MaQuanLy" required onchange="this.form.submit()">
@@ -161,6 +161,38 @@
                
         </div>
         
+        <div class="customer-list-box">
+            <div class="table-header">
+                <div>Tên Khách</div>
+                <div style="text-align: center;">trangj thasi</div>
+                <div style="text-align: right;">Hành Động</div>
+            </div>
+            <?php if (!empty($dskhach) && is_array($dskhach)): ?>
+                <?php foreach ($dskhach as $khach): ?>
+                <div class="table-row">
+                    <div><?= htmlspecialchars($khach['HoTen']) ?></div>
+                    <div style="text-align: center;"><?= htmlspecialchars($khach['TrangThai'] ?? '') ?></div>
+                    <div style="text-align: right;">
+                        <form method="POST" action="?mode=hdv&act=updateCheckinStatus">
+                            <input type="hidden" name="MaKhach" value="<?= htmlspecialchars($khach['MaKhach']) ?>">
+                            <input type="hidden" name="MaQuanLy" value="<?= htmlspecialchars($_GET['MaQuanLy'] ?? '') ?>">
+                            <div class="action-group">
+                                <select name="TrangThai" required>
+                                    <option value="">-- Chọn Tình Trạng --</option>
+                                    <option value="Có mặt" <?= (isset($khach['TrangThai']) && $khach['TrangThai'] == 'Có mặt') ? 'selected' : '' ?>>Có mặt</option>
+                                    <option value="Vắng" <?= (isset($khach['TrangThai']) && $khach['TrangThai'] == 'Vắng') ? 'selected' : '' ?>>Vắng</option>
+                                </select>
+                                <button type="submit" class="btn-capnhat">Cập Nhật</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="table-row">
+                    <div colspan="3" style="text-align: center;">Chưa có khách nào tham gia tour này.</div>
+                </div>
+            <?php endif; ?>
     </div> 
 
 </body>

@@ -41,7 +41,26 @@ require_once './models/QuanlytourModel.php';
         public function Checkin(){
             $QuanlytourModel = new QuanlytourModel();
             $listQuanLyTour = $QuanlytourModel->getAll();
+            $MaQuanLy = $_GET['MaQuanLy'];
+            $dskhach = $this->modelDsKhach->getDsKhachByMaQL($MaQuanLy);
             require_once './views/hdv/checkintour.php';
+        }
+        public function updateCheckinStatus(){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $MaKhach = $_POST['MaKhach'];
+                $MaQuanLy = $_POST['MaQuanLy'];
+                $TinhTrang = $_POST['TinhTrang'] ?? [];
+                  
+                foreach($statuses as $maKhach => $trangThai){
+                    $this->modelCheckin->updateCheckinStatus($MaQuanLy, $MaKhach, $TinhTrang);
+                }
+                
+
+                echo "<script>
+                    alert('Cập nhật tình trạng điểm danh thành công!');
+                    window.location.href = '?mode=hdv&act=checkin&MaQuanLy=$MaQuanLy';
+                  </script>";
+            }
         }
     }
 ?>
