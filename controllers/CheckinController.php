@@ -41,8 +41,10 @@ require_once './models/QuanlytourModel.php';
         public function Checkin(){
             $QuanlytourModel = new QuanlytourModel();
             $listQuanLyTour = $QuanlytourModel->getAll();
-            $MaQuanLy = $_GET['MaQuanLy'];
-            $dskhach = $this->modelDsKhach->getDsKhachByMaQL($MaQuanLy);
+            if(isset($_GET['MaQuanLy']) && !empty($_GET['MaQuanLy'])){
+                $MaQuanLy = $_GET['MaQuanLy'];
+                $dskhach = $this->modelDsKhach->getDsKhachByMaQL($MaQuanLy);
+            }
             require_once './views/hdv/checkintour.php';
         }
         public function updateCheckinStatus(){
