@@ -34,13 +34,17 @@ class BookingModel{
         return $stmt->fetch();
     }
 
-    public function insertGuestToTour($maTour, $hoTen, $maBooking){
-        $sql = "INSERT INTO khachthamgiatour (MaDatTour, MaQuanLy, HoTen, YeuCauDacBiet) VALUES (:maBooking, :maTour, :ten, '')";
+    public function insertGuestToTour($maTour, $hoTen, $maBooking, $sdt = '', $email = '', $yeuCau = ''){
+        $sql = "INSERT INTO khachthamgiatour (MaDatTour, MaQuanLy, HoTen, SDT, Email, YeuCauDacBiet) 
+                VALUES (:maBooking, :maTour, :ten, :sdt, :email, :yeucau)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             'maBooking' => $maBooking,
             'maTour' => $maTour,
-            'ten' => $hoTen
+            'ten' => $hoTen,
+            'sdt' => $sdt,
+            'email' => $email,
+            'yeucau' => $yeuCau
         ]);
     }
 

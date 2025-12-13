@@ -31,7 +31,7 @@ class BookingController
     public function store_booking(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $tenKhach = $_POST['TenKhachHang'];
-            $khachDoan = isset($_POST['KhachDoan']) ? $_POST['KhachDoan'] : [];
+            $khachDoan = isset($_POST['KhachDoan']) ? array_values($_POST['KhachDoan']) : []; 
             $soLuongKhach = 1 + count($khachDoan);
 
             $maTour = $_POST['MaChiTietTour'];
@@ -69,13 +69,35 @@ class BookingController
         if($status == 'đã xác nhận') {
             $booking = $this->modelBooking->getBookingById($id);
             
-            $this->modelBooking->insertGuestToTour($booking['MaChiTietTour'], $booking['TenKhachHang'], $id);
+            $this->modelBooking->insertGuestToTour(
+                $booking['MaChiTietTour'], 
+                $booking['TenKhachHang'], 
+                $id, 
+                $booking['SDT'], 
+                $booking['Email'], 
+                'Người đặt tour'
+            );
 
             if(!empty($booking['DanhSachKhachDoan'])){
-                $member = json_decode($booking['DanhSachKhachDoan'], true);
-                if(is_array($member)){
-                    foreach($member as $mem){
-                        $this->modelBooking->insertGuestToTour($booking['MaChiTietTour'], $mem, $id);
+                $memberList = json_decode($booking['DanhSachKhachDoan'], true);
+                if(is_array($memberList)){
+                    foreach($memberList as $mem){
+                        if(is_array($mem)){
+                            $this->modelBooking->insertGuestToTour(
+                                $booking['MaChiTietTour'], 
+                                $mem['HoTen'], 
+                                $id, 
+                                $mem['SDT'] ?? '', 
+                                $mem['Email'] ?? '', 
+                                $mem['YeuCau'] ?? ''
+                            );
+                        } else {
+                            $this->modelBooking->insertGuestToTour(
+                                $booking['MaChiTietTour'], 
+                                $mem, 
+                                $id
+                            );
+                        }
                     }
                 }
             }

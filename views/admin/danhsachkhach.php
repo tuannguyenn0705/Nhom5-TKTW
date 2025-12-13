@@ -48,38 +48,28 @@ require_once 'silderbar.php';
 
     <a href="?mode=admin&act=danhsachkhach&view=yeucaudacbiet">yêu cầu đặc biệt</a>
   </div> -->
-<table border="1" cellpadding="8" cellspacing="0">
+  <table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
       <th>Mã Khách </th>
-      <!-- <th>Mã Đặt Tour</th> -->
       <th>Đi Tour</th>
       <th>Họ Tên</th>
-      <th>Yêu cầu Đặc Biệt</th>
+      <th>SĐT</th> <th>Email</th> <th>Yêu cầu Đặc Biệt</th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($dskhach as $value) { ?>
       <tr>
         <td><?= $value['MaKhach'] ?></td>
-        <!-- <td><?= $value['MaDatTour'] ?></td> -->
         <td><?= $value['TenTour'] ?? 'Tour không tồn tại' ?></td>
         <td><?= $value['HoTen'] ?></td>
-        <td>
+        <td><?= $value['SDT'] ?></td> <td><?= $value['Email'] ?></td> <td>
           <?= $value['YeuCauDacBiet'] ?>
           <br>
           <a href="javascript:void(0)"
-              onclick="updateSpecialRequest(<?= $value['MaKhach'] ?>)"
-              style="font-size: 15px; color: blue;";>[Sửa yêu cầu]</a>
+               onclick="updateSpecialRequest(<?= $value['MaKhach'] ?>)"
+               style="font-size: 15px; color: blue;">[Sửa yêu cầu]</a>
         </td>
-        <script>
-          function updateSpecialRequest(id){
-            let text = prompt('Nhập yêu cầu đặc biệt...', '');
-            if(text != null){
-              window.location.href = `?mode=admin&act=update_request&id=${id}&content=${encodeURIComponent(text)}`;
-            }
-          }
-        </script>
       </tr>
     <?php } ?>
   </tbody>
