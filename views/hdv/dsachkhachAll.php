@@ -44,7 +44,7 @@
                         <td><?= $value['MaKhach'] ?></td>
                         <td><?= $value['TenTour'] ?? 'Không xác định' ?></td>
                         <td><?= $value['HoTen'] ?></td>
-                        <td><?= $value['sdt'] ?></td>
+                        <td><?= $value['SDT'] ?></td>
                         <td><?= $value['YeuCauDacBiet'] ?></td>
                     </tr>
                     <?php } ?>
