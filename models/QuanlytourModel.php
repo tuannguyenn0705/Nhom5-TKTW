@@ -154,5 +154,22 @@ class QuanlytourModel
         $stmt->execute([":MaQuanLy" => $MaQuanLy]);
         return $stmt->fetchAll();
     }
+    public function addLichTrinh($data)
+{
+    if (!empty($data['NgaySo'])) {
+        foreach ($data['NgaySo'] as $i => $ngay) {
+            $sql = "INSERT INTO lichtrinh (MaQuanLy, NgaySo, Gio, MoTaSuKien)
+                    VALUES (:MaQuanLy, :NgaySo, :Gio, :MoTaSuKien)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                ':MaQuanLy' => $data['MaQuanLy'],
+                ':NgaySo' => $ngay,
+                ':Gio' => $data['Gio'][$i],
+                ':MoTaSuKien' => $data['MoTaSuKien'][$i],
+            ]);
+        }
+    }
+}
+
 }
 ?>

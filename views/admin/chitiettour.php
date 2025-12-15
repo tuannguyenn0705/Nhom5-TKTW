@@ -41,6 +41,21 @@
 
         <br>
 
+        <hr>
+
+<h3 class="schedule-title">➕ Thêm Lịch Trình Mới</h3>
+
+<form action="<?= BASE_URL ?>?mode=admin&act=addlichtrinh" method="POST">
+    <input type="hidden" name="MaQuanLy" value="<?= $tour['MaQuanLy'] ?>">
+
+    <div id="lichtrinh-area"></div>
+
+    <button type="button" class="btn-add" onclick="addLT()">+ Thêm Lịch Trình</button>
+    <br><br>
+    <button type="submit" class="btn-submit">Lưu Lịch Trình</button>
+</form>
+<br>
+
         <a href="<?= BASE_URL . '?mode=admin&act=quanlytour' ?>" class="back-btn">← Quay lại danh sách</a>
 
     </div>
@@ -123,3 +138,99 @@
     .back-btn:hover {
         background: #1e4fc7;
     }
+
+    .lt-item {
+    background: #f9fafb;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.lt-row {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+}
+
+.lt-row div {
+    flex: 1;
+}
+
+.lt-row label {
+    font-weight: 600;
+}
+
+.lt-row input {
+    width: 100%;
+    padding: 8px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 8px;
+}
+
+.btn-add {
+    padding: 10px 16px;
+    background: #16a34a;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-submit {
+    padding: 10px 20px;
+    background: #2563eb;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-remove {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+</style>
+<script>
+function addLT() {
+    const id = Date.now();
+
+    const html = `
+        <div class="lt-item" id="lt-${id}">
+            <div class="lt-row">
+                <div>
+                    <label>Ngày Số</label>
+                    <input type="number" name="NgaySo[]" required>
+                </div>
+
+                <div>
+                    <label>Giờ</label>
+                    <input type="time" name="Gio[]" required>
+                </div>
+
+                <button type="button" class="btn-remove" onclick="removeLT(${id})">X</button>
+            </div>
+
+            <label>Mô Tả Sự Kiện</label>
+            <textarea name="MoTaSuKien[]" required></textarea>
+        </div>
+    `;
+
+    document.getElementById("lichtrinh-area")
+        .insertAdjacentHTML("beforeend", html);
+}
+
+function removeLT(id) {
+    document.getElementById("lt-" + id).remove();
+}
+</script>

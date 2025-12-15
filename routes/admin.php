@@ -29,6 +29,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'editquanlytour' => (new QuanlytourController())->edit(),
     'updatequanlytour' => (new QuanlytourController())->update(),
     'detailquanlytour' => (new QuanlytourController())-> detail(),
+        'addlichtrinh' =>( new QuanlytourController())->addlichtrinh(),
 
     // nhật ký tour
      'nhatkytour' => (new NhatKyTourController())->nhatkytour(),
@@ -38,6 +39,7 @@ if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '1'){
     'editnhatkytour' => (new NhatKyTourController())->edit(),
     'updatenhatkytour' => (new NhatKyTourController())->update(),
         'detail' => (new NhatKyTourController())->detail(),
+
 
 
 

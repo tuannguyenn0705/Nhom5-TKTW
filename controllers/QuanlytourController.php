@@ -95,5 +95,18 @@ class QuanlytourController
             require_once "./views/admin/chitiettour.php";
         }
     }
+
+    public function addlichtrinh()
+{
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $this->modelQuanlytour->addLichTrinh($_POST);
+
+        header("Location: " . BASE_URL .
+            "?mode=admin&act=detailquanlytour&id=" . $_POST['MaQuanLy']);
+        exit;
+    }
 }
+}
+
+
 ?>
