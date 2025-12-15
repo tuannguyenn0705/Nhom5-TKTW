@@ -1,171 +1,236 @@
+<?php
+    require_once 'silderbar.php';
+?>
 <!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Form Sửa Lịch Làm Việc</title>
+  <title>Sửa Lịch Làm Việc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
-    :root{
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --accent: #2563eb;
-      --muted: #6b7280;
-      --danger: #ef4444;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    /* Biến màu sắc */
+    :root {
+      --primary-color: #4f46e5; 
+      --bg-gray: #f3f4f6;
+      --text-dark: #1f2937;
+      --border-color: #e5e7eb;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      background:linear-gradient(180deg,#eef2ff 0%, var(--bg) 100%);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:32px;
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
+    /* QUAN TRỌNG: Chỉ reset box-sizing, KHÔNG can thiệp vào body 
+       để tránh làm hỏng sidebar của bạn 
+    */
+    * { box-sizing: border-box; }
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--bg-gray);
+        /* Giữ nguyên margin/padding mặc định của admin template nếu có */
     }
 
-    .card{
-      width:100%;
-      max-width:720px;
-      background:var(--card);
-      border-radius:12px;
-      box-shadow:0 8px 30px rgba(2,6,23,0.08);
-      padding:28px;
+    /* Wrapper này sẽ giúp căn giữa form trong vùng nội dung còn lại */
+    .main-content-wrapper {
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        width: 100%;
     }
 
-    h1{font-size:20px;margin:0 0 6px}
-    p.lead{margin:0 0 18px;color:var(--muted)}
-
-    form{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
+    /* Thẻ Card chứa form */
+    .edit-card {
+      background: #ffffff;
+      width: 100%;
+      max-width: 700px; /* Giới hạn chiều rộng form */
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      padding: 35px;
+      margin: 0 20px; /* Cách lề 2 bên một chút trên mobile */
     }
 
-    .full{grid-column:1/-1}
-
-    label{
-      display:block;
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:6px;
+    .form-header {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 20px;
     }
 
-    input[type="text"], select, input[type="date"]{
-      width:100%;
-      padding:10px 12px;
-      border:1px solid #e6e9ef;
-      border-radius:8px;
-      font-size:14px;
-      background:transparent;
-      outline:none;
-      transition:box-shadow .12s, border-color .12s;
+    .form-header h2 {
+      margin: 0;
+      color: var(--text-dark);
+      font-size: 22px;
     }
 
-    input:focus, select:focus, textarea:focus{
-      box-shadow:0 4px 14px rgba(37,99,235,0.12);
-      border-color:var(--accent);
+    .form-header p {
+        margin: 5px 0 0;
+        color: #6b7280;
+        font-size: 14px;
     }
 
-    /* Class riêng cho input bị khóa */
-    .locked-input {
-        background-color: #e9ecef !important;
-        color: #6c757d;
+    /* Grid layout cho form */
+    .admin-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Chia 2 cột */
+      gap: 20px;
+    }
+
+    .full-width {
+      grid-column: 1 / -1; /* Chiếm hết chiều rộng */
+    }
+
+    .form-group {
+      margin-bottom: 5px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    /* Style cho input và select */
+    .admin-form input[type="text"],
+    .admin-form input[type="date"],
+    .admin-form select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 14px;
+      background-color: #fff;
+      transition: all 0.2s;
+      outline: none;
+      height: 42px; /* Chiều cao cố định cho đẹp */
+    }
+
+    .admin-form input:focus,
+    .admin-form select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    /* Input bị khóa (Read only) */
+    .input-locked {
+        background-color: #f9fafb !important;
+        color: #9ca3af !important;
         cursor: not-allowed;
-        pointer-events: none;
+        border-color: #f3f4f6 !important;
     }
 
-    .hint{font-size:12px;color:var(--muted);margin-top:6px}
-
-    .row{
-      display:flex;gap:8px;align-items:center
+    /* Nút bấm */
+    .form-actions {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 15px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
     }
 
-    .actions{
-      display:flex;gap:10px;justify-content:flex-end;margin-top:18px;grid-column:1/-1
-    }
-
-    button{
-      padding:10px 14px;border-radius:10px;border:0;font-weight:600;cursor:pointer;
-    }
-    .btn-save{background:var(--accent);color:#fff}
-    .btn-cancel{background:transparent;border:1px solid #e6e9ef;color:var(--muted)}
-
-    .error{color:var(--danger);font-size:13px;margin-top:6px}
-
-    @media (max-width:640px){
-      form{grid-template-columns:1fr}
-      .actions{justify-content:stretch}
-    }
-    .a{
+    .btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 14px;
       text-decoration: none;
-      color: black;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      border: none;
+    }
+
+    .btn-cancel {
+      background: #fff;
+      border: 1px solid var(--border-color);
+      color: #374151;
+    }
+    .btn-cancel:hover {
+        background: #f3f4f6;
+    }
+
+    .btn-save {
+      background: var(--primary-color);
+      color: white;
+    }
+    .btn-save:hover {
+      background: #4338ca;
+    }
+
+    @media (max-width: 640px) {
+      .admin-form { grid-template-columns: 1fr; }
+      .form-actions { flex-direction: column-reverse; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="card" role="region" aria-label="Form sửa thông tin tour">
-    <p class="lead">Sửa Lịch Làm Việc Của HDV</p>
- 
-    <form id="editForm" novalidate action="<?= BASE_URL ?>?mode=admin&act=updatelichlam&id=<?= $data['MaLichHDV'] ?>" method="post">
+
+  <div class="main-content-wrapper">
       
-      <div class="full">
-        <label for="fullname">Họ tên HDV</label>
-        <select name="MaNhanSu" required>
-            <option value="">Chọn HDV</option>
-            <?php foreach($dataNhanSu as $value){ 
-                // Lọc bỏ Admin trong danh sách sửa
-                if(strtoupper($value['VaiTro']) === 'ADMIN') { continue; }
-            ?>
-                <option value="<?= htmlspecialchars($value['MaNhanSu']) ?>"
-                    <?= (isset($data['MaNhanSu']) && $data['MaNhanSu'] == $value['MaNhanSu']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($value['HoTen']) ?>
-                </option>
-            <?php } ?>
-        </select>
-      </div>
+      <div class="edit-card">
+        <div class="form-header">
+            <h2>Cập Nhật Lịch Làm Việc</h2>
+            <p>Chỉnh sửa thông tin phân công hướng dẫn viên</p>
+        </div>
+     
+        <form class="admin-form" id="editForm" action="<?= BASE_URL ?>?mode=admin&act=updatelichlam&id=<?= $data['MaLichHDV'] ?>" method="post">
+          
+          <div class="form-group full-width">
+            <label>Hướng Dẫn Viên</label>
+            <select name="MaNhanSu" required>
+                <option value="">-- Chọn nhân sự --</option>
+                <?php foreach($dataNhanSu as $value){ 
+                    if(strtoupper($value['VaiTro']) === 'ADMIN') { continue; }
+                ?>
+                    <option value="<?= htmlspecialchars($value['MaNhanSu']) ?>"
+                        <?= (isset($data['MaNhanSu']) && $data['MaNhanSu'] == $value['MaNhanSu']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($value['HoTen']) ?>
+                    </option>
+                <?php } ?>
+            </select>
+          </div>
 
-      <div class="full">
-        <label for="tourname">Tên tour (Cố định)</label>
-        
-        <select class="locked-input" disabled>
-            <?php foreach($dataQuanLy as $value){ ?>
-                <option value="<?= htmlspecialchars($value['MaQuanLy']) ?>"
-                    <?= (isset($data['MaQuanLy']) && $data['MaQuanLy'] == $value['MaQuanLy']) ? 'selected' : '' ?>>
-                    <?= htmlspecialchars($value['TenTour']) ?>
-                </option>
-            <?php } ?>
-        </select>
+          <div class="form-group full-width">
+            <label>Tên Tour (Cố định)</label>
+            <select class="input-locked" disabled>
+                <?php foreach($dataQuanLy as $value){ ?>
+                    <option value="<?= htmlspecialchars($value['MaQuanLy']) ?>"
+                        <?= (isset($data['MaQuanLy']) && $data['MaQuanLy'] == $value['MaQuanLy']) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($value['TenTour']) ?>
+                    </option>
+                <?php } ?>
+            </select>
+            <input type="hidden" name="MaQuanLy" value="<?= $data['MaQuanLy'] ?>">
+          </div>
 
-        <input type="hidden" name="MaQuanLy" value="<?= $data['MaQuanLy'] ?>">
-      </div>
+          <div class="form-group">
+            <label>Ngày bắt đầu</label>
+            <input type="date" name="NgayBatDau" 
+                   value="<?= $data['NgayBatDau'] ?>" 
+                   class="input-locked" readonly required />
+          </div>
 
-      <div>
-        <label for="start">Ngày bắt đầu</label>
-        <input type="date" id="NgayBatDau" name="NgayBatDau" 
-               value="<?= $data['NgayBatDau'] ?>" 
-               class="locked-input" readonly required />
-      </div>
+          <div class="form-group">
+            <label>Ngày kết thúc</label>
+            <input type="date" name="NgayKetThuc" 
+                   value="<?= $data['NgayKetThuc'] ?>" 
+                   class="input-locked" readonly required />
+          </div>
 
-      <div>
-        <label for="end">Ngày kết thúc</label>
-        <input type="date" id="NgayKetThuc" name="NgayKetThuc" 
-               value="<?= $data['NgayKetThuc'] ?>" 
-               class="locked-input" readonly required />
+          <div class="form-actions">
+            <a href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv" class="btn btn-cancel">Quay lại</a>
+            
+            <button type="submit" class="btn btn-save">Lưu thay đổi</button>
+          </div>
+        </form>
       </div>
-
-      <div class="full">
-        <div id="dateError" class="error" aria-live="polite" style="display:none"></div>
-      </div>
-
-      <div class="actions">
-        <button type="button" class="btn-cancel" id="cancelBtn"><a class="a" href="<?= BASE_URL ?>?mode=admin&act=lichlamviechdv">Huỷ</a></button>
-        <button type="submit" class="btn-save">Lưu thay đổi</button>
-      </div>
-    </form>
   </div>
+
 </body>
 </html>

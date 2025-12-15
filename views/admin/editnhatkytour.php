@@ -1,3 +1,6 @@
+<?php
+    require_once 'silderbar.php';
+?>
 <link rel="stylesheet" href="./views/css/addDanhMuc.css">
 
 <div class="main-container">
