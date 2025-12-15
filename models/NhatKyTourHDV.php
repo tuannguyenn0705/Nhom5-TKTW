@@ -79,4 +79,4 @@ class NhatKyTourHDVModel
         return $stmt->rowCount();
     }
 }
-?>
+?>`
