@@ -140,64 +140,62 @@
         <h1>Thêm Nhật Ký Tour</h1>
       </div>
       
-      <form action="<?= BASE_URL . '?mode=hdv&act=addnhatkytour' ?>" method="POST">
+              <form action="<?= BASE_URL . '?mode=hdv&act=addnhatkytour' ?>" method="POST">
 
-        <div class="form-group">
-          <label for="MaQuanLy">Chọn Tour</label>
-          <select class="form-control" name="MaQuanLy" id="MaQuanLy" required onchange="tuDongDienHDV()">
-            <option value="" data-guide-id="" data-guide-name="">-- Chọn Tour --</option>
-            <?php if (!empty($dsTour)): ?>
+      <div class="form-group">
+        <label for="MaQuanLy">Chọn Tour</label>
+        <select class="form-control" name="MaQuanLy" id="MaQuanLy">
+          <option value="">-- Chọn Tour --</option>
+          <?php if (!empty($dsTour)): ?>
               <?php foreach ($dsTour as $tour): ?>
-                <?php 
-                  $hasGuide = !empty($tour['HDVDuocPhanCong']); 
-                  $guideName = $tour['TenHDV'] ?? 'Chưa Phân Công';
-                  $displayText = $tour['TenTour'] . ($hasGuide ? "" : " (Chưa có HDV)");
-                  $class = $hasGuide ? "" : "text-danger"; 
-                ?>
-                <option 
-                  value="<?= $tour['MaQuanLy'] ?>" 
-                  data-guide-id="<?= $tour['HDVDuocPhanCong'] ?>" 
-                  data-guide-name="<?= $guideName ?>"
-                  class="<?= $class ?>"
-                >
-                  <?= htmlspecialchars($displayText) ?>
-                </option>
+                  <option value="<?= $tour['MaQuanLy'] ?>"><?= $tour['TenTour'] ?></option>
               <?php endforeach; ?>
+          <?php endif; ?>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="MaNhanSu">HDV Phụ Trách:</label>
+        <select class="form-control" name="MaNhanSu" id="MaNhanSu">
+            <option value="">-- Chọn HDV --</option>
+            <?php if (!empty($dsNhanSu)): ?>
+                <?php foreach ($dsNhanSu as $ns): ?>
+                    <option value="<?= $ns['MaNhanSu'] ?>"><?= $ns['HoTen'] ?></option>
+                <?php endforeach; ?>
             <?php endif; ?>
-          </select>
-        </div>
+        </select>
+      </div>
 
-        <div class="form-group">
-          <label for="TenNhanSuHienThi">HDV Phụ Trách</label>
-          <input type="text" class="form-control" id="TenNhanSuHienThi" readonly placeholder="Tên HDV sẽ hiển thị tự động...">
-          <input type="hidden" id="MaNhanSu" name="MaNhanSu">
-        </div>
+      <div class="form-group">
+        <label for="Ngay">Ngày:</label>
+        <input type="date" class="form-control" name="Ngay" required>
+      </div>
 
-        <div class="form-group">
-          <label for="Ngay">Ngày ghi nhận</label>
-          <input type="date" class="form-control" id="Ngay" name="Ngay" required value="<?= date('Y-m-d') ?>">
-        </div>
+      <div class="form-group">
+        <label for="SuKien">Sự Kiện:</label>
+        <textarea class="form-control" name="SuKien" rows="3"></textarea>
+      </div>
 
-        <div class="form-group">
-          <label for="SuKien">Sự Kiện</label>
-          <textarea class="form-control" id="SuKien" name="SuKien" rows="3" placeholder="Mô tả sự kiện..."></textarea>
-        </div>
+      <div class="form-group">
+        <label for="SuCo">Sự Cố:</label>
+        <textarea class="form-control" name="SuCo" rows="3"></textarea>
+      </div>
 
-        <div class="form-group">
-          <label for="SuCo">Sự Cố</label>
-          <textarea class="form-control" id="SuCo" name="SuCo" rows="3" placeholder="Ghi nhận sự cố (nếu có)..."></textarea>
-        </div>
+      <div class="form-group">
+        <label for="HinhAnhSuCo">Hình ảnh sự cố (nếu có):</label>
+        <input type="file" class="form-control" name="HinhAnhSuCo" accept="image/*">
+      </div>
 
-        <div class="form-group">
-          <label for="PhanHoiKhach">Phản Hồi Khách Hàng</label>
-          <textarea class="form-control" id="PhanHoiKhach" name="PhanHoiKhach" rows="3" placeholder="Ý kiến khách hàng..."></textarea>
-        </div>
+      <div class="form-group">
+        <label for="PhanHoiKhach">Phản Hồi Khách:</label>
+        <textarea class="form-control" name="PhanHoiKhach" rows="3"></textarea>
+      </div>
 
-        <div class="form-actions">
+      <div class="form-actions">
           <button type="submit" class="btn btn-primary">Lưu Nhật Ký</button>
           <a href="<?= BASE_URL ?>?mode=hdv&act=nhatkytour" class="btn btn-secondary">Hủy bỏ</a>
         </div>
-      </form>
+    </form>
     </div>
   </div>
 
@@ -215,3 +213,6 @@
   </script>
 </body>
 </html>
+
+
+
