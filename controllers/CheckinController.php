@@ -47,22 +47,30 @@ require_once './models/QuanlytourModel.php';
             }
             require_once './views/hdv/checkintour.php';
         }
-        public function updateCheckinStatus(){
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $MaKhach = $_POST['MaKhach'];
-                $MaQuanLy = $_POST['MaQuanLy'];
-                $TinhTrang = $_POST['TinhTrang'] ?? [];
-                  
-                foreach($statuses as $maKhach => $trangThai){
-                    $this->modelCheckin->updateCheckinStatus($MaQuanLy, $MaKhach, $TinhTrang);
-                }
-                
+        public function updateCheckinStatus()
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // Lấy các giá trị được gửi từ form của một khách hàng cụ thể
+        $MaKhach = $_POST['MaKhach'] ?? null;
+        $MaQuanLy = $_POST['MaQuanLy'] ?? null;
+        $TrangThai = $_POST['TrangThai'] ?? null; // Lấy giá trị từ select có name="TrangThai"
 
-                echo "<script>
-                    alert('Cập nhật tình trạng điểm danh thành công!');
-                    window.location.href = '?mode=hdv&act=checkin&MaQuanLy=$MaQuanLy';
-                  </script>";
-            }
+        if ($MaKhach && $MaQuanLy && $TrangThai) {
+            // Gọi hàm trong Model để cập nhật trạng thái
+            // Lưu ý: Tên hàm trong CheckinModel là `saveCheckin`, nó xử lý cả INSERT và UPDATE
+            $this->modelCheckin->saveCheckin($MaQuanLy, $MaKhach, $TrangThai);
+            
+            echo "<script>
+                alert('Cập nhật trạng thái điểm danh thành công!');
+                // Điều hướng quay lại trang check-in với tour đã chọn
+                window.location.href = '?mode=hdv&act=checkin&MaQuanLy=$MaQuanLy';
+            </script>";
+        } else {
+            // Xử lý lỗi nếu thiếu dữ liệu
+            header('Location: ?mode=hdv&act=checkin');
+            exit;
         }
+    }
+}
     }
 ?>
