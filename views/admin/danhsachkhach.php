@@ -61,7 +61,7 @@ require_once 'silderbar.php';
         <td><?= $value['SDT'] ?></td> 
         <td><?= $value['Email'] ?></td> 
         <td>
-          <span id="req-<?= $value['MaKhach'] ?>"><?= htmlspecialchars($value['YeuCauDacBiet']) ?></span>
+          <span id="req-<?= $value['MaKhach'] ?>"><?= htmlspecialchars($value['YeuCauDacBiet'] ?? '') ?></span>
           <br>
           <a href="javascript:void(0)"
                onclick="updateSpecialRequest(<?= $value['MaKhach'] ?>, '<?= htmlspecialchars($value['YeuCauDacBiet']) ?>')"
