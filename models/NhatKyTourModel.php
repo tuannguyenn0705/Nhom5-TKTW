@@ -10,7 +10,6 @@ class NhatKyTourModel
 
     public function getAll()
     {
-        // Lấy danh sách kèm tên HDV và Tên Tour
         $sql = "SELECT nk.*, 
                        n.HoTen AS TenHDV, 
                        q.TenTour
@@ -33,7 +32,6 @@ class NhatKyTourModel
 
     public function add($data)
     {
-        // THÊM HinhAnhSuCo VÀO SQL
         $sql = "INSERT INTO NhatKyTour (MaQuanLy, MaNhanSu, Ngay, SuKien, SuCo, HinhAnhSuCo, PhanHoiKhach) 
                 VALUES (:MaQuanLy, :MaNhanSu, :Ngay, :SuKien, :SuCo, :HinhAnhSuCo, :PhanHoiKhach)";
         $stmt = $this->conn->prepare($sql);
@@ -43,7 +41,7 @@ class NhatKyTourModel
             ':Ngay'         => $data['Ngay'],
             ':SuKien'       => $data['SuKien'],
             ':SuCo'         => $data['SuCo'],
-            ':HinhAnhSuCo'  => $data['HinhAnhSuCo'], // <-- Cột mới
+            ':HinhAnhSuCo'  => $data['HinhAnhSuCo'],
             ':PhanHoiKhach' => $data['PhanHoiKhach']
         ]);
         return $stmt->rowCount();
@@ -59,7 +57,6 @@ class NhatKyTourModel
 
     public function update($data)
     {
-       // THÊM HinhAnhSuCo VÀO SQL UPDATE
        $sql = "UPDATE NhatKyTour SET 
             Ngay = :Ngay, 
             SuKien = :SuKien,
@@ -75,7 +72,7 @@ class NhatKyTourModel
             ':Ngay'         => $data['Ngay'],
             ':SuKien'       => $data['SuKien'],
             ':SuCo'         => $data['SuCo'],
-            ':HinhAnhSuCo'  => $data['HinhAnhSuCo'], // <-- Cột mới
+            ':HinhAnhSuCo'  => $data['HinhAnhSuCo'],
             ':PhanHoiKhach' => $data['PhanHoiKhach'],
             ':MaQuanLy'     => $data['MaQuanLy'],
             ':MaNhanSu'     => $data['MaNhanSu'],

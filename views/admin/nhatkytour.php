@@ -1,21 +1,11 @@
 <?php require_once 'silderbar.php'; ?>
 <div class="container-fluid mt-4">
   
-  <!-- Page Title -->
   <h1 class="h3 mb-4 fw-bold text-primary">Quản Lý Nhật Ký Tour</h1>
 
   <div class="card shadow-sm">
     <div class="card-body">
       
-      <!-- Toolbar -->
-      <div class="d-flex justify-content-end mb-3">
-        <a href="<?= BASE_URL . '?mode=admin&act=formnhatkytour' ?>" 
-           class="btn btn-success rounded-pill shadow-sm px-4 d-inline-flex align-items-center custom-btn-lg">
-          <i class="bi bi-plus-circle me-2"></i> Thêm Nhật Ký Mới
-        </a>
-      </div>
-
-      <!-- Table -->
       <div class="table-responsive">
         <table class="table table-hover table-bordered align-middle">
           <thead class="table-dark">
@@ -89,7 +79,7 @@
             <?php else: ?>
                 <tr>
                     <td colspan="8" class="text-center text-muted py-5">
-                        Không tìm thấy dữ liệu nào.
+                        Chưa có dữ liệu nhật ký nào.
                     </td>
                 </tr>
             <?php endif; ?>
@@ -100,19 +90,14 @@
   </div>
 </div>
 
-<!-- CSS tuỳ chỉnh -->
 <style>
-.custom-btn, .custom-btn-lg {
+.custom-btn {
   transition: all 0.3s ease;
   font-weight: 500;
 }
-.custom-btn:hover, .custom-btn-lg:hover {
+.custom-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 12px rgba(0,0,0,0.25);
-}
-.btn-success.custom-btn-lg {
-  background: linear-gradient(135deg, #28a745, #20c997);
-  border: none;
 }
 .btn-warning.custom-btn {
   background: linear-gradient(135deg, #ffc107, #fd7e14);

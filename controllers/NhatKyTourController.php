@@ -21,14 +21,29 @@ class NhatKyTourController
 
     public function form()
     {
-        $tourModel = new QuanlytourModel();
-        $dsTour = $tourModel->getAll();
-        
-        // Thêm Model nhân sự để lấy danh sách HDV (cho drop-down)
-        $nhanSuModel = new NhanSuModel();
-        $dsNhanSu = $nhanSuModel->getAll();
+        if (isset($_GET['id_tour'])) {
+            $idTour = $_GET['id_tour'];
+            
+            require_once './models/QuanlytourModel.php';
+            $tourModel = new QuanlytourModel();
 
-        require_once './views/admin/addnhatkytour.php';
+            if ($tourModel->checkNhatKyExist($idTour)) {
+                echo "<script>alert('Tour này đã có nhật ký rồi!'); window.location.href='" . BASE_URL . "?mode=admin&act=quanlytour';</script>";
+                exit;
+            }
+            
+            $currentTour = $tourModel->getDetail($idTour);
+            
+            $assignedGuide = $tourModel->getAssignedGuide($idTour);
+            
+            if (!$assignedGuide) {
+                $assignedGuide = ['MaNhanSu' => '', 'HoTen' => 'Chưa phân công (Cần kiểm tra lại phân bố)'];
+            }
+
+            require_once './views/admin/addnhatkytour.php';
+        } else {
+            echo "<script>alert('Vui lòng chọn Tour đã hoàn thành để viết nhật ký!'); window.location.href='" . BASE_URL . "?mode=admin&act=quanlytour';</script>";
+        }
     }
 
     public function add()
@@ -36,11 +51,16 @@ class NhatKyTourController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data = $_POST;
 
-            // 1. XỬ LÝ UPLOAD ẢNH
+            require_once './models/QuanlytourModel.php';
+            $tourModel = new QuanlytourModel();
+            if ($tourModel->checkNhatKyExist($data['MaQuanLy'])) {
+                echo "<script>alert('Tour này đã có nhật ký!'); window.location.href='" . BASE_URL . "?mode=admin&act=quanlytour';</script>";
+                exit;
+            }
+
             $hinhAnh = null;
             if (isset($_FILES['HinhAnhSuCo']) && $_FILES['HinhAnhSuCo']['error'] == 0) {
                 $targetDir = "./uploads/";
-                // Đổi tên file để tránh trùng: time_tenfilegoc
                 $fileName = time() . "_" . basename($_FILES["HinhAnhSuCo"]["name"]);
                 $targetFilePath = $targetDir . $fileName;
 
@@ -50,7 +70,6 @@ class NhatKyTourController
             }
             $data['HinhAnhSuCo'] = $hinhAnh;
 
-            // 2. XỬ LÝ NULL CHO KHÓA NGOẠI
             if (empty($data['MaNhanSu'])) $data['MaNhanSu'] = null;
             if (empty($data['MaQuanLy'])) $data['MaQuanLy'] = null;
 
@@ -65,7 +84,9 @@ class NhatKyTourController
             $id = $_GET["id"];
             $nhatkytour = $this->modelNhatKyTour->getDetail($id);
             
-            // Cần lấy thêm danh sách tour và nhân sự để hiển thị form edit
+            require_once './models/QuanlytourModel.php';
+            require_once './models/NhanSuModel.php';
+            
             $tourModel = new QuanlytourModel();
             $dsTour = $tourModel->getAll();
             $nhanSuModel = new NhanSuModel();
@@ -78,19 +99,17 @@ class NhatKyTourController
     public function update()
     {
         if (isset($_POST['btn-update'])) {
-            // Lấy dữ liệu cũ để giữ lại ảnh nếu không up ảnh mới
             $id = $_POST['MaNhatKy'];
             $oldData = $this->modelNhatKyTour->getDetail($id);
             $hinhAnh = $oldData['HinhAnhSuCo']; 
 
-            // Kiểm tra nếu có file mới được upload
             if (isset($_FILES['HinhAnhSuCo']) && $_FILES['HinhAnhSuCo']['error'] == 0) {
                 $targetDir = "./uploads/";
                 $fileName = time() . "_" . basename($_FILES["HinhAnhSuCo"]["name"]);
                 $targetFilePath = $targetDir . $fileName;
 
                 if (move_uploaded_file($_FILES["HinhAnhSuCo"]["tmp_name"], $targetFilePath)) {
-                    $hinhAnh = $fileName; // Cập nhật tên ảnh mới
+                    $hinhAnh = $fileName; 
                 }
             }
 
@@ -102,7 +121,7 @@ class NhatKyTourController
                 'SuKien'       => $_POST['SuKien'] ?? '',
                 'SuCo'         => $_POST['SuCo'] ?? '',
                 'PhanHoiKhach' => $_POST['PhanHoiKhach'] ?? '',
-                'HinhAnhSuCo'  => $hinhAnh // Lưu tên ảnh
+                'HinhAnhSuCo'  => $hinhAnh 
             ];
 
             $this->modelNhatKyTour->update($data); 
@@ -116,7 +135,6 @@ class NhatKyTourController
             $id = $_GET["id"];
             $nhatkytour = $this->modelNhatKyTour->getDetail($id);
             
-            // Xóa ảnh khỏi thư mục uploads nếu tồn tại
             if (!empty($nhatkytour['HinhAnhSuCo']) && file_exists('./uploads/' . $nhatkytour['HinhAnhSuCo'])) {
                 unlink('./uploads/' . $nhatkytour['HinhAnhSuCo']);
             }

@@ -50,15 +50,6 @@
             </div>
 
             <div class="form-group">
-                <label>Trạng thái</label>
-                <select name="TrangThai" required>
-                    <option value="sắp khởi hành">Sắp khởi hành</option>
-                    <option value="đang diễn ra">Đang diễn ra</option>
-                    <option value="hoàn thành"> hoàn thành</option>
-                </select>
-            </div>
-          
-            <div class="form-group">
                 <label>Số Lượng Tối Đa</label>
                 <input type="number" name="SoLuongToiDa" required>
             </div>
@@ -95,7 +86,7 @@
 
 <script>
 function addLT() {
-    const id = Date.now(); // tạo id duy nhất cho mỗi lịch trình
+    const id = Date.now(); 
 
     const html = `
         <div class="lt-item" id="lt-${id}">

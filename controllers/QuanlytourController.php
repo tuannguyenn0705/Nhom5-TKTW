@@ -17,26 +17,41 @@ class QuanlytourController
 
     public function quanlytour()
     {
-        $data = $this->modelQuanlytour->getAll();
+        $allTours = $this->modelQuanlytour->getAll();
+        
+        $activeTours = [];
+        $completedTours = [];
+
+        foreach ($allTours as $tour) {
+            if (isset($_GET['keyword']) && $_GET['keyword'] != '') {
+                $keyword = trim($_GET['keyword']);
+                if (stripos($tour['TenTour'], $keyword) === false && $tour['MaQuanLy'] != $keyword) {
+                    continue;
+                }
+            }
+
+            if ($tour['TrangThai'] === 'hoàn thành') {
+                $completedTours[] = $tour;
+            } else {
+                $activeTours[] = $tour;
+            }
+        }
+
         require_once './views/admin/quanlytour.php';
     }
-  public function delete()
+
+    public function delete()
     {
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
             $quanlytour = $this->modelQuanlytour->getDetail($id);
-            if($quanlytour && strtoupper($quanlytour['VaiTro']) === 'ADMIN'){
-                echo "<script>
-                    alert('Không Được Phép Xóa Admin Quản Trị Cao Nhất!');
-                    </script>";
-                    exit;
-            };
 
             $this->modelQuanlytour->delete($_GET["id"]);
         }
 
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
     }
+
     public function form()
     {   
         $AdminModel = new AdminModel();
@@ -47,44 +62,41 @@ class QuanlytourController
         require_once './views/admin/addquanlytour.php';
 
     }
-   public function add()
+
+    public function add()
     {
-        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $data = $_POST;
-
             $this->modelQuanlytour->add($data);
         }
         
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
-
-        
     }
+
     public function edit()
-{
-    if (isset($_GET["id"])) {
-        $id = $_GET["id"];
-        
-        require_once './models/NhaCungCapMoDel.php';
-        $result = $this->modelQuanlytour->getDetail($id);
-        $lichtrinh = $this->modelQuanlytour->getLichTrinhByTour($id);
-        $listNCC = (new NhaCungCapMoDel())->getAll(); 
-        $AdminModel = new AdminModel();
-        $listDanhMuc = $AdminModel->getAll();
-        require_once './views/admin/editquanlytour.php';
+    {
+        if (isset($_GET["id"])) {
+            $id = $_GET["id"];
+            
+            require_once './models/NhaCungCapMoDel.php';
+            $result = $this->modelQuanlytour->getDetail($id);
+            $lichtrinh = $this->modelQuanlytour->getLichTrinhByTour($id);
+            $listNCC = (new NhaCungCapMoDel())->getAll(); 
+            $AdminModel = new AdminModel();
+            $listDanhMuc = $AdminModel->getAll();
+            require_once './views/admin/editquanlytour.php';
+        }
     }
-}
-     public function update()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
 
-        $data = $_POST;
-        $this->modelQuanlytour->update($data);
-        header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
-        exit;
+    public function update()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data = $_POST;
+            $this->modelQuanlytour->update($data);
+            header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
+            exit;
+        }
     }
-}
 
     public function detail(){
         if(isset($_GET["id"])){
@@ -97,16 +109,14 @@ class QuanlytourController
     }
 
     public function addlichtrinh()
-{
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $this->modelQuanlytour->addLichTrinh($_POST);
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->modelQuanlytour->addLichTrinh($_POST);
 
-        header("Location: " . BASE_URL .
-            "?mode=admin&act=detailquanlytour&id=" . $_POST['MaQuanLy']);
-        exit;
+            header("Location: " . BASE_URL .
+                "?mode=admin&act=detailquanlytour&id=" . $_POST['MaQuanLy']);
+            exit;
+        }
     }
 }
-}
-
-
 ?>

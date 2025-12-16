@@ -19,7 +19,6 @@ class LichLamModel{
     public function getUnassignedTours(){
         $sql = "SELECT * FROM quanlytour 
                 WHERE MaQuanLy NOT IN (SELECT DISTINCT MaQuanLy FROM lichlamviechdv)
-                AND TrangThai != 'hoàn thành' 
                 ORDER BY MaQuanLy DESC";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -36,14 +35,6 @@ class LichLamModel{
          $stmt->bindParam('NgayKetThuc',$_POST['NgayKetThuc']);
          $stmt->execute();
     }
-
-
-    // public function delete($id){
-    //     $sql = "DELETE FROM `lichlamviechdv` WHERE lichlamviechdv.MaLichHDV = :MaLichHDV";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->bindParam('MaLichHDV',$id);
-    //     $stmt->execute();
-    // }
 
     public function getOneLichLam($id){
         $sql = "SELECT * FROM `lichlamviechdv` WHERE lichlamviechdv.MaLichHDV = :MaLichHDV";
@@ -68,5 +59,4 @@ class LichLamModel{
          $stmt->execute();
     }
 }
-
 ?>
