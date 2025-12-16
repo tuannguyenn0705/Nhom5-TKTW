@@ -1,6 +1,12 @@
 <?php require_once './views/admin/silderbar.php' ?>
 <link rel="stylesheet" href="./views/css/editTour.css">
 
+<style>
+    .lt-item { background: #f9f9f9; padding: 15px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; position: relative; }
+    .btn-remove { background: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; position: absolute; top: 10px; right: 10px; }
+    .btn-add { background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-bottom: 20px; }
+</style>
+
 <div class="edit-tour-wrapper">
 <div class="card">
 
@@ -57,6 +63,11 @@
             </div>
 
             <div class="form-group">
+                <label>Chi Phí:</label>
+                <input type="number" name="ChiPhi" value="<?= $result['ChiPhi'] ?? 0 ?>" required>
+            </div>
+
+            <div class="form-group">
                 <label>Trạng Thái:</label>
                 <select name="TrangThai">
                     <option value="sắp khởi hành" <?= $result['TrangThai']=="sắp khởi hành" ? "selected" : "" ?>>Sắp khởi hành</option>
@@ -90,29 +101,59 @@
         <h2 class="schedule-title">📅 Lịch Trình Tour</h2>
 
         <div id="lichtrinh-area">
+            <?php 
+            if (!empty($lichtrinh)):
+                foreach($lichtrinh as $lt): 
+                    $uniqueId = uniqid(); 
+            ?>
+            <div class="lt-item" id="lt-<?= $uniqueId ?>">
+                <button type="button" class="btn-remove" onclick="removeLT('<?= $uniqueId ?>')">Xóa</button>
+                
+                <div class="form-group">
+                    <label>Ngày số:</label>
+                    <input type="number" name="NgaySo[]" value="<?= $lt['NgaySo'] ?>" required style="width: 100px;">
+                    <label style="margin-left: 20px;">Giờ:</label>
+                    <input type="time" name="Gio[]" value="<?= $lt['Gio'] ?>" required>
+                </div>
 
-            <?php foreach($lichtrinh as $lt): ?>
-            <div class="lt-item">
-
-                <input type="hidden" name="MaLichTrinh[]" value="<?= $lt['MaLichTrinh'] ?>">
-
-                <label>Ngày số:</label>
-                <input type="number" name="NgaySo[]" value="<?= $lt['NgaySo'] ?>" required>
-
-                <label>Giờ:</label>
-                <input type="time" name="Gio[]" value="<?= $lt['Gio'] ?>" required>
-
-                <label>Mô tả sự kiện:</label>
-                <textarea name="MoTaSuKien[]" required><?= $lt['MoTaSuKien'] ?></textarea>
-
+                <div class="form-group">
+                    <label>Mô tả sự kiện:</label>
+                    <textarea name="MoTaSuKien[]" required rows="3" style="width: 100%;"><?= $lt['MoTaSuKien'] ?></textarea>
+                </div>
             </div>
-            <?php endforeach; ?>
-
+            <?php endforeach; endif; ?>
         </div>
 
+        <button type="button" class="btn-add" onclick="addLT()">+ Thêm Lịch Trình</button>
+        <br><br>
         <button type="submit" class="btn-submit">Cập nhật Tour</button>
 
     </form>
+</div>
+</div>
 
-</div>
-</div>
+<script>
+function addLT() {
+    const id = Date.now(); 
+    const html = `
+        <div class="lt-item" id="lt-${id}">
+            <button type="button" class="btn-remove" onclick="removeLT(${id})">Xóa</button>
+            <div class="form-group">
+                <label>Ngày số:</label>
+                <input type="number" name="NgaySo[]" required style="width: 100px;">
+                <label style="margin-left: 20px;">Giờ:</label>
+                <input type="time" name="Gio[]" required>
+            </div>
+            <div class="form-group">
+                <label>Mô tả sự kiện:</label>
+                <textarea name="MoTaSuKien[]" required rows="3" style="width: 100%;"></textarea>
+            </div>
+        </div>
+    `;
+    document.getElementById("lichtrinh-area").insertAdjacentHTML("beforeend", html);
+}
+function removeLT(id) {
+    const element = document.getElementById("lt-" + id);
+    if(element) element.remove();
+}
+</script>

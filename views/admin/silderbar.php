@@ -41,15 +41,6 @@
         <a href="<?= BASE_URL . '?mode=admin&act=lichlamviechdv' ?>" class="menu-item" onclick="switchTab('work-schedule', this); return false;">
             <i class="fas fa-briefcase"></i> Phân Bố
         </a>
-        <!-- <a href="#" class="menu-item" onclick="switchTab('group-list', this); return false;">
-            <i class="fas fa-users"></i> Khách đoàn
-        </a> -->
-        <!-- <a href="#" class="menu-item" onclick="switchTab('guide-log', this); return false;">
-            <i class="fas fa-pen-nib"></i> Nhật ký HDV
-        </a> -->
-        <!-- <a href="#" class="menu-item" onclick="switchTab('requests', this); return false;">
-            <i class="fas fa-bell"></i> Yêu cầu đặc biệt
-        </a> -->
         <hr>
         <a href="<?= BASE_URL ?>?mode=admin&act=logout" class="menu-item" style="color: #ef4444;">
             <i class="fas fa-sign-out-alt"></i> Đăng xuất
@@ -80,6 +71,3 @@
                 </div>
             </div>
         </div>
-</body>
-
-</html>

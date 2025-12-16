@@ -9,23 +9,17 @@ class DashboardController
     }
 
     public function Dashboard() {
-        // 1. Lấy tham số filter
         $thang = isset($_GET['thang']) ? $_GET['thang'] : '';
         $nam   = isset($_GET['nam']) ? $_GET['nam'] : date('Y');
 
-        // 2. Gọi Model lấy dữ liệu
         $dashboard = $this->modelDashboard->getAllDashboard($thang, $nam);
 
-        // 3. Tính tổng hiển thị
         $totalDoanhThu = array_sum(array_column($dashboard, 'DoanhThu'));
         
-        // ĐÃ SỬA: Bỏ qua tính tổng chi phí (hoặc gán = 0)
-        $totalChiPhi   = 0; 
+        $totalChiPhi   = array_sum(array_column($dashboard, 'ChiPhi')); 
         
-        // Tổng lợi nhuận lúc này chính là tổng doanh thu
-        $totalLoiNhuan = array_sum(array_column($dashboard, 'LoiNhuan'));
+        $totalLoiNhuan = $totalDoanhThu - $totalChiPhi;
 
-        // 4. Load View
         require_once './views/admin/dashboard.php';
     }
 }

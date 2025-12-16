@@ -21,7 +21,7 @@ require_once 'silderbar.php';
       echo '<input type="hidden" name="act" value="' . htmlspecialchars($_GET['act']) . '">';
     }
     ?>
-    <input type="text" name="keyword" placeholder="Nhập tên danh mục..." value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
+    <input type="text" name="keyword" placeholder="Nhập tên khách, tên tour..." value="<?= htmlspecialchars($_GET['keyword'] ?? '') ?>">
     <button type="submit">Tìm kiếm</button>
   </form>
 
@@ -39,22 +39,17 @@ require_once 'silderbar.php';
     });
   }
   ?>
-  <!-- <a href="#" class="add-button">Thêm danh mục</a> -->
 </div>
-  <!-- <div class="menu">
-    <a href="?mode=admin&act=danhsachkhach&view=thongtin" class="active">thông tin</a>
-  
-    <a href="?mode=admin&act=danhsachkhach&view=checkin">checkin</a>
 
-    <a href="?mode=admin&act=danhsachkhach&view=yeucaudacbiet">yêu cầu đặc biệt</a>
-  </div> -->
-  <table border="1" cellpadding="8" cellspacing="0">
+<table border="1" cellpadding="8" cellspacing="0">
   <thead>
     <tr>
       <th>Mã Khách </th>
       <th>Đi Tour</th>
       <th>Họ Tên</th>
-      <th>SĐT</th> <th>Email</th> <th>Yêu cầu Đặc Biệt</th>
+      <th>SĐT</th> 
+      <th>Email</th> 
+      <th>Yêu cầu Đặc Biệt</th>
     </tr>
   </thead>
   <tbody>
@@ -63,16 +58,31 @@ require_once 'silderbar.php';
         <td><?= $value['MaKhach'] ?></td>
         <td><?= $value['TenTour'] ?? 'Tour không tồn tại' ?></td>
         <td><?= $value['HoTen'] ?></td>
-        <td><?= $value['SDT'] ?></td> <td><?= $value['Email'] ?></td> <td>
-          <?= $value['YeuCauDacBiet'] ?>
+        <td><?= $value['SDT'] ?></td> 
+        <td><?= $value['Email'] ?></td> 
+        <td>
+          <span id="req-<?= $value['MaKhach'] ?>"><?= htmlspecialchars($value['YeuCauDacBiet']) ?></span>
           <br>
           <a href="javascript:void(0)"
-               onclick="updateSpecialRequest(<?= $value['MaKhach'] ?>)"
-               style="font-size: 15px; color: blue;">[Sửa yêu cầu]</a>
+               onclick="updateSpecialRequest(<?= $value['MaKhach'] ?>, '<?= htmlspecialchars($value['YeuCauDacBiet']) ?>')"
+               style="font-size: 13px; color: blue; font-style: italic; text-decoration: none;">
+               <i class="bi bi-pencil"></i> [Sửa yêu cầu]
+          </a>
         </td>
       </tr>
     <?php } ?>
   </tbody>
 </table>
+
+<script>
+    function updateSpecialRequest(id, oldContent) {
+        let newContent = prompt("Nhập yêu cầu đặc biệt mới:", oldContent);
+        
+        if (newContent !== null) {
+            window.location.href = `?mode=admin&act=update_request&id=${id}&content=${encodeURIComponent(newContent)}`;
+        }
+    }
+</script>
+
 </body>
 </html>

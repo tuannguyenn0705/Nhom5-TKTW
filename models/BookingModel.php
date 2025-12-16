@@ -11,26 +11,25 @@ class BookingModel{
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
-        
     }
 
     public function insertBooking($data){
-        $sql = "INSERT INTO dattour (MaChiTietTour, TenKhachHang, SDT, Email, SoLuongKhach, DanhSachKhachDoan, TrangThai) 
-                VALUES (:maTour, :ten, :sdt, :email, :soluong, :dskhach, 'chờ xác nhận')";
+        $sql = "INSERT INTO dattour (MaChiTietTour, TenKhachHang, SDT, Email, SoLuongKhach, DanhSachKhachDoan, TrangThai, YeuCauDacBiet) 
+                VALUES (:maTour, :ten, :sdt, :email, :soluong, :dskhach, 'chờ xác nhận', :yeucau)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute($data);
     }
 
     public function updateStatus($id, $status){
-        $sql = "UPDATE dattour SET TrangThai = '$status' WHERE MaDatTour = $id";
+        $sql = "UPDATE dattour SET TrangThai = :status WHERE MaDatTour = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([':status' => $status, ':id' => $id]);
     }
 
     public function getBookingById($id){
-        $sql = "SELECT * FROM dattour WHERE MaDatTour = $id";
+        $sql = "SELECT * FROM dattour WHERE MaDatTour = :id";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([':id' => $id]);
         return $stmt->fetch();
     }
 
@@ -56,25 +55,23 @@ class BookingModel{
     }
 
     public function checkAvailability($maTour, $soLuongKhachMoi){
-        $sqlTour = "SELECT SoLuongToiDa FROM quanlytour WHERE MaQuanLy = $maTour";
+        $sqlTour = "SELECT SoLuongToiDa FROM quanlytour WHERE MaQuanLy = :maTour";
         $stmtTour = $this->conn->prepare($sqlTour);
-        $stmtTour->execute();
+        $stmtTour->execute([':maTour' => $maTour]);
         $tour = $stmtTour->fetch();
 
         if(!$tour) return false;
         $max = $tour['SoLuongToiDa'];
 
         $sqlCount = "SELECT SUM(SoLuongKhach) as DaDat FROM dattour 
-                     WHERE MaChiTietTour = $maTour AND TrangThai != 'đã hủy'";
+                       WHERE MaChiTietTour = :maTour AND TrangThai != 'đã hủy'";
         $stmtCount = $this->conn->prepare($sqlCount);
-        $stmtCount->execute();
+        $stmtCount->execute([':maTour' => $maTour]);
         $result = $stmtCount->fetch();
         $current = $result['DaDat'] ?? 0;
 
         if(($current + $soLuongKhachMoi) > $max) return false;
         return true;
     }
-    
 }
-
 ?>

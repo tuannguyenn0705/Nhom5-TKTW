@@ -1,5 +1,4 @@
 <?php
-
 class QuanlytourModel 
 {
     public $conn;
@@ -44,6 +43,7 @@ class QuanlytourModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
     public function delete($id)
     {
         $sql = "DELETE FROM QuanLyTour WHERE MaQuanLy = :MaQuanLy"; 
@@ -64,11 +64,12 @@ class QuanlytourModel
         }
 
         $sql = "INSERT INTO QuanLyTour 
-            (TenTour, MaDanhMuc, NgayBatDau, NgayKetThuc, Gia, TrangThai, SoLuongToiDa, 
+            (TenTour, MaDanhMuc, NgayBatDau, NgayKetThuc, Gia, ChiPhi, TrangThai, SoLuongToiDa, 
              MaNCC, TenTaiXe, BienSoXe, SdtTaiXe)
             VALUES 
-            (:TenTour, :MaDanhMuc, :NgayBatDau, :NgayKetThuc, :Gia, :TrangThai, :SoLuongToiDa,
+            (:TenTour, :MaDanhMuc, :NgayBatDau, :NgayKetThuc, :Gia, :ChiPhi, :TrangThai, :SoLuongToiDa,
              :MaNCC, :TenTaiXe, :BienSoXe, :SdtTaiXe)";
+        
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             ':TenTour' => $data['TenTour'],
@@ -76,6 +77,7 @@ class QuanlytourModel
             ':NgayBatDau'=> $data['NgayBatDau'],
             ':NgayKetThuc'=> $data['NgayKetThuc'],
             ':Gia' => $data['Gia'],
+            ':ChiPhi' => $data['ChiPhi'],
             ':TrangThai'=> $trangThai, 
             ':SoLuongToiDa'=> $data['SoLuongToiDa'],
             ':MaNCC' =>$data['MaNCC'],
@@ -126,6 +128,7 @@ class QuanlytourModel
                 NgayBatDau = :NgayBatDau,
                 NgayKetThuc = :NgayKetThuc,
                 Gia = :Gia,
+                ChiPhi = :ChiPhi,
                 TrangThai = :TrangThai,
                 SoLuongToiDa = :SoLuongToiDa,
                 MaNCC = :MaNCC,
@@ -141,6 +144,7 @@ class QuanlytourModel
             ':NgayBatDau'=>$data['NgayBatDau'],
             ':NgayKetThuc'=>$data['NgayKetThuc'],
             ':Gia'=>$data['Gia'],
+            ':ChiPhi'=>$data['ChiPhi'],
             ':TrangThai'=>$trangThai,
             ':SoLuongToiDa'=>$data['SoLuongToiDa'],
             ':MaNCC'=>$data['MaNCC'],
@@ -149,21 +153,25 @@ class QuanlytourModel
             ':SdtTaiXe'=>$data['SdtTaiXe'],
             ':MaQuanLy'=>$data['MaQuanLy'],
         ]);
-        if(!empty($data['MaLichTrinh']) && is_array($data['MaLichTrinh'])){
-        for ($i = 0; $i < count($data['MaLichTrinh']); $i++ ) {
-            $sql2= "UPDATE lichtrinh SET
-                        NgaySo = :NgaySo,
-                        Gio = :Gio,
-                        MoTaSuKien = :MoTaSuKien
-                     WHERE MaLichTrinh = :MaLichTrinh";
-            $stmt2 =$this->conn->prepare($sql2);
-            $stmt2->execute([
-                ':NgaySo'=>$data['NgaySo'][$i],
-                ':Gio'=>$data['Gio'][$i],
-                ':MoTaSuKien'=>$data['MoTaSuKien'][$i],
-                ':MaLichTrinh'=>$data['MaLichTrinh'][$i],
-            ]);
-        }
+
+        $sqlDelete = "DELETE FROM lichtrinh WHERE MaQuanLy = :MaQuanLy";
+        $stmtDelete = $this->conn->prepare($sqlDelete);
+        $stmtDelete->execute([':MaQuanLy' => $data['MaQuanLy']]);
+
+        if(!empty($data['NgaySo']) && is_array($data['NgaySo'])){
+            foreach ($data['NgaySo'] as $i => $ngay) {
+                if(!empty($ngay) && !empty($data['Gio'][$i]) && !empty($data['MoTaSuKien'][$i])) {
+                    $sqlInsert = "INSERT INTO lichtrinh (MaQuanLy, NgaySo, Gio, MoTaSuKien)
+                                  VALUES (:MaQuanLy, :NgaySo, :Gio, :MoTaSuKien)";
+                    $stmtInsert = $this->conn->prepare($sqlInsert);
+                    $stmtInsert->execute([
+                        ':MaQuanLy' => $data['MaQuanLy'],
+                        ':NgaySo' => $ngay,
+                        ':Gio' => $data['Gio'][$i],
+                        ':MoTaSuKien' => $data['MoTaSuKien'][$i]
+                    ]);
+                }
+            }
         }
         
         return true;

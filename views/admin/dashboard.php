@@ -1,11 +1,9 @@
 <?php
-// Kiểm tra biến tồn tại để tránh lỗi nếu chạy trực tiếp view
 $dashboard = isset($dashboard) ? $dashboard : [];
 $totalDoanhThu = isset($totalDoanhThu) ? $totalDoanhThu : 0;
 $totalChiPhi = isset($totalChiPhi) ? $totalChiPhi : 0;
 $totalLoiNhuan = isset($totalLoiNhuan) ? $totalLoiNhuan : 0;
 
-// Gọi sidebar (giữ nguyên tên file của bạn)
 require_once 'silderbar.php';
 ?>
 
@@ -20,8 +18,6 @@ require_once 'silderbar.php';
     
     <style>
         body { background-color: #f4f6f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        
-        /* Card Styles */
         .card-box { 
             border-radius: 12px; 
             border: none; 
@@ -40,12 +36,10 @@ require_once 'silderbar.php';
             bottom: 10px;
         }
         
-        /* Gradients */
         .bg-gradient-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .bg-gradient-warning { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
         .bg-gradient-success { background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); color: #0f5132 !important;} 
         
-        /* Table Styles */
         .table-container { 
             background: white; 
             border-radius: 12px; 
@@ -61,7 +55,6 @@ require_once 'silderbar.php';
             border-bottom-width: 2px;
         }
         
-        /* Helpers */
         .fw-bold-money { font-weight: 700; font-family: 'Consolas', 'Monaco', monospace; letter-spacing: -0.5px; }
         .text-success-dark { color: #198754; } 
         .text-danger-dark { color: #dc3545; }
@@ -74,36 +67,6 @@ require_once 'silderbar.php';
         <div>
             <h3 class="fw-bold text-dark mb-1"><i class="fas fa-chart-pie me-2 text-primary"></i>Hiệu Quả Kinh Doanh</h3>
             <p class="text-muted mb-0">Thống kê doanh thu, chi phí và lợi nhuận theo từng Tour</p>
-        </div>
-<div class="card p-2 border-0 shadow-sm">
-            <form class="d-flex gap-2" method="GET" action="">
-                <?php if(isset($_GET['act'])): ?>
-                    <input type="hidden" name="act" value="<?= htmlspecialchars($_GET['act']) ?>">
-                <?php endif; ?>
-
-                <select class="form-select border-0 bg-light fw-bold" name="thang">
-                    <option value="">Tất cả tháng</option>
-                    <?php for($i=1; $i<=12; $i++): ?>
-                        <option value="<?= $i ?>" <?= (isset($_GET['thang']) && $_GET['thang'] == $i) ? 'selected' : '' ?>>
-                            Tháng <?= $i ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-
-                <select class="form-select border-0 bg-light fw-bold" name="nam">
-                    <?php 
-                    $currentYear = date('Y');
-                    for($y = $currentYear; $y >= $currentYear - 2; $y--): ?>
-                        <option value="<?= $y ?>" <?= (isset($_GET['nam']) && $_GET['nam'] == $y) ? 'selected' : '' ?>>
-                            Năm <?= $y ?>
-                        </option>
-                    <?php endfor; ?>
-                </select>
-
-                <button type="submit" class="btn btn-primary px-4">
-                    <i class="fas fa-filter me-1"></i> Lọc
-                </button>
-            </form>
         </div>
     </div>
 

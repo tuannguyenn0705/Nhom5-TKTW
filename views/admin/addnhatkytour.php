@@ -16,7 +16,7 @@
 
 <div class="main-container">
   <div class="form-container">
-    <h1>Viết Nhật Ký Tour (Kết thúc)</h1>
+    <h1>Viết Nhật Ký Tour</h1>
     
     <form action="<?= BASE_URL . '?mode=admin&act=addnhatkytour' ?>" method="POST" enctype="multipart/form-data">
 

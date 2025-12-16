@@ -10,26 +10,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Biến màu sắc */
     :root {
       --primary-color: #4f46e5; 
       --bg-gray: #f3f4f6;
       --text-dark: #1f2937;
       --border-color: #e5e7eb;
     }
-
-    /* QUAN TRỌNG: Chỉ reset box-sizing, KHÔNG can thiệp vào body 
-       để tránh làm hỏng sidebar của bạn 
-    */
     * { box-sizing: border-box; }
     
     body {
         font-family: 'Inter', sans-serif;
         background-color: var(--bg-gray);
-        /* Giữ nguyên margin/padding mặc định của admin template nếu có */
     }
 
-    /* Wrapper này sẽ giúp căn giữa form trong vùng nội dung còn lại */
     .main-content-wrapper {
         display: flex;
         justify-content: center;
@@ -38,15 +31,14 @@
         width: 100%;
     }
 
-    /* Thẻ Card chứa form */
     .edit-card {
       background: #ffffff;
       width: 100%;
-      max-width: 700px; /* Giới hạn chiều rộng form */
+      max-width: 700px;
       border-radius: 12px;
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
       padding: 35px;
-      margin: 0 20px; /* Cách lề 2 bên một chút trên mobile */
+      margin: 0 20px;
     }
 
     .form-header {
@@ -68,15 +60,14 @@
         font-size: 14px;
     }
 
-    /* Grid layout cho form */
     .admin-form {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* Chia 2 cột */
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
 
     .full-width {
-      grid-column: 1 / -1; /* Chiếm hết chiều rộng */
+      grid-column: 1 / -1; 
     }
 
     .form-group {
@@ -91,7 +82,6 @@
       margin-bottom: 8px;
     }
 
-    /* Style cho input và select */
     .admin-form input[type="text"],
     .admin-form input[type="date"],
     .admin-form select {
@@ -103,7 +93,7 @@
       background-color: #fff;
       transition: all 0.2s;
       outline: none;
-      height: 42px; /* Chiều cao cố định cho đẹp */
+      height: 42px; 
     }
 
     .admin-form input:focus,
@@ -112,7 +102,6 @@
       box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
     }
 
-    /* Input bị khóa (Read only) */
     .input-locked {
         background-color: #f9fafb !important;
         color: #9ca3af !important;
@@ -120,7 +109,6 @@
         border-color: #f3f4f6 !important;
     }
 
-    /* Nút bấm */
     .form-actions {
       grid-column: 1 / -1;
       display: flex;

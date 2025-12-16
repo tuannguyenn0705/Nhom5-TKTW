@@ -4,19 +4,21 @@ class LichLamController
 {
     public function viewLichLamAdmin() {
         $lichLam = new LichLamModel();
-
-        $lichLamModel = new LichLamModel();
-
-        $listAssigned = $lichLamModel->getAllLichLam();
-        $listUnassigned = $lichLamModel->getUnassignedTours();
-
-        $data = $lichLam -> getAllLichLam();
+        $listAssigned = $lichLam->getAllLichLam();
+        $listUnassigned = $lichLam->getUnassignedTours();
+        $data = $listAssigned; 
         require_once './views/admin/lichlamviec.php';
     }
 
     public function viewLichLamHDV() {
+        if (!isset($_SESSION['user']) || empty($_SESSION['user']['MaNhanSu'])) {
+            header('Location: ?mode=login'); exit;
+        }
+        $maHDV = $_SESSION['user']['MaNhanSu'];
+
         $lichLam = new LichLamModel();
-        $data = $lichLam -> getAllLichLam();
+        $data = $lichLam->getLichLamByHDV($maHDV); 
+        
         require_once './views/hdv/LichLamViecHDV.php';
     }
 
@@ -40,13 +42,6 @@ class LichLamController
         }
     }
 
-    // public function deleteLichLam(){
-    //     $lichLam = new LichLamModel();
-    //     $data = $lichLam->delete($_GET['id']);
-    //     header("location: ".BASE_URL.'?mode=admin&act=lichlamviechdv');
-    //     exit;
-    // }
-
     public function editLichLam(){
         $lichLam = new LichLamModel();
         $data = $lichLam->getOneLichLam($_GET['id']);
@@ -65,4 +60,4 @@ class LichLamController
         exit;
     }
 }
-
+?>

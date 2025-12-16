@@ -5,11 +5,26 @@ class DsKhachModel{
     {
         $this -> conn = connectDB();
     }
+
     public function getAllDsKhach(){
-        $sql = "SELECT k.*, q.TenTour 
+        $sql = "SELECT k.*, q.TenTour, c.TrangThai
             FROM khachthamgiatour k 
-            LEFT JOIN quanlytour q ON k.MaQuanLy = q.MaQuanLy";
+            LEFT JOIN quanlytour q ON k.MaQuanLy = q.MaQuanLy
+            LEFT JOIN checkin c ON c.MaKhach = k.MaKhach AND c.MaQuanLy = k.MaQuanLy
+            ORDER BY k.MaKhach DESC";
         $stmt = $this->conn->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllDsKhachByHDV($maHDV){
+        $sql = "SELECT k.*, q.TenTour, c.TrangThai
+                FROM khachthamgiatour k 
+                JOIN quanlytour q ON k.MaQuanLy = q.MaQuanLy
+                JOIN lichlamviechdv l ON l.MaQuanLy = q.MaQuanLy
+                LEFT JOIN checkin c ON c.MaKhach = k.MaKhach AND c.MaQuanLy = k.MaQuanLy
+                WHERE l.MaNhanSu = :maHDV";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':maHDV' => $maHDV]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -32,7 +47,5 @@ class DsKhachModel{
             $stmt->execute(['maql' => $MaQuanLy]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 }
-
 ?>

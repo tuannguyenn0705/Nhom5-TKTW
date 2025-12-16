@@ -10,16 +10,29 @@ class LoginController
             if($data){
                 $_SESSION['user'] = $data;
 
-                // Kiểm tra role
-                if ($data['Role'] == '1') {
-                    header('Location: ' . BASE_URL . '?mode=admin&act=danhmuctour');  // Admin
+                if ($data['Role'] == '0') {
+                    require_once './models/NhanSuModel.php';
+                    $nhanSuModel = new NhanSuModel();
+                    $infoNhanSu = $nhanSuModel->getNhanSuByEmail($data['Email']);
+                    
+                    if ($infoNhanSu) {
+                        $_SESSION['user']['MaNhanSu'] = $infoNhanSu['MaNhanSu'];
+                        $_SESSION['user']['HoTen'] = $infoNhanSu['HoTen'];
+                    } else {
+                        echo "<script>alert('Lỗi: Tài khoản chưa liên kết với hồ sơ Nhân sự. Liên hệ Admin.'); window.location.href='".BASE_URL."';</script>";
+                        exit;
+                    }
+                    
+                    header('Location: ' . BASE_URL . '?mode=hdv&act=lichlamviec'); 
                     exit;
-                } else if ($data['Role'] == '0') {
-                    header('Location: ' . BASE_URL . '?mode=hdv&act=lichlamviec');  // Hướng dẫn viên
+                } 
+                
+                else if ($data['Role'] == '1') {
+                    header('Location: ' . BASE_URL . '?mode=admin&act=danhmuctour');
                     exit;
                 }
             } else {
-                $_SESSION['failed'] = 'Vui lòng đăng nhập lại';
+                $_SESSION['failed'] = 'Email hoặc mật khẩu không đúng!';
                 header('Location: ' . BASE_URL . '/');
                 exit;
             }
@@ -28,9 +41,10 @@ class LoginController
         }
     } 
     public function logout(){
-        $user = new LoginModel();
-        $data = $user->logout();
+        session_unset();
+        session_destroy();
         header('location:'.BASE_URL);
         exit;
     }
 }
+?>

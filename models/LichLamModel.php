@@ -16,6 +16,18 @@ class LichLamModel{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getLichLamByHDV($maHDV){
+        $sql = "SELECT l.*, n.HoTen, q.TenTour, q.NgayBatDau, q.NgayKetThuc, q.TrangThai, q.MaQuanLy
+                FROM lichlamviechdv l
+                JOIN nhansu n ON l.MaNhanSu = n.MaNhanSu
+                JOIN quanlytour q ON l.MaQuanLy = q.MaQuanLy
+                WHERE l.MaNhanSu = :maHDV
+                ORDER BY q.NgayBatDau DESC";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':maHDV' => $maHDV]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getUnassignedTours(){
         $sql = "SELECT * FROM quanlytour 
                 WHERE MaQuanLy NOT IN (SELECT DISTINCT MaQuanLy FROM lichlamviechdv)

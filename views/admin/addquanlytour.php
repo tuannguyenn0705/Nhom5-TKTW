@@ -45,8 +45,13 @@
             </div>
 
             <div class="form-group">
-                <label>Giá Tour</label>
+                <label>Giá</label>
                 <input type="number" name="Gia" required>
+            </div>
+
+            <div class="form-group">
+                <label>Chi Phí</label>
+                <input type="number" name="ChiPhi" required placeholder="Nhập vốn bỏ ra cho 1 khách">
             </div>
 
             <div class="form-group">

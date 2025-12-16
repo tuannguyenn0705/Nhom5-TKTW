@@ -14,8 +14,6 @@ require_once 'silderbar.php';
         <select name="MaNhanSu" required>
             <option value="">-- Chọn HDV --</option>
             <?php foreach($dataNhanSu as $value){ 
-                // LOGIC MỚI: Kiểm tra chính xác cột VaiTro trong database của bạn
-                // Nếu VaiTro là ADMIN (viết hoa hay thường đều check được) thì bỏ qua
                 if(strtoupper($value['VaiTro']) === 'ADMIN') {
                     continue; 
                 }
@@ -30,10 +28,8 @@ require_once 'silderbar.php';
       <div class="form-group">
         <label>Tour cần phân công</label>
         <?php 
-            // Lấy ID tour từ trên thanh địa chỉ (nếu có)
             $id_tour_request = isset($_GET['id_tour']) ? $_GET['id_tour'] : null;
             
-            // Nếu có ID tour -> Thêm style khóa chuột (pointer-events: none) và nền xám
             $style_lock = $id_tour_request ? 'pointer-events: none; background-color: #e9ecef;' : '';
         ?>
         
@@ -41,8 +37,6 @@ require_once 'silderbar.php';
             <option value="">-- Chọn Tour --</option>
             <?php foreach($dataQuanLy as $value){ 
                 
-                // LOGIC MỚI: Nếu đang phân công cho 1 tour cụ thể, thì ẨN TẤT CẢ các tour khác
-                // Chỉ hiển thị đúng tour có ID trùng khớp
                 if($id_tour_request && $value['MaQuanLy'] != $id_tour_request) {
                     continue;
                 }
@@ -78,7 +72,6 @@ require_once 'silderbar.php';
 <script>
     function updateDates() {
         var select = document.getElementById('selectTour');
-        // Kiểm tra xem có option nào được chọn không
         if(select.selectedIndex === -1) return;
 
         var selectedOption = select.options[select.selectedIndex];
@@ -95,7 +88,6 @@ require_once 'silderbar.php';
         }
     }
 
-    // Tự động chạy hàm khi trang vừa load xong để điền ngày cho tour đang chọn sẵn
     window.onload = function() {
         updateDates();
     };

@@ -8,20 +8,15 @@ class DsKhachController
     {
         $this->modelDsKhach = new DsKhachModel();
     }
+    
     public function DanhsachKhach() {
-      
         $dskhach = $this->modelDsKhach->getAllDsKhach();
         require_once './views/admin/danhsachkhach.php';
     }
 
-    public function AlldanhsachKhachHDV() {
-        $dskhach = $this->modelDsKhach->getAllDsKhach();
-        require_once './views/hdv/dsachkhachAll.php';
-    }
-
     public function DanhsachKhachHDV() {
-      
         $dskhach = $this->modelDsKhach->getAllDsKhach();
+        
         require_once './views/hdv/danhsachkhachhdv.php';
     }
 
@@ -38,8 +33,13 @@ class DsKhachController
 
             $this->modelDsKhach->updateRequest($id, $content);
         }
-        header('Location: ?mode=admin&act=danhsachkhach');
+        
+        if(isset($_SESSION['user']) && $_SESSION['user']['Role'] == '1') {
+             header('Location: ?mode=admin&act=danhsachkhach');
+        } else {
+             header('Location: ?mode=hdv&act=danhsachkhach');
+        }
         exit();
     }
 }
-
+?>

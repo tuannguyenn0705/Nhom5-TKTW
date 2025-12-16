@@ -5,42 +5,41 @@ require_once './controllers/CheckinController.php';
 require_once './controllers/NhatKyTourHDVController.php';
 
 $act = $_GET['act'] ?? '/';
-if(isset($_SESSION['user'])&& $_SESSION['user']['Role'] == '0'){
+
+if(isset($_SESSION['user']) && $_SESSION['user']['Role'] == '0'){
     match ($act) {
-    // Trang chủ
-    '/'=>(new HdvController())->HomeHdv(),
-    'logout' =>(new LoginController())->logout(),
+        // Trang chủ
+        '/' => (new HdvController())->HomeHdv(),
+        'logout' => (new LoginController())->logout(),
 
-    //lich lam viec 
-    'lichlamviec' =>(new LichLamController())->viewLichLamHDV(),
-    'danhsachkhachhdv'=>(new DsKhachController())->DanhsachKhachHDV(),
+        // Lịch làm việc 
+        'lichlamviec' => (new LichLamController())->viewLichLamHDV(),
 
-    //
-    'lichtrinhtour' => (new LichTrinhController())->lichTrinhHDV(),
-    //danh sach khach theo tour
-    'DSachKhachHDVByTour' =>(new DsKhachController())->DSachKhachHDVByTour(),
-    //danh sách khách(tất cả)
-    'danhsachkhach' => (new DsKhachController())->AlldanhsachKhachHDV(),
-    
+        // Danh sách khách
+        'danhsachkhach' => (new DsKhachController())->DanhsachKhachHDV(),
+        'DSachKhachHDVByTour' => (new DsKhachController())->DSachKhachHDVByTour(),
+        
+        'update_request' => (new DsKhachController())->update_request(),
 
-     //nhat ky tour
-     'nhatkytour' => (new NhatKyTourHDVController())->nhatkytour(),
-     'xoanhatkytour' => (new NhatKyTourHDVController())->delete(),
-     'formnhatkytour' => (new NhatKyTourHDVController())->form(),
-    'addnhatkytour' => (new NhatKyTourHDVController())->add(),
-    'editnhatkytour' => (new NhatKyTourHDVController())->edit(),
-    'updatenhatkytour' => (new NhatKyTourHDVController())->update(),
+        // Lịch trình tour
+        'lichtrinhtour' => (new LichTrinhController())->lichTrinhHDV(),
 
-     // check-in
-     'checkin_form' => (new CheckinController())->formCheckin(),
-     'checkin_store' => (new CheckinController())->storeCheckin(),
-     'checkin' => (new CheckinController())->Checkin(),
-     'updateCheckinStatus' => (new CheckinController())->updateCheckinStatus(),
-};
+        // Nhật ký tour
+        'nhatkytour' => (new NhatKyTourHDVController())->nhatkytour(),
+        'formnhatkytour' => (new NhatKyTourHDVController())->form(),
+        'addnhatkytour' => (new NhatKyTourHDVController())->add(),
+        'editnhatkytour' => (new NhatKyTourHDVController())->edit(),
+        'updatenhatkytour' => (new NhatKyTourHDVController())->update(),
 
-}else{
+        // Check-in
+        'checkin_form' => (new CheckinController())->formCheckin(),
+        'checkin_store' => (new CheckinController())->storeCheckin(),
+        'checkin' => (new CheckinController())->Checkin(),
+        'updateCheckinStatus' => (new CheckinController())->updateCheckinStatus(),
+    };
+
+} else {
     header("Location: ". BASE_URL);
     exit;
 }
-
 ?>

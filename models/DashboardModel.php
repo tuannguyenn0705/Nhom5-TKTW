@@ -25,17 +25,22 @@ class DashboardModel {
                 qt.NgayKetThuc, 
                 dm.TenDanhMuc,
                 
-                -- TÍNH TỔNG DOANH THU
+                -- TÍNH DOANH THU (Giá Bán * Số Khách)
                 (
                     SELECT COALESCE(SUM(dt.SoLuongKhach * qt.Gia), 0)
                     FROM DatTour dt
-                    -- ĐÃ SỬA: Thay dt.MaQuanLy thành dt.MaChiTietTour
                     WHERE dt.MaChiTietTour = qt.MaQuanLy 
                     AND dt.TrangThai = 'đã xác nhận'
                 ) AS DoanhThu,
 
-                -- Tạm thời gán ChiPhi = 0 để tránh lỗi (bạn có thể cập nhật logic sau)
-                0 AS ChiPhi
+                -- TÍNH TỔNG CHI PHÍ (Chi Phí Gốc/Người * Số Khách)
+                (
+                    (SELECT COALESCE(SUM(dt.SoLuongKhach), 0)
+                     FROM DatTour dt
+                     WHERE dt.MaChiTietTour = qt.MaQuanLy 
+                     AND dt.TrangThai = 'đã xác nhận') 
+                    * COALESCE(qt.ChiPhi, 0)
+                ) AS ChiPhi
 
             FROM quanlytour qt
             JOIN DanhMucTour dm ON qt.MaDanhMuc = dm.MaDanhMuc
@@ -56,7 +61,6 @@ class DashboardModel {
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Tính lợi nhuận sau khi đã có kết quả
         foreach ($result as &$row) {
             $row['LoiNhuan'] = $row['DoanhThu'] - $row['ChiPhi']; 
         }

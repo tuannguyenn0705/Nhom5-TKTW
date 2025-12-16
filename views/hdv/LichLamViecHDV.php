@@ -32,7 +32,7 @@
                         
                         <tr>
                             <td>Mã Lịch HDV</td>
-                            <th>Mã Quản Lý</th>
+                            <!-- <th>Mã Quản Lý</th> -->
                             <th>Mã nhân sự</th>
                             <th>Tour</th>
                             <th>Ngày khởi hành</th>
@@ -45,7 +45,7 @@
                         <?php foreach($data as $value): ?>
                         <tr>
                             <td><?= $value['MaLichHDV'] ?></td>
-                            <td><?= $value['TenTour'] ?></td>
+                            <!-- <td><?= $value['TenTour'] ?></td> -->
                             <td><?=  $value['HoTen'] ?></td>
                             <td><?= $value['TenTour']  ?></td>
                             <td><?= $value['NgayBatDau'] ?></td>

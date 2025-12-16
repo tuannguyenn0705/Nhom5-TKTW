@@ -17,24 +17,13 @@ class QuanlytourController
 
     public function quanlytour()
     {
-        $allTours = $this->modelQuanlytour->getAll();
+        $data = $this->modelQuanlytour->getAll();
         
-        $activeTours = [];
-        $completedTours = [];
-
-        foreach ($allTours as $tour) {
-            if (isset($_GET['keyword']) && $_GET['keyword'] != '') {
-                $keyword = trim($_GET['keyword']);
-                if (stripos($tour['TenTour'], $keyword) === false && $tour['MaQuanLy'] != $keyword) {
-                    continue;
-                }
-            }
-
-            if ($tour['TrangThai'] === 'hoàn thành') {
-                $completedTours[] = $tour;
-            } else {
-                $activeTours[] = $tour;
-            }
+        if (isset($_GET['keyword']) && $_GET['keyword'] != '') {
+            $keyword = trim($_GET['keyword']);
+            $data = array_filter($data, function ($tour) use ($keyword) {
+                return stripos($tour['TenTour'], $keyword) !== false || $tour['MaQuanLy'] == $keyword;
+            });
         }
 
         require_once './views/admin/quanlytour.php';
@@ -43,12 +32,8 @@ class QuanlytourController
     public function delete()
     {
         if (isset($_GET["id"])) {
-            $id = $_GET["id"];
-            $quanlytour = $this->modelQuanlytour->getDetail($id);
-
             $this->modelQuanlytour->delete($_GET["id"]);
         }
-
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
     }
 
@@ -60,7 +45,6 @@ class QuanlytourController
         $NCCmodel = new NhaCungCapMoDel;
         $listNCC = $NCCmodel->getALl();
         require_once './views/admin/addquanlytour.php';
-
     }
 
     public function add()
@@ -69,7 +53,6 @@ class QuanlytourController
             $data = $_POST;
             $this->modelQuanlytour->add($data);
         }
-        
         header("location:" . BASE_URL . '?mode=admin&act=quanlytour');
     }
 
@@ -77,7 +60,6 @@ class QuanlytourController
     {
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
-            
             require_once './models/NhaCungCapMoDel.php';
             $result = $this->modelQuanlytour->getDetail($id);
             $lichtrinh = $this->modelQuanlytour->getLichTrinhByTour($id);
@@ -102,7 +84,6 @@ class QuanlytourController
         if(isset($_GET["id"])){
             $id = $_GET['id'];
             $tour = $this->modelQuanlytour->getDetailTour($id);
-
             $lichtrinh =$this->modelQuanlytour->getLichTrinhByTour($id);
             require_once "./views/admin/chitiettour.php";
         }
@@ -112,9 +93,7 @@ class QuanlytourController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->modelQuanlytour->addLichTrinh($_POST);
-
-            header("Location: " . BASE_URL .
-                "?mode=admin&act=detailquanlytour&id=" . $_POST['MaQuanLy']);
+            header("Location: " . BASE_URL . "?mode=admin&act=detailquanlytour&id=" . $_POST['MaQuanLy']);
             exit;
         }
     }

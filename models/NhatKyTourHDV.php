@@ -8,31 +8,34 @@ class NhatKyTourHDVModel
         $this->conn = connectDB();
     }
 
-    public function getAll()
+    public function getAll($maHDV)
     {
-        $sql = "SELECT nk.*, 
-                       n.HoTen AS TenHDV, 
-                       q.TenTour
+        $sql = "SELECT nk.*, n.HoTen AS TenHDV, q.TenTour
                 FROM NhatKyTour nk
                 LEFT JOIN NhanSu n ON nk.MaNhanSu = n.MaNhanSu
                 LEFT JOIN QuanLyTour q ON nk.MaQuanLy = q.MaQuanLy
+                WHERE nk.MaNhanSu = :maHDV
                 ORDER BY nk.Ngay DESC";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute();
+        $stmt->execute([':maHDV' => $maHDV]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function delete($id)
-    {
-        $sql = "DELETE FROM NhatKyTour WHERE MaNhatKy = :MaNhatKy"; 
+    public function getEligibleToursForHDV($maHDV) {
+        $sql = "SELECT q.MaQuanLy, q.TenTour 
+                FROM lichlamviechdv l
+                JOIN quanlytour q ON l.MaQuanLy = q.MaQuanLy
+                WHERE l.MaNhanSu = :maHDV
+                AND (q.TrangThai = 'đang diễn ra' OR q.TrangThai = 'hoàn thành')
+                AND q.MaQuanLy NOT IN (SELECT MaQuanLy FROM nhatkytour)";
+        
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([":MaNhatKy" => $id]); 
-        return $stmt->rowCount();
+        $stmt->execute([':maHDV' => $maHDV]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function add($data)
     {
-        // Thêm trường HinhAnhSuCo vào câu INSERT
         $sql = "INSERT INTO NhatKyTour (MaQuanLy, MaNhanSu, Ngay, SuKien, SuCo, PhanHoiKhach, HinhAnhSuCo) 
                 VALUES (:MaQuanLy, :MaNhanSu, :Ngay, :SuKien, :SuCo, :PhanHoiKhach, :HinhAnhSuCo)";
         $stmt = $this->conn->prepare($sql);
@@ -43,7 +46,7 @@ class NhatKyTourHDVModel
             ':SuKien'     => $data['SuKien'],
             ':SuCo'       => $data['SuCo'],
             ':PhanHoiKhach' => $data['PhanHoiKhach'],
-            ':HinhAnhSuCo' => $data['HinhAnhSuCo'] ?? '' // Nếu không có ảnh thì để rỗng
+            ':HinhAnhSuCo' => $data['HinhAnhSuCo'] ?? ''
         ]);
         return $stmt->rowCount();
     }
@@ -58,7 +61,6 @@ class NhatKyTourHDVModel
 
     public function update($data)
     {
-        // [QUAN TRỌNG] Thêm HinhAnhSuCo = :HinhAnhSuCo
         $sql = "UPDATE NhatKyTour SET 
                     Ngay = :Ngay, 
                     SuKien = :SuKien,
@@ -73,10 +75,10 @@ class NhatKyTourHDVModel
             ':SuKien'       => $data['SuKien'],
             ':SuCo'         => $data['SuCo'],
             ':PhanHoiKhach' => $data['PhanHoiKhach'],
-            ':HinhAnhSuCo'  => $data['HinhAnhSuCo'], // Bind tham số ảnh
+            ':HinhAnhSuCo'  => $data['HinhAnhSuCo'], 
             ':MaNhatKy'     => $data['MaNhatKy']
         ]);
         return $stmt->rowCount();
     }
 }
-?>`
+?>

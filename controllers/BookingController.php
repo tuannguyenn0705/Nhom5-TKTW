@@ -48,13 +48,16 @@ class BookingController
 
             $jsonKhachDoan = json_encode($khachDoan, JSON_UNESCAPED_UNICODE);
 
+            $yeuCau = isset($_POST['YeuCauDacBiet']) ? $_POST['YeuCauDacBiet'] : '';
+
             $data = [
                 ':maTour' => $_POST['MaChiTietTour'],
                 ':ten' => $tenKhach,
                 ':sdt' => $_POST['SDT'],
                 ':email' => $_POST['Email'],
                 ':soluong' => $soLuongKhach,
-                ':dskhach' => $jsonKhachDoan
+                ':dskhach' => $jsonKhachDoan,
+                ':yeucau' => $yeuCau
             ];
 
             $this->modelBooking->insertBooking($data);
@@ -69,13 +72,15 @@ class BookingController
         if($status == 'đã xác nhận') {
             $booking = $this->modelBooking->getBookingById($id);
             
+            $yeuCauNguoiDat = !empty($booking['YeuCauDacBiet']) ? $booking['YeuCauDacBiet'] : 'Người đặt tour';
+
             $this->modelBooking->insertGuestToTour(
                 $booking['MaChiTietTour'], 
                 $booking['TenKhachHang'], 
                 $id, 
                 $booking['SDT'], 
                 $booking['Email'], 
-                'Người đặt tour'
+                $yeuCauNguoiDat
             );
 
             if(!empty($booking['DanhSachKhachDoan'])){
@@ -112,3 +117,4 @@ class BookingController
         require_once './views/admin/addbooking.php';
     }
 }
+?>

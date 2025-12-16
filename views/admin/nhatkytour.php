@@ -1,7 +1,7 @@
 <?php require_once 'silderbar.php'; ?>
 <div class="container-fluid mt-4">
   
-  <h1 class="h3 mb-4 fw-bold text-primary">Quản Lý Nhật Ký Tour</h1>
+  <h1 class="h3 mb-4 fw-bold text-primary">Quản Lý Nhật Ký Tour (Admin)</h1>
 
   <div class="card shadow-sm">
     <div class="card-body">
@@ -25,18 +25,9 @@
                 <?php foreach ($data as $row): ?>
                 <tr>
                     <td><strong>#<?= $row['MaNhatKy'] ?></strong></td>
-
-                    <td class="text-primary fw-semibold">
-                        <?= htmlspecialchars($row['TenTour'] ?? '---') ?>
-                    </td>
-
-                    <td>
-                        <i class="bi bi-person text-secondary me-1"></i>
-                        <?= htmlspecialchars($row['TenHDV'] ?? 'Chưa phân công') ?>
-                    </td>
-
+                    <td class="text-primary fw-semibold"><?= htmlspecialchars($row['TenTour'] ?? '---') ?></td>
+                    <td><?= htmlspecialchars($row['TenHDV'] ?? 'Chưa phân công') ?></td>
                     <td><?= date('d/m/Y', strtotime($row['Ngay'])) ?></td>
-
                     <td>
                         <div><?= htmlspecialchars($row['SuKien']) ?></div>
                         <?php if(!empty($row['SuCo'])): ?>
@@ -46,7 +37,6 @@
                             </div>
                         <?php endif; ?>
                     </td>
-
                     <td class="text-center">
                         <?php if (!empty($row['HinhAnhSuCo'])): ?>
                             <img src="./uploads/<?= htmlspecialchars($row['HinhAnhSuCo']) ?>" 
@@ -55,32 +45,19 @@
                             <span class="text-muted fst-italic">Không có ảnh</span>
                         <?php endif; ?>
                     </td>
-
-                    <td class="fst-italic">
-                        <?= htmlspecialchars($row['PhanHoiKhach'] ?? '') ?>
-                    </td>
-
+                    <td class="fst-italic"><?= htmlspecialchars($row['PhanHoiKhach'] ?? '') ?></td>
                     <td class="text-center">
-                        <div class="btn-group">
-                          <a href="<?= BASE_URL . '?mode=admin&act=editnhatkytour&id=' . $row['MaNhatKy'] ?>" 
-                             class="btn btn-warning btn-sm rounded-pill shadow-sm px-3 d-inline-flex align-items-center custom-btn">
-                             <i class="bi bi-pencil-square me-1"></i> Sửa
-                          </a>
-                          
-                          <a href="<?= BASE_URL . '?mode=admin&act=xoanhatkytour&id=' . $row['MaNhatKy'] ?>" 
-                             class="btn btn-danger btn-sm rounded-pill shadow-sm px-3 d-inline-flex align-items-center custom-btn"
-                             onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
-                             <i class="bi bi-trash me-1"></i> Xóa
-                          </a>
-                        </div>
+                        <a href="<?= BASE_URL . '?mode=admin&act=xoanhatkytour&id=' . $row['MaNhatKy'] ?>" 
+                           class="btn btn-danger btn-sm rounded-pill shadow-sm px-3"
+                           onclick="return confirm('Bạn có chắc chắn muốn xóa nhật ký này không? Hành động này không thể hoàn tác!')">
+                           <i class="bi bi-trash me-1"></i> Xóa
+                        </a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="8" class="text-center text-muted py-5">
-                        Chưa có dữ liệu nhật ký nào.
-                    </td>
+                    <td colspan="8" class="text-center text-muted py-5">Chưa có dữ liệu nhật ký nào.</td>
                 </tr>
             <?php endif; ?>
           </tbody>
@@ -89,23 +66,3 @@
     </div>
   </div>
 </div>
-
-<style>
-.custom-btn {
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-.custom-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
-}
-.btn-warning.custom-btn {
-  background: linear-gradient(135deg, #ffc107, #fd7e14);
-  border: none;
-  color: #fff;
-}
-.btn-danger.custom-btn {
-  background: linear-gradient(135deg, #dc3545, #c82333);
-  border: none;
-}
-</style>

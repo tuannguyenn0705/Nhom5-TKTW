@@ -15,9 +15,6 @@
       display: flex;
     }
 
-    /* Sidebar giữ nguyên từ silderbar.css */
-
-    /* Container chính */
     .main-container {
       flex: 1;
       padding: 40px 20px;
@@ -113,7 +110,6 @@
   </style>
 </head>
 <body>
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="logo"><i class="fas fa-plane-departure"></i> TravelWorld</div>
     <a href="<?= BASE_URL ?>?mode=hdv&act=lichlamviec" class="menu-item"><i class="fas fa-briefcase"></i>Lịch làm việc</a>
@@ -126,7 +122,6 @@
     </a>
   </div>
 
-  <!-- Form -->
   <div class="main-container">
     <div class="form-container">
       <h1>Sửa Nhật Ký Tour</h1>
