@@ -52,9 +52,9 @@
             <div class="form-group">
                 <label>Trạng thái</label>
                 <select name="TrangThai" required>
-                    <option value="Sắp diễn ra">Sắp diễn ra</option>
-                    <option value="Đang diễn ra">Đang diễn ra</option>
-                    <option value="Đã hoàn thành"> hoàn thành</option>
+                    <option value="sắp khởi hành">Sắp  khởi hành</option>
+                    <option value="đang diễn ra">Đang diễn ra</option>
+                    <option value="hoàn thành">Hoàn thành</option>
                 </select>
             </div>
           
