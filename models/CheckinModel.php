@@ -25,11 +25,11 @@ class CheckinModel
         }
     }
     public function updateCheckinStatus($maTour, $maKhach, $trangThai)
-    {
-        $sql = "UPDATE checkin SET TrangThai = :trangThai, ThoiGianCheckIn = NOW() WHERE MaQuanLy = :maTour AND MaKhach = :maKhach";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':trangThai' => $trangThai, ':maTour' => $maTour, ':maKhach' => $maKhach]);
-    }
+{
+    $sql = "UPDATE checkin SET TrangThai = :trangThai, ThoiGianCheckIn = NOW() WHERE MaQuanLy = :maTour AND MaKhach = :maKhach";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute([':trangThai' => $trangThai, ':maTour' => $maTour, ':maKhach' => $maKhach]);
+}
      
 }
 ?>

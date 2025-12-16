@@ -130,33 +130,49 @@
   <div class="main-container">
     <div class="form-container">
       <h1>Sửa Nhật Ký Tour</h1>
-      <form action="<?= BASE_URL . '?mode=hdv&act=updatenhatkytour' ?>" method="POST">
-        <input type="hidden" name="MaNhatKy" value="<?= htmlspecialchars($nhatkytour['MaNhatKy'] ?? '') ?>">
+     <form action="<?= BASE_URL . '?mode=hdv&act=updatenhatkytour' ?>" method="POST" enctype="multipart/form-data">
+  
+  <input type="hidden" name="MaNhatKy" value="<?= htmlspecialchars($nhatkytour['MaNhatKy'] ?? '') ?>">
 
-        <div class="form-group">
-          <label for="Ngay">Ngày:</label>
-          <input type="date" class="form-control" id="Ngay" name="Ngay" required
-                 value="<?= htmlspecialchars($nhatkytour['Ngay'] ?? '') ?>">
+  <div class="form-group">
+    <label for="Ngay">Ngày:</label>
+    <input type="date" class="form-control" id="Ngay" name="Ngay" required
+           value="<?= htmlspecialchars($nhatkytour['Ngay'] ?? '') ?>">
+  </div>
+
+  <div class="form-group">
+    <label for="SuKien">Sự Kiện:</label>
+    <textarea class="form-control" id="SuKien" name="SuKien" rows="3"><?= htmlspecialchars($nhatkytour['SuKien'] ?? '') ?></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="HinhAnhSuCo">Hình ảnh sự cố (nếu có):</label>
+    
+    <?php if (!empty($nhatkytour['HinhAnhSuCo'])): ?>
+        <div style="margin: 10px 0;">
+            <img src="./uploads/<?= htmlspecialchars($nhatkytour['HinhAnhSuCo']) ?>" alt="Ảnh sự cố hiện tại" style="max-height: 150px; border: 1px solid #ddd; padding: 5px;">
+            <br>
+            <small>Ảnh hiện tại (Nếu không chọn ảnh mới, ảnh này sẽ được giữ nguyên)</small>
+            <input type="hidden" name="HinhAnhCu" value="<?= htmlspecialchars($nhatkytour['HinhAnhSuCo']) ?>">
         </div>
+    <?php endif; ?>
 
-        <div class="form-group">
-          <label for="SuKien">Sự Kiện:</label>
-          <textarea class="form-control" id="SuKien" name="SuKien" rows="3"><?= htmlspecialchars($nhatkytour['SuKien'] ?? '') ?></textarea>
-        </div>
+    <input type="file" class="form-control" name="HinhAnhSuCo" accept="image/*">
+  </div>
 
-        <div class="form-group">
-          <label for="SuCo">Sự Cố:</label>
-          <textarea class="form-control" id="SuCo" name="SuCo" rows="3"><?= htmlspecialchars($nhatkytour['SuCo'] ?? '') ?></textarea>
-        </div>
+  <div class="form-group">
+    <label for="SuCo">Sự Cố:</label>
+    <textarea class="form-control" id="SuCo" name="SuCo" rows="3"><?= htmlspecialchars($nhatkytour['SuCo'] ?? '') ?></textarea>
+  </div>
 
-        <div class="form-group">
-          <label for="PhanHoiKhach">Phản Hồi Khách:</label>
-          <textarea class="form-control" id="PhanHoiKhach" name="PhanHoiKhach" rows="3"><?= htmlspecialchars($nhatkytour['PhanHoiKhach'] ?? '') ?></textarea>
-        </div>
+  <div class="form-group">
+    <label for="PhanHoiKhach">Phản Hồi Khách:</label>
+    <textarea class="form-control" id="PhanHoiKhach" name="PhanHoiKhach" rows="3"><?= htmlspecialchars($nhatkytour['PhanHoiKhach'] ?? '') ?></textarea>
+  </div>
 
-        <button type="submit" name="btn-update" class="btn-submit">Cập Nhật Nhật Ký</button>
-        <a href="<?= BASE_URL ?>?mode=hdv&act=nhatkytour" class="btn-cancel">Hủy</a>
-      </form>
+  <button type="submit" name="btn-update" class="btn-submit">Cập Nhật Nhật Ký</button>
+  <a href="<?= BASE_URL ?>?mode=hdv&act=nhatkytour" class="btn-cancel">Hủy</a>
+</form>
     </div>
   </div>
 </body>

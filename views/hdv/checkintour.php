@@ -177,8 +177,7 @@
                             <input type="hidden" name="MaKhach" value="<?= htmlspecialchars($khach['MaKhach']) ?>">
                             <input type="hidden" name="MaQuanLy" value="<?= htmlspecialchars($_GET['MaQuanLy'] ?? '') ?>">
                             <div class="action-group">
-                                <select name="TrangThai" required>
-                                    <option value="">-- Chọn Tình Trạng --</option>
+                                <select name="TrangThai" required>      
                                     <option value="Có mặt" <?= (isset($khach['TrangThai']) && $khach['TrangThai'] == 'Có mặt') ? 'selected' : '' ?>>Có mặt</option>
                                     <option value="Vắng" <?= (isset($khach['TrangThai']) && $khach['TrangThai'] == 'Vắng') ? 'selected' : '' ?>>Vắng</option>
                                 </select>
